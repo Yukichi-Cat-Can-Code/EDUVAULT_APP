@@ -53,21 +53,26 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.kordamp.ikonli/ikonli-fontawesome-pack -->
         <dependency>
             <groupId>org.kordamp.ikonli</groupId>
-            <artifactId>ikonli-javafx</artifactId>
-            <version>12.2.0</version>
+            <artifactId>ikonli-fontawesome-pack</artifactId>
+            <version>12.3.1</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.kordamp.ikonli/ikonli-core -->
         <dependency>
             <groupId>org.kordamp.ikonli</groupId>
-            <artifactId>ikonli-fontawesome5-pack</artifactId>
-            <version>12.2.0</version>
+            <artifactId>ikonli-core</artifactId>
+            <version>12.3.1</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/de.jensd/fontawesomefx-fontawesome -->
         <dependency>
-            <groupId>com.github.jiconfont</groupId>
-            <artifactId>fontawesomefx</artifactId>
-            <version>8.15</version>
+            <groupId>de.jensd</groupId>
+            <artifactId>fontawesomefx-fontawesome</artifactId>
+            <version>4.7.0-9.1.2</version>
         </dependency>
+
     </dependencies>
 
     <repositories>
