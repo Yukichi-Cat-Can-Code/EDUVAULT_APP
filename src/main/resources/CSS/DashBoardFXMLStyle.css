@@ -5,7 +5,7 @@
 }
 
 .SelectAll_CheckBox{
-
+    -fx-text-fill: #3c3a3a;
 }
 
 .DashBoardBodyTitle_lbl{
@@ -17,7 +17,7 @@
     -fx-font-size: 15px;
     -fx-font-weight: bold;
     -fx-font-family: Calibri;
-    -fx-padding: 0 5px 0 25px;
+    -fx-padding: 0 5px 0 15px;
     -fx-border-color: black; /* Màu viền */
     -fx-border-width: 1px; /* Độ dày viền */
     -fx-border-radius: 20px; /* Độ bo tròn các góc */
@@ -30,4 +30,6 @@
     -fx-border-width: 1px;
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
+    -fx-text-fill: #5e5b5b ;
+    -fx-padding: 0 10px 0 0 ;
 }

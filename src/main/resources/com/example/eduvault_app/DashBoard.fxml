@@ -6,15 +6,17 @@
 <?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.paint.Color?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="dashBoardTemp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="649.0" prefWidth="944.0" stylesheets="@../../../CSS/DashBoardFXMLStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane fx:id="dashBoardTemp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" stylesheets="@../../../CSS/DashBoardFXMLStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
-      <BorderPane layoutY="-1.0" prefHeight="650.0" prefWidth="944.0">
+      <BorderPane layoutY="-1.0" prefHeight="800.0" prefWidth="1280.0">
          <left>
             <AnchorPane prefHeight="650.0" prefWidth="82.0" style="-fx-background-color: #010101;" styleClass="LeftPane" BorderPane.alignment="CENTER" />
          </left>
@@ -28,7 +30,7 @@
                      <top>
                         <AnchorPane prefHeight="56.0" prefWidth="671.0" styleClass="Header" BorderPane.alignment="CENTER">
                            <children>
-                              <ImageView fitHeight="43.0" fitWidth="47.0" layoutX="622.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" styleClass="UserImage">
+                              <ImageView fitHeight="43.0" fitWidth="47.0" layoutX="951.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" styleClass="UserImage">
                                  <image>
                                     <Image url="@../../../Images/avatar_unlogin.png" />
                                  </image>
@@ -37,15 +39,15 @@
                                  </cursor>
                               </ImageView>
                               <FontAwesomeIconView glyphName="BARS" layoutX="14.0" layoutY="38.0" size="24" styleClass="Menu_BTN" text="" />
-                              <FontAwesomeIconView glyphName="BELL" layoutX="583.0" layoutY="35.0" onMouseClicked="#ShowNotification" size="20.0" styleClass="BellIcon">
+                              <FontAwesomeIconView glyphName="BELL" layoutX="909.0" layoutY="35.0" onMouseClicked="#ShowNotification" size="20.0" styleClass="BellIcon" textAlignment="CENTER" wrappingWidth="35.0">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView glyphName="QUESTION" layoutX="550.0" layoutY="35.0" onMouseClicked="#AskForHelp" size="20" styleClass="QuestionIcon" text="">
+                              <FontAwesomeIconView glyphName="QUESTION" layoutX="870.0" layoutY="36.0" onMouseClicked="#AskForHelp" size="20" styleClass="QuestionIcon" text="" textAlignment="CENTER" wrappingWidth="38.428571701049805">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView glyphName="COMMENT_ALT" layoutX="511.0" layoutY="34.0" onMouseClicked="#ShowComment" size="20" styleClass="ChatIcon">
+                              <FontAwesomeIconView glyphName="COMMENT_ALT" layoutX="828.0" layoutY="35.0" onMouseClicked="#ShowComment" size="20" styleClass="ChatIcon" textAlignment="CENTER" wrappingWidth="42.0">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></FontAwesomeIconView>
@@ -55,14 +57,30 @@
                      <center>
                         <AnchorPane prefHeight="570.0" prefWidth="671.0" style="-fx-background-color: #ABCDDA;" styleClass="BodyPane" BorderPane.alignment="CENTER">
                            <children>
-                              <TextField layoutX="446.0" layoutY="62.0" prefHeight="26.0" prefWidth="210.0" styleClass="SearchBox_TXT" text="Search" />
-                              <Label layoutX="14.0" layoutY="14.0" styleClass="DashBoardBodyTitle_lbl" text="Document manegement" textFill="#efecec">
+                              <TextField alignment="CENTER" layoutX="683.0" layoutY="51.0" prefHeight="26.0" prefWidth="210.0" styleClass="SearchBox_TXT" text="Searching for documnent">
                                  <font>
-                                    <Font name="Calibri Bold" size="26.0" />
+                                    <Font name="Calibri" size="16.0" />
+                                 </font>
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                                 <effect>
+                                    <InnerShadow>
+                                       <color>
+                                          <Color opacity="0.3893129825592041" />
+                                       </color>
+                                    </InnerShadow>
+                                 </effect></TextField>
+                              <Label layoutX="23.0" layoutY="16.0" styleClass="DashBoardBodyTitle_lbl" text="Document manegement" textFill="#efecec">
+                                 <font>
+                                    <Font name="Calibri Bold" size="27.0" />
                                  </font>
                               </Label>
-                              <CheckBox layoutX="14.0" layoutY="63.0" mnemonicParsing="false" styleClass="SelectAll_CheckBox" text="Select All" textFill="#efecec" />
-                              <Button alignment="CENTER_RIGHT" centerShape="false" contentDisplay="RIGHT" layoutX="123.0" layoutY="59.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="178.0" styleClass="NewDoc_BTN" text="   Add New Document" textAlignment="RIGHT">
+                              <CheckBox layoutX="23.0" layoutY="52.0" mnemonicParsing="false" opacity="0.69" styleClass="SelectAll_CheckBox" text="Select All" textFill="#141414">
+                                 <font>
+                                    <Font name="Calibri Bold" size="15.0" />
+                                 </font></CheckBox>
+                              <Button alignment="CENTER_RIGHT" centerShape="false" contentDisplay="RIGHT" layoutX="145.0" layoutY="50.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="162.0" styleClass="NewDoc_BTN" text="   Add New Document" textAlignment="RIGHT">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -70,9 +88,16 @@
                                     <Font name="Calibri Bold" size="10.0" />
                                  </font>
                               </Button>
-                              <FontAwesomeIconView fill="#f2eeee" glyphName="FILE" layoutX="139.0" layoutY="80.0" selectionFill="#efecec" text="" wrappingWidth="11.40000057220459" />
-                              <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="150.0" layoutY="72.0" selectionFill="#efecec" size="10.0" text="" />
-                              <FontAwesomeIconView glyphName="SEARCH" layoutX="460.0" layoutY="80.0" />
+                              <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="166.0" layoutY="59.0" selectionFill="#efecec" size="8.0" text="" />
+                              <FontAwesomeIconView fill="#5e5b5b" glyphName="SEARCH" layoutX="692.0" layoutY="69.0" size="16.0" text="" />
+                              <Button layoutX="908.0" layoutY="47.0" mnemonicParsing="false" prefHeight="30.0" prefWidth="77.0" text="Filter" />
+                              <FontAwesomeIconView glyphName="SLIDERS" layoutX="912.0" layoutY="68.0" size="17.0" text="" />
+                              <FontAwesomeIconView fill="#fffefe" glyphName="FILE" layoutX="153.0" layoutY="71.0" size="17.0" text="" />
+                              <FontAwesomeIconView glyphName="FILE_TEXT_ALT" layoutX="153.0" layoutY="71.0" selectionFill="#463e3e" size="17.0" text="">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </FontAwesomeIconView>
                            </children></AnchorPane>
                      </center>
                   </BorderPane>
