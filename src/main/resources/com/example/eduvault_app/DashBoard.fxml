@@ -58,6 +58,11 @@
                         <Image url="@../../../Images/marketplace.png" />
                      </image>
                   </ImageView>
+                  <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="25.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../Images/z6013220897737_2a5f022004284f361efe5ced21206144.jpg" />
+                     </image>
+                  </ImageView>
                </children></AnchorPane>
          </left>
          <center>
@@ -324,7 +329,7 @@
                                     <Image url="@../../../Images/Group.png" />
                                  </image>
                               </ImageView>
-                              <ImageView fitHeight="19.0" fitWidth="17.0" layoutX="883.0" layoutY="266.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="19.0" fitWidth="17.0" layoutX="882.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../Images/Group.png" />
                                  </image>
