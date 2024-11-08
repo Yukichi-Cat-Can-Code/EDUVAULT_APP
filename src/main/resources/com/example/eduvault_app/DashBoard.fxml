@@ -28,7 +28,7 @@
                   <DropShadow height="0.0" radius="21.125" width="86.5" />
                </effect>
                <children>
-                  <ImageView id="Dashboard" fitHeight="21.0" fitWidth="21.0" layoutX="28.0" layoutY="75.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView id="Dashboard" fitHeight="21.0" fitWidth="21.0" layoutX="28.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../Images/Dashboard%20-1.png" />
                      </image>
@@ -117,7 +117,7 @@
                      <top>
                         <AnchorPane prefHeight="56.0" prefWidth="1055.0" style="-fx-background-color: #010101;" styleClass="Header" BorderPane.alignment="CENTER">
                            <children>
-                              <ImageView fitHeight="43.0" fitWidth="47.0" layoutX="944.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #010101;" styleClass="UserImage">
+                              <ImageView fitHeight="43.0" fitWidth="47.0" layoutX="934.0" layoutY="10.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #010101;" styleClass="UserImage">
                                  <image>
                                     <Image url="@../../../Images/avatar.png" />
                                  </image>
@@ -126,22 +126,33 @@
                                  </cursor>
                               </ImageView>
                               <FontAwesomeIconView glyphName="BARS" layoutX="14.0" layoutY="38.0" size="24" styleClass="Menu_BTN" text="" />
-                              <FontAwesomeIconView fill="WHITE" glyphName="BELL" layoutX="899.0" layoutY="35.0" onMouseClicked="#ShowNotification" size="20.0" styleClass="BellIcon" textAlignment="CENTER" wrappingWidth="35.0">
+                              <FontAwesomeIconView fill="WHITE" glyphName="BELL" layoutX="674.0" layoutY="36.0" onMouseClicked="#ShowNotification" size="20.0" styleClass="BellIcon" textAlignment="CENTER" wrappingWidth="35.0">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </FontAwesomeIconView>
-                              <FontAwesomeIconView fill="WHITE" glyphName="QUESTION" layoutX="854.0" layoutY="36.0" onMouseClicked="#AskForHelp" size="20" styleClass="QuestionIcon" text="" textAlignment="CENTER" wrappingWidth="38.428571701049805">
+                              <FontAwesomeIconView fill="WHITE" glyphName="QUESTION" layoutX="642.0" layoutY="36.0" onMouseClicked="#AskForHelp" size="20" styleClass="QuestionIcon" text="" textAlignment="CENTER" wrappingWidth="38.428571701049805">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </FontAwesomeIconView>
-                              <FontAwesomeIconView fill="WHITE" glyphName="COMMENT_ALT" layoutX="804.0" layoutY="35.0" onMouseClicked="#ShowComment" size="20" styleClass="ChatIcon" textAlignment="CENTER" wrappingWidth="42.0">
+                              <FontAwesomeIconView fill="WHITE" glyphName="COMMENT_ALT" layoutX="613.0" layoutY="35.0" onMouseClicked="#ShowComment" size="20" styleClass="ChatIcon" textAlignment="CENTER" wrappingWidth="42.0">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="788.0" layoutY="32.0" size="10.0" strokeMiterLimit="20.0" text="" wrappingWidth="8.657191753387451" />
+                              <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="600.0" layoutY="33.0" size="10.0" strokeMiterLimit="20.0" text="" wrappingWidth="8.657191753387451" />
+                              <Text fill="WHITE" layoutX="749.0" layoutY="26.0" strokeType="OUTSIDE" text="Nhan Vinh Tien">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                              <Text fill="WHITE" layoutX="746.0" layoutY="50.0" strokeType="OUTSIDE" text="tienb2203586@student.ctu.edu">
+                                 <font>
+                                    <Font size="13.0" />
+                                 </font>
+                              </Text>
+                              <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="844.0" layoutY="25.0" />
                            </children>
                         </AnchorPane>
                      </top>
@@ -207,7 +218,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </CheckBox>
-                              <ImageView fitHeight="18.0" fitWidth="22.0" layoutX="216.0" layoutY="56.0" pickOnBounds="true" preserveRatio="true">
+                              <ImageView fitHeight="18.0" fitWidth="22.0" layoutX="216.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
                                     <Image url="@../../../Images/9044277_document_add_icon%201.png" />
                                  </image>
