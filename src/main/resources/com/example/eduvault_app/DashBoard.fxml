@@ -131,18 +131,18 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </FontAwesomeIconView>
-                              <FontAwesomeIconView fill="WHITE" glyphName="QUESTION" layoutX="642.0" layoutY="36.0" onMouseClicked="#AskForHelp" size="20" styleClass="QuestionIcon" text="" textAlignment="CENTER" wrappingWidth="38.428571701049805">
+                              <FontAwesomeIconView fill="WHITE" glyphName="QUESTION" layoutX="640.0" layoutY="36.0" onMouseClicked="#AskForHelp" size="20" styleClass="QuestionIcon" text="" textAlignment="CENTER" wrappingWidth="38.428571701049805">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </FontAwesomeIconView>
-                              <FontAwesomeIconView fill="WHITE" glyphName="COMMENT_ALT" layoutX="613.0" layoutY="35.0" onMouseClicked="#ShowComment" size="20" styleClass="ChatIcon" textAlignment="CENTER" wrappingWidth="42.0">
+                              <FontAwesomeIconView fill="WHITE" glyphName="COMMENT_ALT" layoutX="607.0" layoutY="35.0" onMouseClicked="#ShowComment" size="20" styleClass="ChatIcon" textAlignment="CENTER" wrappingWidth="42.0">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="600.0" layoutY="33.0" size="10.0" strokeMiterLimit="20.0" text="" wrappingWidth="8.657191753387451" />
-                              <Text fill="WHITE" layoutX="749.0" layoutY="26.0" strokeType="OUTSIDE" text="Nhan Vinh Tien">
+                              <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="593.0" layoutY="33.0" size="10.0" strokeMiterLimit="20.0" text="" wrappingWidth="8.657191753387451" />
+                              <Text fill="WHITE" layoutX="746.0" layoutY="26.0" strokeType="OUTSIDE" text="Nhan Vinh Tien">
                                  <font>
                                     <Font size="13.0" />
                                  </font>
