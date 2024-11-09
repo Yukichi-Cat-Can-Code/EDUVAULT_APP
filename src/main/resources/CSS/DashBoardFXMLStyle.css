@@ -58,6 +58,9 @@
     -fx-fill: #efecec;
 }
 
+.Arrange_ICON{
+ -fx-opacity: 0.8;
+}
 
 /*.check-box .box {*/
 /*    -fx-background-color: white;*/
