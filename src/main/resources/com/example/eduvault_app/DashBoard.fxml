@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import de.jensd.fx.glyphs.GlyphsStack?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
 <?import javafx.geometry.Insets?>
@@ -28,41 +29,19 @@
                   <DropShadow height="0.0" radius="21.125" width="86.5" />
                </effect>
                <children>
-                  <ImageView id="Dashboard" fitHeight="21.0" fitWidth="21.0" layoutX="28.0" layoutY="77.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../Images/Dashboard%20-1.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="19.0" fitWidth="21.0" layoutX="29.0" layoutY="133.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../Images/Schedule%202.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="19.0" fitWidth="24.0" layoutX="29.0" layoutY="189.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../Images/Clients%20-3.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="22.0" fitWidth="17.0" layoutX="30.0" layoutY="246.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../Images/Requests-%204.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView fitHeight="26.0" fitWidth="21.0" layoutX="30.0" layoutY="300.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../Images/Quotes-%205.png" />
-                     </image>
-                  </ImageView>
-                  <ImageView id="favorites" fitHeight="19.0" fitWidth="43.0" layoutX="31.0" layoutY="364.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../../../Images/marketplace.png" />
-                     </image>
-                  </ImageView>
                   <ImageView fitHeight="33.0" fitWidth="37.0" layoutX="25.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../Images/z6013220897737_2a5f022004284f361efe5ced21206144.jpg" />
                      </image>
                   </ImageView>
+                  <GlyphsStack layoutX="51.0" layoutY="97.0" />
+                  <FontAwesomeIconView fill="#ccbdbd" glyphName="PIE_CHART" layoutX="29.0" layoutY="94.0" size="20" />
+                  <FontAwesomeIconView fill="#ccbdbd" glyphName="CALENDAR" layoutX="29.0" layoutY="145.0" size="20" text="" />
+                  <FontAwesomeIconView fill="#ccbdbd" glyphName="USER" layoutX="30.0" layoutY="203.0" size="22" />
+                  <FontAwesomeIconView fill="#ccbdbd" glyphName="FILE" layoutX="30.0" layoutY="267.0" size="20" text="" />
+                  <FontAwesomeIconView fill="#3e3b3b" glyphName="PLUS" layoutX="35.0" layoutY="269.0" size="10" />
+                  <FontAwesomeIconView fill="#ccbdbd" glyphName="FILE_TEXT" layoutX="30.0" layoutY="334.0" size="20" />
+                  <FontAwesomeIconView fill="#ccbdbd" glyphName="STAR" layoutX="30.0" layoutY="396.0" size="20" />
                </children></AnchorPane>
          </left>
          <center>
@@ -77,39 +56,28 @@
                         </Label>
                         <Label layoutX="55.0" layoutY="116.0" style="-fx-text-fill: #eeeeee;" styleClass="NormalContent_LBL" text="All Document" />
                         <Label layoutX="55.0" layoutY="147.0" style="-fx-text-fill: #eeeeee;" styleClass="NormalContent_LBL" text="Trash" />
-                        <Label layoutX="26.0" layoutY="187.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Filters">
+                        <Label layoutX="30.0" layoutY="212.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Folders">
                            <font>
                               <Font name="Calibri Bold" size="19.0" />
                            </font>
                         </Label>
-                        <Label layoutX="55.0" layoutY="230.0" style="-fx-text-fill: #eeeeee;" styleClass="NormalContent_LBL" text="Draft" />
-                        <Label layoutX="56.0" layoutY="256.0" style="-fx-text-fill: #eeeeee;" styleClass="NormalContent_LBL" text="Sent" />
-                        <Label layoutX="56.0" layoutY="285.0" style="-fx-text-fill: #eeeeee;" styleClass="NormalContent_LBL" text="Signed" />
-                        <Label layoutX="27.0" layoutY="333.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Folders">
-                           <font>
-                              <Font name="Calibri Bold" size="19.0" />
-                           </font>
-                        </Label>
-                        <Label layoutX="57.0" layoutY="362.0" style="-fx-text-fill: #eeeeee;" styleClass="NormalContent_LBL" text="Folder" />
-                        <Label layoutX="27.0" layoutY="418.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Tags">
+                        <Label layoutX="60.0" layoutY="241.0" style="-fx-text-fill: #eeeeee;" styleClass="NormalContent_LBL" text="Folder" />
+                        <Label layoutX="30.0" layoutY="297.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Tags">
                            <font>
                               <Font name="Calibri Bold" size="19.0" />
                            </font>
                         </Label>
                         <FontAwesomeIconView fill="#c4c4c4fd" glyphName="FOLDER_OPEN_ALT" layoutX="29.0" layoutY="128.0" selectionFill="#e4e0e0" size="15.0" styleClass="FolderIcon" />
                         <FontAwesomeIconView fill="#efecec" glyphName="TRASH_ALT" layoutX="29.0" layoutY="162.0" size="18" />
-                        <FontAwesomeIconView fill="#dadada" glyphName="CIRCLE" layoutX="32.0" layoutY="243.0" />
-                        <FontAwesomeIconView fill="#ffe193" glyphName="CIRCLE" layoutX="32.0" layoutY="270.0" text="" />
-                        <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="32.0" layoutY="298.0" />
-                        <FontAwesomeIconView fill="#efecec" glyphName="FOLDER_ALT" layoutX="31.0" layoutY="375.0" />
-                        <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="103.0" layoutY="375.0" size="10.0" />
-                        <Label alignment="CENTER" layoutX="29.0" layoutY="452.0" prefHeight="22.0" prefWidth="53.0" style="-fx-background-color: #015D57;" styleClass="Tags" text="Jobs">
+                        <FontAwesomeIconView fill="#efecec" glyphName="FOLDER_ALT" layoutX="34.0" layoutY="254.0" />
+                        <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="106.0" layoutY="254.0" size="10.0" />
+                        <Label alignment="CENTER" layoutX="32.0" layoutY="331.0" prefHeight="22.0" prefWidth="53.0" style="-fx-background-color: #015D57;" styleClass="Tags" text="Jobs">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
                         </Label>
-                        <Label alignment="CENTER" layoutX="27.0" layoutY="525.0" prefHeight="24.0" prefWidth="61.0" style="-fx-background-color: #304390;" styleClass="Tags" text="Quotes" />
-                        <Label alignment="CENTER" layoutX="29.0" layoutY="489.0" prefHeight="21.0" prefWidth="65.0" style="-fx-background-color: #9E44D2;" styleClass="Tags" text="Requests" />
+                        <Label alignment="CENTER" layoutX="30.0" layoutY="404.0" prefHeight="24.0" prefWidth="61.0" style="-fx-background-color: #304390;" styleClass="Tags" text="Quotes" />
+                        <Label alignment="CENTER" layoutX="32.0" layoutY="368.0" prefHeight="21.0" prefWidth="65.0" style="-fx-background-color: #9E44D2;" styleClass="Tags" text="Requests" />
                      </children></AnchorPane>
                </left>
                <center>
@@ -156,7 +124,7 @@
                            </children>
                         </AnchorPane>
                      </top>
-                     <center>
+                     <right>
                         <AnchorPane prefHeight="744.0" prefWidth="1002.0" style="-fx-background-color: #1C1C1C;" styleClass="BodyPane" BorderPane.alignment="CENTER">
                            <children>
                               <TextField alignment="CENTER" layoutX="607.0" layoutY="50.0" prefHeight="31.0" prefWidth="242.0" style="-fx-background-color: #444444; -fx-text-fill: #e6e6e6;" styleClass="SearchBox_TXT" text="Search for document">
@@ -191,7 +159,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </CheckBox>
-                              <Button alignment="CENTER" centerShape="false" contentDisplay="CENTER" layoutX="197.0" layoutY="55.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="192.0" style="-fx-background-color: #257ac5;" styleClass="NewDoc_BTN" text="   Add New Document" textAlignment="RIGHT" textFill="WHITE">
+                              <Button alignment="CENTER" centerShape="false" contentDisplay="CENTER" layoutX="197.0" layoutY="56.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="186.0" style="-fx-background-color: #257ac5;" styleClass="NewDoc_BTN" text="   Add New Document" textAlignment="RIGHT" textFill="WHITE">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -200,6 +168,8 @@
                                  </font>
                               </Button>
                               <FontAwesomeIconView fill="#e6e6e6" glyphName="SEARCH" layoutX="629.0" layoutY="71.0" size="16.0" text="" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="FILE_TEXT" layoutX="210.0" layoutY="77.0" size="17" />
+                              <FontAwesomeIconView fill="WHITE" glyphName="PLUS" layoutX="224.0" layoutY="65.0" size="7" />
                               <Button layoutX="862.0" layoutY="52.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="98.0" style="-fx-background-color: #257ac5;" text="Filter">
                                  <styleClass>
                                     <String fx:value="Filter_BTN" />
@@ -207,258 +177,118 @@
                                  </styleClass>
                               </Button>
                               <FontAwesomeIconView fill="WHITE" glyphName="SLIDERS" layoutX="874.0" layoutY="71.0" size="17.0" text="" />
-                              <Label layoutX="156.0" layoutY="143.0" styleClass="NormalContent_LBL" text="Document Name" />
-                              <Label layoutX="349.0" layoutY="143.0" styleClass="NormalContent_LBL" text="Recipient" />
-                              <Label layoutX="503.0" layoutY="143.0" styleClass="NormalContent_LBL" text="Date Created" />
-                              <Label layoutX="673.0" layoutY="144.0" styleClass="NormalContent_LBL" text="Status" />
-                              <Label layoutX="782.0" layoutY="144.0" styleClass="NormalContent_LBL" text="Modified" />
-                              <Line endX="819.7332763671875" endY="-1.52587890625E-5" layoutX="160.0" layoutY="173.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <CheckBox layoutX="66.0" layoutY="197.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
+                              <Label layoutX="194.0" layoutY="136.0" styleClass="NormalContent_LBL" text="Document Name" />
+                              <Label layoutX="387.0" layoutY="136.0" styleClass="NormalContent_LBL" text="Recipient" />
+                              <Label layoutX="541.0" layoutY="136.0" styleClass="NormalContent_LBL" text="Date Created" />
+                              <Label layoutX="749.0" layoutY="135.0" styleClass="NormalContent_LBL" text="Modified" />
+                              <Line endX="758.0" endY="-1.52587890625E-5" layoutX="198.0" layoutY="166.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
+                              <CheckBox layoutX="104.0" layoutY="190.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </CheckBox>
-                              <ImageView fitHeight="18.0" fitWidth="22.0" layoutX="216.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/9044277_document_add_icon%201.png" />
-                                 </image>
-                              </ImageView>
-                              <CheckBox layoutX="66.0" layoutY="261.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
+                              <CheckBox layoutX="104.0" layoutY="254.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </CheckBox>
-                              <CheckBox layoutX="66.0" layoutY="331.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
+                              <CheckBox layoutX="104.0" layoutY="324.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </CheckBox>
-                              <CheckBox layoutX="66.0" layoutY="403.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
+                              <CheckBox layoutX="104.0" layoutY="396.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </CheckBox>
-                              <CheckBox layoutX="66.0" layoutY="624.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
+                              <CheckBox layoutX="104.0" layoutY="617.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </CheckBox>
-                              <CheckBox layoutX="66.0" layoutY="551.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
+                              <CheckBox layoutX="104.0" layoutY="544.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </CheckBox>
-                              <CheckBox layoutX="66.0" layoutY="477.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
+                              <CheckBox layoutX="104.0" layoutY="470.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </CheckBox>
-                              <ImageView fitHeight="19.0" fitWidth="21.0" layoutX="116.0" layoutY="200.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/link%20%20to%20file.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="19.0" fitWidth="21.0" layoutX="116.0" layoutY="335.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/link%20%20to%20file.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="19.0" fitWidth="21.0" layoutX="116.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/link%20%20to%20file.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="19.0" fitWidth="21.0" layoutX="116.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/link%20%20to%20file.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="19.0" fitWidth="21.0" layoutX="117.0" layoutY="482.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/link%20%20to%20file.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="19.0" fitWidth="21.0" layoutX="116.0" layoutY="556.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/link%20%20to%20file.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="19.0" fitWidth="21.0" layoutX="116.0" layoutY="629.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/link%20%20to%20file.png" />
-                                 </image>
-                              </ImageView>
-                              <Line endX="819.7332763671875" endY="-1.52587890625E-5" layoutX="159.0" layoutY="379.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <Line endX="819.7332763671875" endY="-1.52587890625E-5" layoutX="160.0" layoutY="528.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <Line endX="819.7332763671875" endY="-1.52587890625E-5" layoutX="160.0" layoutY="602.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <Line endX="819.7332763671875" endY="-1.52587890625E-5" layoutX="160.0" layoutY="310.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <Line endX="819.7332763671875" endY="-1.52587890625E-5" layoutX="159.0" layoutY="452.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <Line endX="819.7332763671875" endY="-1.52587890625E-5" layoutX="160.0" layoutY="242.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <Line endX="819.7332763671875" endY="-1.52587890625E-5" layoutX="161.0" layoutY="673.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <Label alignment="CENTER" layoutX="173.0" layoutY="199.0" prefHeight="22.0" prefWidth="53.0" style="-fx-background-color: #015D57;" styleClass="Tags" text="Jobs">
+                              <Line endX="758.0" endY="-1.52587890625E-5" layoutX="197.0" layoutY="372.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
+                              <Line endX="758.0" endY="-1.52587890625E-5" layoutX="198.0" layoutY="521.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
+                              <Line endX="758.0" endY="-1.52587890625E-5" layoutX="198.0" layoutY="595.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
+                              <Line endX="758.0" endY="-1.52587890625E-5" layoutX="198.0" layoutY="303.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
+                              <Line endX="758.0" endY="-1.52587890625E-5" layoutX="197.0" layoutY="445.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
+                              <Line endX="758.0" endY="-1.52587890625E-5" layoutX="198.0" layoutY="235.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
+                              <Line endX="758.0" endY="-1.52587890625E-5" layoutX="199.0" layoutY="666.0" startX="-94.40003204345703" startY="-1.52587890625E-5" stroke="#e1e1e1" />
+                              <Label alignment="CENTER" layoutX="205.0" layoutY="192.0" prefHeight="22.0" prefWidth="53.0" style="-fx-background-color: #015D57;" styleClass="Tags" text="Jobs">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
                               </Label>
-                              <ImageView fitHeight="11.0" fitWidth="12.0" layoutX="585.0" layoutY="149.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Layer%202%20(1).png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="11.0" fitWidth="12.0" layoutX="839.0" layoutY="150.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Layer%202%20(1).png" />
-                                 </image>
-                              </ImageView>
-                              <Label alignment="CENTER" layoutX="166.0" layoutY="481.0" prefHeight="21.0" prefWidth="65.0" style="-fx-background-color: #9E44D2;" styleClass="Tags" text="Requests" />
-                              <Label alignment="CENTER" layoutX="167.0" layoutY="264.0" prefHeight="21.0" prefWidth="65.0" style="-fx-background-color: #9E44D2;" styleClass="Tags" text="Requests" />
-                              <Label alignment="CENTER" layoutX="167.0" layoutY="404.0" prefHeight="24.0" prefWidth="61.0" style="-fx-background-color: #304390;" styleClass="Tags" text="Quotes" />
-                              <Label alignment="CENTER" layoutX="165.0" layoutY="626.0" prefHeight="24.0" prefWidth="61.0" style="-fx-background-color: #304390;" styleClass="Tags" text="Quotes" />
-                              <Label alignment="CENTER" layoutX="168.0" layoutY="335.0" prefHeight="24.0" prefWidth="61.0" style="-fx-background-color: #304390;" styleClass="Tags" text="Quotes" />
-                              <Label alignment="CENTER" layoutX="168.0" layoutY="553.0" prefHeight="22.0" prefWidth="53.0" style="-fx-background-color: #015D57;" styleClass="Tags" text="Jobs">
+                              <Label alignment="CENTER" layoutX="205.0" layoutY="474.0" prefHeight="21.0" prefWidth="65.0" style="-fx-background-color: #9E44D2;" styleClass="Tags" text="Requests" />
+                              <Label alignment="CENTER" layoutX="205.0" layoutY="257.0" prefHeight="21.0" prefWidth="65.0" style="-fx-background-color: #9E44D2;" styleClass="Tags" text="Requests" />
+                              <Label alignment="CENTER" layoutX="205.0" layoutY="397.0" prefHeight="24.0" prefWidth="61.0" style="-fx-background-color: #304390;" styleClass="Tags" text="Quotes" />
+                              <Label alignment="CENTER" layoutX="205.0" layoutY="619.0" prefHeight="24.0" prefWidth="61.0" style="-fx-background-color: #304390;" styleClass="Tags" text="Quotes" />
+                              <Label alignment="CENTER" layoutX="205.0" layoutY="328.0" prefHeight="24.0" prefWidth="61.0" style="-fx-background-color: #304390;" styleClass="Tags" text="Quotes" />
+                              <Label alignment="CENTER" layoutX="205.0" layoutY="546.0" prefHeight="22.0" prefWidth="53.0" style="-fx-background-color: #015D57;" styleClass="Tags" text="Jobs">
                                  <opaqueInsets>
                                     <Insets />
                                  </opaqueInsets>
                               </Label>
-                              <ImageView fitHeight="19.0" fitWidth="17.0" layoutX="883.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Group.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="19.0" fitWidth="17.0" layoutX="883.0" layoutY="557.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Group.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="19.0" fitWidth="17.0" layoutX="883.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Group.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="19.0" fitWidth="17.0" layoutX="883.0" layoutY="408.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Group.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="19.0" fitWidth="17.0" layoutX="882.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Group.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="19.0" fitWidth="17.0" layoutX="883.0" layoutY="339.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Group.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="19.0" fitWidth="17.0" layoutX="883.0" layoutY="629.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Group.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="951.0" layoutY="201.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/9110893_menu_dots_icon%201.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="16.0" fitWidth="23.0" layoutX="921.0" layoutY="202.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Vector.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="16.0" fitWidth="23.0" layoutX="921.0" layoutY="558.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Vector.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="16.0" fitWidth="23.0" layoutX="921.0" layoutY="484.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Vector.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="16.0" fitWidth="23.0" layoutX="921.0" layoutY="409.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Vector.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="16.0" fitWidth="23.0" layoutX="921.0" layoutY="339.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Vector.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="16.0" fitWidth="23.0" layoutX="921.0" layoutY="267.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Vector.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="16.0" fitWidth="23.0" layoutX="921.0" layoutY="630.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/Vector.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="952.0" layoutY="264.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/9110893_menu_dots_icon%201.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="951.0" layoutY="483.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/9110893_menu_dots_icon%201.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="951.0" layoutY="557.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/9110893_menu_dots_icon%201.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="952.0" layoutY="629.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/9110893_menu_dots_icon%201.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="952.0" layoutY="336.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/9110893_menu_dots_icon%201.png" />
-                                 </image>
-                              </ImageView>
-                              <ImageView fitHeight="22.0" fitWidth="19.0" layoutX="951.0" layoutY="408.0" pickOnBounds="true" preserveRatio="true">
-                                 <image>
-                                    <Image url="@../../../Images/9110893_menu_dots_icon%201.png" />
-                                 </image>
-                              </ImageView>
-                              <Text fill="WHITE" layoutX="519.0" layoutY="212.0" strokeType="OUTSIDE" strokeWidth="0.0" text="8/11/2024" />
-                              <Text fill="WHITE" layoutX="510.0" layoutY="280.0" strokeType="OUTSIDE" strokeWidth="0.0" text="01/11/2024" />
-                              <Text fill="WHITE" layoutX="508.0" layoutY="421.0" strokeType="OUTSIDE" strokeWidth="0.0" text="14/10/2024" />
-                              <Text fill="WHITE" layoutX="507.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15/08/2024" />
-                              <Text fill="WHITE" layoutX="506.0" layoutY="570.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12/05/2024" />
-                              <Text fill="WHITE" layoutX="504.0" layoutY="642.0" strokeType="OUTSIDE" strokeWidth="0.0" text="03/03/2024" />
-                              <Text fill="WHITE" layoutX="509.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="28/10/2024" />
-                              <Label layoutX="672.0" layoutY="201.0" style="-fx-text-fill: #eeeeee;" styleClass="NormalContent_LBL" text="Signed" />
-                              <Label layoutX="671.0" layoutY="629.0" style="-fx-text-fill: #eeeeee;" styleClass="NormalContent_LBL" text="Signed" />
-                              <Label layoutX="673.0" layoutY="267.0" style="-fx-text-fill: #eeeeee;" styleClass="NormalContent_LBL" text="Signed" />
-                              <Label layoutX="672.0" layoutY="407.0" style="-fx-text-fill: #eeeeee;" styleClass="NormalContent_LBL" text="Signed" />
-                              <Label layoutX="677.0" layoutY="338.0" style="-fx-text-fill: #eeeeee;" styleClass="NormalContent_LBL" text="Sent" />
-                              <Label layoutX="677.0" layoutY="558.0" style="-fx-text-fill: #eeeeee;" styleClass="NormalContent_LBL" text="Sent" />
-                              <Label layoutX="677.0" layoutY="482.0" style="-fx-text-fill: #eeeeee;" styleClass="NormalContent_LBL" text="Draft" />
-                              <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="728.0" layoutY="214.0" />
-                              <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="728.0" layoutY="642.0" />
-                              <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="728.0" layoutY="280.0" />
-                              <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="729.0" layoutY="421.0" />
-                              <FontAwesomeIconView fill="#ffe193" glyphName="CIRCLE" layoutX="728.0" layoutY="349.0" text="" />
-                              <FontAwesomeIconView fill="#ffe193" glyphName="CIRCLE" layoutX="728.0" layoutY="572.0" text="" />
-                              <FontAwesomeIconView fill="#dadada" glyphName="CIRCLE" layoutX="729.0" layoutY="496.0" />
-                              <Text fill="WHITE" layoutX="330.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le Lu Huyen Tran" />
-                              <Text fill="WHITE" layoutX="330.0" layoutY="350.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le Lu Huyen Tran" />
-                              <Text fill="WHITE" layoutX="330.0" layoutY="496.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mai Nhat Minh" />
-                              <Text fill="WHITE" layoutX="330.0" layoutY="279.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mai Nhat Minh" />
-                              <Text fill="WHITE" layoutX="319.0" layoutY="569.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pham Luu Khanh Van" />
-                              <Text fill="WHITE" layoutX="319.0" layoutY="642.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pham Luu Khanh Van" />
-                              <Text fill="WHITE" layoutX="329.0" layoutY="422.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhan Vinh Tien" />
+                              <Text fill="WHITE" layoutX="544.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" text="08/11/2024" />
+                              <Text fill="WHITE" layoutX="544.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" text="01/11/2024" />
+                              <Text fill="WHITE" layoutX="544.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" text="14/10/2024" />
+                              <Text fill="WHITE" layoutX="544.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="15/08/2024" />
+                              <Text fill="WHITE" layoutX="544.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" text="12/05/2024" />
+                              <Text fill="WHITE" layoutX="544.0" layoutY="635.0" strokeType="OUTSIDE" strokeWidth="0.0" text="03/03/2024" />
+                              <Text fill="WHITE" layoutX="544.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="28/10/2024" />
+                              <Text fill="WHITE" layoutX="368.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le Lu Huyen Tran" />
+                              <Text fill="WHITE" layoutX="368.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Le Lu Huyen Tran" />
+                              <Text fill="WHITE" layoutX="368.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mai Nhat Minh" />
+                              <Text fill="WHITE" layoutX="368.0" layoutY="272.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Mai Nhat Minh" />
+                              <Text fill="WHITE" layoutX="357.0" layoutY="562.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pham Luu Khanh Van" />
+                              <Text fill="WHITE" layoutX="357.0" layoutY="635.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pham Luu Khanh Van" />
+                              <Text fill="WHITE" layoutX="367.0" layoutY="415.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nhan Vinh Tien" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="PENCIL" layoutX="790.0" layoutY="207.0" size="20" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="DOWNLOAD" layoutX="750.0" layoutY="208.0" size="18" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="TH" layoutX="914.0" layoutY="208.0" opacity="0.5" size="20" styleClass="Arrange_ICON" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="PENCIL" layoutX="790.0" layoutY="274.0" size="20" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="DOWNLOAD" layoutX="750.0" layoutY="275.0" size="18" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="TH" layoutX="914.0" layoutY="275.0" opacity="0.5" size="20" styleClass="Arrange_ICON" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="PENCIL" layoutX="790.0" layoutY="346.0" size="20" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="DOWNLOAD" layoutX="750.0" layoutY="347.0" size="18" />
+                              <FontAwesomeIconView fill="#ccc2c2" glyphName="TH" layoutX="915.0" layoutY="347.0" opacity="0.5" size="20" styleClass="Arrange_ICON" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="PENCIL" layoutX="790.0" layoutY="417.0" size="20" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="DOWNLOAD" layoutX="750.0" layoutY="418.0" size="18" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="TH" layoutX="915.0" layoutY="418.0" opacity="0.5" size="20" styleClass="Arrange_ICON" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="PENCIL" layoutX="790.0" layoutY="487.0" size="20" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="DOWNLOAD" layoutX="750.0" layoutY="488.0" size="18" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="TH" layoutX="915.0" layoutY="488.0" opacity="0.5" size="20" styleClass="Arrange_ICON" text="" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="PENCIL" layoutX="790.0" layoutY="567.0" size="20" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="DOWNLOAD" layoutX="750.0" layoutY="568.0" size="18" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="TH" layoutX="915.0" layoutY="568.0" opacity="0.5" size="20" styleClass="Arrange_ICON" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="PENCIL" layoutX="790.0" layoutY="639.0" size="20" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="DOWNLOAD" layoutX="750.0" layoutY="640.0" size="18" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="TH" layoutX="915.0" layoutY="640.0" opacity="0.5" size="20" styleClass="Arrange_ICON" text="" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="CHAIN" layoutX="155.0" layoutY="210.0" size="18" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="CHAIN" layoutX="155.0" layoutY="274.0" size="18" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="CHAIN" layoutX="155.0" layoutY="346.0" size="18" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="CHAIN" layoutX="155.0" layoutY="417.0" size="18" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="CHAIN" layoutX="154.0" layoutY="495.0" size="18" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="CHAIN" layoutX="155.0" layoutY="565.0" size="18" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="CHAIN" layoutX="153.0" layoutY="640.0" size="18" />
+                              <FontAwesomeIconView fill="#ccbdbd" glyphName="ANGLE_UP" layoutX="621.0" layoutY="149.0" size="15" />
+                              <Label layoutX="901.0" layoutY="135.0" styleClass="NormalContent_LBL" text="Arange" />
                            </children>
                            <effect>
                               <InnerShadow radius="34.565" width="119.26" />
                            </effect>
                         </AnchorPane>
-                     </center>
+                     </right>
                   </BorderPane>
                </center>
             </BorderPane>
