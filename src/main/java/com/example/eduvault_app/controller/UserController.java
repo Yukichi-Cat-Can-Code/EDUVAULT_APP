@@ -1,7 +1,7 @@
 package com.example.eduvault_app.controller;
 
-import com.example.project.model.User;
-import com.example.project.service.UserService;
+import com.example.eduvault_app.model.User;
+import com.example.eduvault_app.service.UserService;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
