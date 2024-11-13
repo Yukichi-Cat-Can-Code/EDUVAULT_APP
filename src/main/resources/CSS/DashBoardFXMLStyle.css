@@ -1,16 +1,27 @@
 
-
+*{
+    -fx-font-family: Calibri;
+}
 .Header{
     -fx-background-color: #FEFEFE;
 }
 
 .DashBoardBodyTitle_lbl{
     -fx-text-fill: #efecec;
+    -fx-font-size: 27px;
+    -fx-font-weight: bold;
 }
 
+.HeaderTitle{
+    -fx-font-size: 22px;
+}
+
+.EmailHeader{
+    -fx-font-size: 17px;
+}
 
 .NewDoc_BTN{
-    -fx-font-size: 15px;
+    -fx-font-size: 17px;
     -fx-font-weight: bold;
     -fx-font-family: Calibri;
     -fx-padding: 0 5px 0 15px;
@@ -28,6 +39,7 @@
     -fx-background-radius: 20px;
     -fx-text-fill: #5e5b5b ;
     -fx-padding: 0 10px 0 0 ;
+    -fx-font-size: 17px;
 }
 
 .FolderIcon{
@@ -40,18 +52,21 @@
     -fx-background-radius: 5px;
     -fx-text-fill: #efecec;
     -fx-font-weight: bold;
+    -fx-font-size: 19px;
+    -fx-min-width: 80px;
+    -fx-min-height: 33px;
 }
 
 .SideBarTitle_LBL{
     -fx-font-weight: bold;
-    -fx-font-size: 19px;
+    -fx-font-size: 26px;
     -fx-font-family: Calibri;
 }
 
 .NormalContent_LBL{
     -fx-font-family: Calibri;
-    -fx-font-size: 14px;
-    -fx-text-fill: #efecec;
+    -fx-font-size: 19px;
+    -fx-text-fill: #eeeeee;
 }
 
 .LinkChain_ICON{
