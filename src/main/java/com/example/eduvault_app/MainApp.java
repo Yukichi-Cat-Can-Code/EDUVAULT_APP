@@ -23,7 +23,7 @@ public class MainApp extends Application {
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
             Scene scene = new Scene(loader.load());
-            primaryStage.setScene(scene, );
+            primaryStage.setScene(scene);
             primaryStage.setTitle("Log in");
             primaryStage.show();
         } catch (Exception e) {

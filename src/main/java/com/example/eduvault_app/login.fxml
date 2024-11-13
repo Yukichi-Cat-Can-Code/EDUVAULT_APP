@@ -36,7 +36,7 @@
       </Button>
       <ImageView fitHeight="242.0" fitWidth="355.0" layoutX="540.0" layoutY="93.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../target/classes/Images/avatar_unlogin.png" />
+            <Image url="@../../../../../../target/classes/com/Images/avatar_unlogin.png" />
          </image>
       </ImageView>
       <Label id="pwd_label" fx:id="message" alignment="CENTER" layoutX="546.0" layoutY="562.0" text="Invalid! Please try again!" textFill="#c92525">
