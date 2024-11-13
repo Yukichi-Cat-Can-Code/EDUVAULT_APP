@@ -31,7 +31,7 @@
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Button>
-      <Button id="cancelButton" fx:id="cancelButton" cancelButton="true" layoutX="539.0" layoutY="672.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="218.0" style="-fx-background-color: #044f76;" text="Cancel" textFill="WHITE">
+      <Button id="cancelButton" fx:id="cancelButton" cancelButton="true" layoutX="539.0" layoutY="672.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="35.0" prefWidth="218.0" style="-fx-background-color: #044f76;" text="Cancel" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>

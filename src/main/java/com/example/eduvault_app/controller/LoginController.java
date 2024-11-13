@@ -32,19 +32,19 @@ public class LoginController implements Initializable {
     @FXML
     private TextField usernameTextField;
     @FXML
-    private PasswordField enterPasswordTextField;
+    private PasswordField enterPasswordField;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        File brandingFile = new File("Images/avatar_unlogin.png");
-        Image brandingImage = new Image(brandingFile.toURI().toString());
-        brandingImageView.setImage(brandingImage);
+//        File brandingFile = new File("Images/avatar_unlogin.png");
+//        Image brandingImage = new Image(brandingFile.toURI().toString());
+//        brandingImageView.setImage(brandingImage);
 
         message.setText("");
     }
 
     public void loginButtonOnAction(ActionEvent event) {
-        if (usernameTextField.getText().isBlank() || enterPasswordTextField.getText().isBlank()) {
+        if (usernameTextField.getText().isBlank() || enterPasswordField.getText().isBlank()) {
             message.setText("Please enter your username and password!");
         } else {
             if (validateLogin() == true) {
@@ -64,10 +64,10 @@ public class LoginController implements Initializable {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection connectDB = databaseConnection.getConnection();
 
-        String query = "SELECT * FROM users WHERE username = ? AND password = ?";
+        String query = "SELECT * FROM user WHERE username = ? AND password = ?";
         try (PreparedStatement stmt = connectDB.prepareStatement(query)) {
             stmt.setString(1, usernameTextField.getText()); // Set the username parameter
-            stmt.setString(2, enterPasswordTextField.getText());    // Set the password parameter
+            stmt.setString(2, enterPasswordField.getText());    // Set the password parameter
 
             ResultSet rs = stmt.executeQuery();
 
