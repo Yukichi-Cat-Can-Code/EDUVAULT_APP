@@ -1,12 +1,26 @@
 package com.example.eduvault_app;
 
 import javafx.application.Application;
+import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
+import java.util.ResourceBundle;
+
 public class MainApp extends Application {
+
+    private static String currentUser;
+
+    public static void setCurrentUser(String name) {
+        currentUser = name;
+    }
+
+    public static String getCurrentUser() {
+        return currentUser;
+    }
+
     @Override
 //    public void start(Stage primaryStage) {
 //        try {
