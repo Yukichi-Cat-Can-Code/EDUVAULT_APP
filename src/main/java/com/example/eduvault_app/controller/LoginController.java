@@ -49,7 +49,8 @@ public class LoginController implements Initializable {
         stage.close();
     }
 
-//    public void validateLogin(ActionEvent actionEvent) {
-//        Connection connectDB = null;
-//    }
+    public boolean validateLogin() {
+
+    }
+
 }
