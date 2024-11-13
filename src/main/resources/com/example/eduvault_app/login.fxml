@@ -26,19 +26,19 @@
       </Label>
       <TextField id="username_input" fx:id="usernameTextField" layoutX="540.0" layoutY="425.0" prefHeight="26.0" prefWidth="360.0" />
       <PasswordField id="pwd_input" fx:id="enterPasswordField" layoutX="543.0" layoutY="483.0" prefHeight="26.0" prefWidth="360.0" />
-      <Button id="loginButton" layoutX="539.0" layoutY="618.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="218.0" style="-fx-background-color: #044f76;" text="Log in">
+      <Button id="loginButton" fx:id="loginButton" layoutX="539.0" layoutY="618.0" mnemonicParsing="false" onAction="#loginButtonOnAction" prefHeight="35.0" prefWidth="218.0" style="-fx-background-color: #044f76;" text="Log in" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Button>
-      <Button id="cancelButton" cancelButton="true" layoutX="539.0" layoutY="672.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="218.0" style="-fx-background-color: #044f76;" text="Cancel">
+      <Button id="cancelButton" fx:id="cancelButton" cancelButton="true" layoutX="539.0" layoutY="672.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="218.0" style="-fx-background-color: #044f76;" text="Cancel" textFill="WHITE">
          <cursor>
             <Cursor fx:constant="DEFAULT" />
          </cursor>
       </Button>
       <ImageView fitHeight="242.0" fitWidth="355.0" layoutX="540.0" layoutY="80.0" pickOnBounds="true" preserveRatio="true">
          <image>
-            <Image url="@../../../../../../target/classes/Images/avatar_unlogin.png" />
+            <Image url="@../../../Images/avatar_unlogin.png" />
          </image>
       </ImageView>
       <Label id="pwd_label" fx:id="message" alignment="CENTER" layoutX="-1.0" layoutY="562.0" prefHeight="29.0" prefWidth="1282.0" text="Invalid! Please try again!" textFill="#c92525">

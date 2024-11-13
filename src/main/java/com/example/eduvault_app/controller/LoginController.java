@@ -24,6 +24,8 @@ public class LoginController implements Initializable {
     @FXML
     private Button cancelButton;
     @FXML
+    private Button loginButton;
+    @FXML
     private ImageView brandingImageView;
     @FXML
     private Label message;
@@ -34,14 +36,14 @@ public class LoginController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        File brandingFile = new File("target/classes/Images/avatar_unlogin.png");
+        File brandingFile = new File("Images/avatar_unlogin.png");
         Image brandingImage = new Image(brandingFile.toURI().toString());
         brandingImageView.setImage(brandingImage);
 
         message.setText("");
     }
 
-    public void loginButtonOnAction(ActionEvent actionEvent) {
+    public void loginButtonOnAction(ActionEvent event) {
         if (usernameTextField.getText().isBlank() || enterPasswordTextField.getText().isBlank()) {
             message.setText("Please enter your username and password!");
         } else {
@@ -71,8 +73,7 @@ public class LoginController implements Initializable {
 
             if (rs.next()) {
                 return true;
-            }
-            return false;
+            } return false;
         } catch (SQLException e) {
             e.printStackTrace();
             e.getCause();
