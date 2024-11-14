@@ -3,22 +3,27 @@ package com.example.eduvault_app.controller;
 import database_conn.DatabaseConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.URL;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ResourceBundle;
+import java.util.logging.Logger;
 
 public class LoginController implements Initializable {
     @FXML
@@ -33,6 +38,8 @@ public class LoginController implements Initializable {
     private TextField usernameTextField;
     @FXML
     private PasswordField enterPasswordField;
+    @FXML
+    private AnchorPane ap;
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -43,12 +50,20 @@ public class LoginController implements Initializable {
         message.setText("");
     }
 
-    public void loginButtonOnAction(ActionEvent event) {
+    public void loginButtonOnAction(ActionEvent event) throws IOException {
         if (usernameTextField.getText().isBlank() || enterPasswordField.getText().isBlank()) {
             message.setText("Please enter your username and password!");
         } else {
             if (validateLogin() == true) {
                 message.setText("Login Successful!");
+//                Parent root = null;
+//                try {
+//                    root = FXMLLoader.load(getClass().getResource("DashBoard.fxml"));
+//                } catch (IOException e) {
+//                    e.printStackTrace();
+//                    e.getCause();
+//                }
+//                //ap.setCenter(root);
             } else {
                 message.setText("Login Failed!");
             }
