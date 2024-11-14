@@ -1,24 +1,24 @@
 package com.example.eduvault_app.model;
 
-import java.util.Date;
+import java.time.LocalDateTime;
 
 public class Document {
     private int DOC_ID;
     private int FOLDER_ID;
-    private int USSR_ID;
+    private int USER_ID;
     private int TYPEDOC_ID;
     private String DOC_NAME;
     private String SUMMARY;
-    private Date CREATEDATE;
+    private LocalDateTime CREATEDATE;
     private String DOC_PATH;
 
     public Document() {
     }
 
-    public Document(int DOC_ID, int FOLDER_ID, int USSR_ID, int TYPEDOC_ID, String DOC_NAME, String SUMMARY, Date CREATEDATE, String DOC_PATH) {
+    public Document(int DOC_ID, int FOLDER_ID, int USER_ID, int TYPEDOC_ID, String DOC_NAME, String SUMMARY, LocalDateTime CREATEDATE, String DOC_PATH) {
         this.DOC_ID = DOC_ID;
         this.FOLDER_ID = FOLDER_ID;
-        this.USSR_ID = USSR_ID;
+        this.USER_ID = USER_ID;
         this.TYPEDOC_ID = TYPEDOC_ID;
         this.DOC_NAME = DOC_NAME;
         this.SUMMARY = SUMMARY;
@@ -42,12 +42,12 @@ public class Document {
         this.FOLDER_ID = FOLDER_ID;
     }
 
-    public int getUSSR_ID() {
-        return USSR_ID;
+    public int getUSER_ID() {
+        return USER_ID;
     }
 
-    public void setUSSR_ID(int USSR_ID) {
-        this.USSR_ID = USSR_ID;
+    public void setUSER_ID(int USER_ID) {
+        this.USER_ID = USER_ID;
     }
 
     public int getTYPEDOC_ID() {
@@ -74,11 +74,11 @@ public class Document {
         this.SUMMARY = SUMMARY;
     }
 
-    public Date getCREATEDATE() {
+    public LocalDateTime getCREATEDATE() {
         return CREATEDATE;
     }
 
-    public void setCREATEDATE(Date CREATEDATE) {
+    public void setCREATEDATE(LocalDateTime CREATEDATE) {
         this.CREATEDATE = CREATEDATE;
     }
 
@@ -95,7 +95,7 @@ public class Document {
         return "Document{" +
                 "DOC_ID=" + DOC_ID +
                 ", FOLDER_ID=" + FOLDER_ID +
-                ", USSR_ID=" + USSR_ID +
+                ", USER_ID=" + USER_ID +
                 ", TYPEDOC_ID=" + TYPEDOC_ID +
                 ", DOC_NAME='" + DOC_NAME + '\'' +
                 ", SUMMARY='" + SUMMARY + '\'' +
@@ -104,3 +104,4 @@ public class Document {
                 '}';
     }
 }
+
