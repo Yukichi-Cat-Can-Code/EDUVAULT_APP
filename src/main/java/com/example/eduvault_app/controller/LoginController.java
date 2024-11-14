@@ -56,7 +56,6 @@ public class LoginController implements Initializable {
             message.setText("Please enter your username and password!");
         } else {
             if (validateLogin() == true) {
-                message.setText("Login Successful!");
                 message.getScene().getWindow().hide();
                 try {
                     FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/DashBoard.fxml"));
