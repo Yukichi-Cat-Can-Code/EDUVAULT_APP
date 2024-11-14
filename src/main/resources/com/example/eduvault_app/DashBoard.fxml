@@ -206,7 +206,7 @@
                                     </InnerShadow>
                                  </effect>
                               </TextField>
-                              <Label layoutX="62.0" layoutY="11.0" styleClass="DashBoardBodyTitle_lbl" text="Document management" textFill="#efecec">
+                              <Label layoutX="62.0" layoutY="11.0" styleClass="DashBoardBodyTitle_lbl" text="Document Management" textFill="#efecec">
                                  <font>
                                     <Font name="Calibri Bold" size="27.0" />
                                  </font>

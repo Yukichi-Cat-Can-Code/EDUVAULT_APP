@@ -6,6 +6,8 @@ module com.example.eduvault_app {
     requires org.controlsfx.controls;
     requires com.dlsc.formsfx;
     requires java.sql;
+    requires itextpdf;
+    requires org.apache.poi.ooxml;
 
     opens com.example.eduvault_app to javafx.fxml;
     exports com.example.eduvault_app;

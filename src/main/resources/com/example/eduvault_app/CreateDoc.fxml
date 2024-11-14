@@ -9,7 +9,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #1C1C1C;" stylesheets="@../../../CSS/CreateDocFXML.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Label layoutX="115.0" layoutY="39.0" styleClass="Title_LBL" text="New document">
@@ -42,34 +41,34 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <Button layoutX="232.0" layoutY="700.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="0.0" text="Create">
+      <Button id="Create_BTN" fx:id="Create_BTN" layoutX="232.0" layoutY="700.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="0.0" text="Create">
          <styleClass>
             <String fx:value="GeneralButton_BTN" />
-            <String fx:value="ClickAble" />
+            <String fx:value="ButtonClickAble" />
          </styleClass>
       </Button>
-      <Button layoutX="554.0" layoutY="700.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="86.0" text="Cancel">
+      <Button id="Cancel_BTN" fx:id="Cancel_BTN" layoutX="554.0" layoutY="700.0" mnemonicParsing="false" prefHeight="51.0" prefWidth="86.0" text="Cancel">
          <font>
             <Font size="25.0" />
          </font>
          <styleClass>
             <String fx:value="GeneralButton_BTN" />
-            <String fx:value="ClickAble" />
+            <String fx:value="ButtonClickAble" />
          </styleClass>
       </Button>
-      <Button layoutX="896.0" layoutY="700.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="110.0" text="Clear">
+      <Button id="Clear_BTN" fx:id="Clear_BTN" layoutX="896.0" layoutY="700.0" mnemonicParsing="false" prefHeight="58.0" prefWidth="110.0" text="Clear">
          <font>
             <Font size="24.0" />
          </font>
          <styleClass>
             <String fx:value="GeneralButton_BTN" />
-            <String fx:value="ClickAble" />
+            <String fx:value="ButtonClickAble" />
          </styleClass>
       </Button>
-      <TextField layoutX="347.0" layoutY="152.0" prefHeight="27.0" prefWidth="896.0" style="-fx-background-color: #FFFFFF;" styleClass="ClickAble" />
-      <TextField layoutX="235.0" layoutY="251.0" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #FFFFFF;" styleClass="ClickAble" />
-      <TextField layoutX="235.0" layoutY="475.0" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #FFFFFF;" styleClass="ClickAble" />
-      <TextArea layoutX="656.0" layoutY="295.0" prefHeight="346.0" prefWidth="591.0" style="-fx-background-color: #FFFFFF;">
+      <TextField id="Document_TXT" layoutX="347.0" layoutY="152.0" prefHeight="27.0" prefWidth="896.0" styleClass="ClickAble" />
+      <TextField id="Author_TXT" layoutX="235.0" layoutY="251.0" prefHeight="27.0" prefWidth="232.0" styleClass="ClickAble" />
+      <TextField layoutX="235.0" layoutY="475.0" prefHeight="27.0" prefWidth="232.0" styleClass="ClickAble" />
+      <TextArea id="Description_TXT" layoutX="656.0" layoutY="295.0" prefHeight="346.0" prefWidth="591.0">
          <styleClass>
             <String fx:value="DescriptionTxtArea" />
             <String fx:value="ClickAble" />
@@ -80,7 +79,7 @@
             <Font size="29.0" />
          </font>
       </Label>
-      <ChoiceBox layoutX="235.0" layoutY="606.0" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #FFFFFF;" styleClass="ClickAble" />
-      <ChoiceBox layoutX="235.0" layoutY="354.0" prefHeight="27.0" prefWidth="232.0" style="-fx-background-color: #FFFFFF;" styleClass="ClickAble" />
+      <ChoiceBox id="StoringLocation_Choicebox" layoutX="235.0" layoutY="606.0" prefHeight="27.0" prefWidth="232.0" styleClass="ClickAble" />
+      <ChoiceBox id="Type_ChoiceBox" layoutX="235.0" layoutY="354.0" prefHeight="27.0" prefWidth="232.0" styleClass="ClickAble" />
    </children>
 </AnchorPane>
