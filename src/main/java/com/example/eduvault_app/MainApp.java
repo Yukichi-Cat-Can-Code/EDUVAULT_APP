@@ -56,16 +56,13 @@ public class MainApp extends Application {
                 FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
                 Parent root = loader.load(); // If loading an FXML file
 
-                Scene scene = new Scene(root, 800, 600);
+                Scene scene = new Scene(root);
                 primaryStage.setScene(scene);
                 primaryStage.show();
             } catch (IOException e) {
                 e.printStackTrace();  // Log the exception
                 System.out.println("Error loading FXML file.");
-            } catch (Exception e) {
-                e.printStackTrace();  // Log the general exception
             }
-
 
     }
 

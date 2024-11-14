@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
 import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
@@ -56,14 +57,19 @@ public class LoginController implements Initializable {
         } else {
             if (validateLogin() == true) {
                 message.setText("Login Successful!");
-//                Parent root = null;
-//                try {
-//                    root = FXMLLoader.load(getClass().getResource("DashBoard.fxml"));
-//                } catch (IOException e) {
-//                    e.printStackTrace();
-//                    e.getCause();
-//                }
-//                //ap.setCenter(root);
+                message.getScene().getWindow().hide();
+                try {
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/DashBoard.fxml"));
+                    Parent root = loader.load();
+                    Stage stage = new Stage();
+                    Scene scene = new Scene(root);
+                    stage.setScene(scene);
+                    stage.setTitle("DashBoard");
+                    stage.show();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                    e.getCause();
+                }
             } else {
                 message.setText("Login Failed!");
             }
