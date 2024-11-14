@@ -251,7 +251,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor></FontAwesomeIconView>
                               <Label layoutX="194.0" layoutY="136.0" styleClass="NormalContent_LBL" text="Document Name" />
-                              <Label layoutX="554.0" layoutY="136.0" text="Recipient">
+                              <Label layoutX="554.0" layoutY="136.0" text="Author">
                                  <styleClass>
                                     <String fx:value="NormalContent_LBL" />
                                     <String fx:value="General" />
