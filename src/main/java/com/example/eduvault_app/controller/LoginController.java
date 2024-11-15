@@ -64,7 +64,7 @@ public class LoginController implements Initializable {
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);
                     stage.setScene(scene);
-                    stage.setTitle("DashBoard");
+                    stage.setTitle("User Details");
                     stage.show();
                 } catch (IOException e) {
                     e.printStackTrace();
