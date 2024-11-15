@@ -9,24 +9,25 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #1C1C1C;" stylesheets="@../../../CSS/CreateDocFXML.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #1C1C1C;" stylesheets="@../../../CSS/CreateDocFXML.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.CreateDocController">
    <children>
       <Label layoutX="115.0" layoutY="39.0" styleClass="Title_LBL" text="New document">
          <font>
             <Font size="34.0" />
          </font>
       </Label>
-      <Label layoutX="69.0" layoutY="147.0" styleClass="ContentTitle_LBL" text="Document Name">
+      <Label id="Document_TXT" fx:id="DocName_Lbl" layoutX="147.0" layoutY="139.0" styleClass="ContentTitle_LBL" text="Document Name ">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
+      <Label fx:id="DocName_Required_Lbl" layoutX="300.0" layoutY="147.0" style="-fx-text-fill: red;" text="*" visible="false" />
       <Label layoutX="74.0" layoutY="247.0" styleClass="ContentTitle_LBL" text="Author">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
-      <Label layoutX="74.0" layoutY="347.0" styleClass="ContentTitle_LBL" text="Type">
+      <Label fx:id="Type_Lbl" layoutX="74.0" layoutY="347.0" styleClass="ContentTitle_LBL" text="Type">
          <font>
             <Font size="29.0" />
          </font>
@@ -65,21 +66,31 @@
             <String fx:value="ButtonClickAble" />
          </styleClass>
       </Button>
-      <TextField id="Document_TXT" layoutX="347.0" layoutY="152.0" prefHeight="27.0" prefWidth="896.0" styleClass="ClickAble" />
-      <TextField id="Author_TXT" layoutX="235.0" layoutY="251.0" prefHeight="27.0" prefWidth="232.0" styleClass="ClickAble" />
-      <TextField layoutX="235.0" layoutY="475.0" prefHeight="27.0" prefWidth="232.0" styleClass="ClickAble" />
-      <TextArea id="Description_TXT" layoutX="656.0" layoutY="295.0" prefHeight="346.0" prefWidth="591.0">
-         <styleClass>
-            <String fx:value="DescriptionTxtArea" />
-            <String fx:value="ClickAble" />
-         </styleClass>
-      </TextArea>
-      <Label layoutX="74.0" layoutY="606.0" styleClass="ContentTitle_LBL" text="Store in">
+      <TextField id="DocName_TXT" fx:id="DocName_TXT" layoutX="496.0" layoutY="142.0" prefHeight="35.0" prefWidth="750.0" styleClass="ClickAble" />
+      <TextField id="Author_TXT" fx:id="Author_TXT" layoutX="235.0" layoutY="251.0" prefHeight="27.0" prefWidth="232.0" styleClass="ClickAble" />
+      <TextField fx:id="Tags_TXT" layoutX="235.0" layoutY="475.0" prefHeight="27.0" prefWidth="232.0" styleClass="ClickAble" />
+      <TextArea id="Description_TXT" fx:id="Description_TXT" layoutX="656.0" layoutY="295.0" prefHeight="346.0" prefWidth="591.0" styleClass="DescriptionTxtArea" />
+      <Label fx:id="FileLocation_Lbl" layoutX="74.0" layoutY="606.0" styleClass="ContentTitle_LBL" text="Store in">
          <font>
             <Font size="29.0" />
          </font>
       </Label>
-      <ChoiceBox id="StoringLocation_Choicebox" layoutX="235.0" layoutY="606.0" prefHeight="27.0" prefWidth="232.0" styleClass="ClickAble" />
-      <ChoiceBox id="Type_ChoiceBox" layoutX="235.0" layoutY="354.0" prefHeight="27.0" prefWidth="232.0" styleClass="ClickAble" />
+      <ChoiceBox id="StoringLocation_Choicebox" fx:id="FileLocation_ChoiceBox" layoutX="235.0" layoutY="606.0" prefHeight="27.0" prefWidth="232.0" styleClass="ClickAble" />
+      <ChoiceBox id="Type_ChoiceBox" fx:id="DocType_ChoiceBox" layoutX="235.0" layoutY="354.0" prefHeight="27.0" prefWidth="232.0" styleClass="ClickAble" />
+      <Label id="DocName_Required_Lbl" fx:id="DocName_Required_Lbl" layoutX="431.0" layoutY="140.0" styleClass="Required_Tag" text="*" visible="false">
+         <font>
+            <Font size="6.0" />
+         </font>
+      </Label>
+      <Label id="Type_Required_Lbl" fx:id="Type_Required_Lbl" layoutX="133.0" layoutY="349.0" styleClass="Required_Tag" text="*" visible="false">
+         <font>
+            <Font size="6.0" />
+         </font>
+      </Label>
+      <Label id="FileLocation_Required_Lbl" fx:id="FileLocation_Required_Lbl" layoutX="169.0" layoutY="608.0" styleClass="Required_Tag" text="*" visible="false">
+         <font>
+            <Font size="6.0" />
+         </font>
+      </Label>
    </children>
 </AnchorPane>

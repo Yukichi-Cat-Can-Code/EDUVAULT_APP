@@ -8,6 +8,16 @@
     -fx-font-weight: bold;
 }
 
+#Document_TXT{
+    -fx-font-size: 40px;
+    -fx-font-weight: bold;
+}
+
+#DocName_TXT{
+    -fx-text-fill: #000000;
+    -fx-font-size: 25px;
+}
+
 .ContentTitle_LBL{
     -fx-font-size: 30px;
 }
@@ -21,21 +31,34 @@
     -fx-min-width: 120px;
     -fx-max-width: 120px;
     -fx-cursor: hand;
+    -fx-background-color: #3a73cc; /* Blue background */
+    -fx-text-fill: #ffffff; /* White text */
 }
 
 .DescriptionTxtArea{
     -fx-background-radius: 10px;
-    -fx-font-size: 16px;
+    -fx-border-radius: 10px;
+    -fx-font-size: 20px;
     -fx-cursor: hand;
+    -fx-text-fill: #000000;
 }
 
 .ClickAble{
     -fx-cursor: hand;
     -fx-background-radius: 10px;
     -fx-background-color: #efecec;
+    -fx-text-fill: #000000;
+    -fx-font-size: 20px;
 }
 
 .ButtonClickAble{
     -fx-cursor: hand;
     -fx-background-radius: 10px;
+    -fx-background-color: #3a73cc; /* Blue background */
+    -fx-text-fill: #ffffff;
+}
+
+.Required_Tag{
+    -fx-text-fill: red;
+    -fx-font-size: 25px;
 }

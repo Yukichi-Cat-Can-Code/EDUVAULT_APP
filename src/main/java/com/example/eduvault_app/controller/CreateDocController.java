@@ -22,13 +22,13 @@ import java.io.FileNotFoundException;
 public class CreateDocController {
 
     @FXML
-    private TextField documentTXT, authorTXT, tagsTXT;
+    private TextField DocName_TXT, Author_TXT, Tags_TXT;
 
     @FXML
-    private TextArea descriptionTXT;
+    private TextArea Description_TXT;
 
     @FXML
-    private ChoiceBox<String> typeChoiceBox, storingLocationChoiceBox;
+    private ChoiceBox<String> DocType_ChoiceBox, FileLocation_ChoiceBox;
 
     @FXML
     private Button Cancel_BTN;
@@ -42,18 +42,27 @@ public class CreateDocController {
     @FXML
     private AnchorPane root;
 
+    @FXML
+    private Label DocName_Required_Lbl;
+
+    @FXML
+    private Label Type_Required_Lbl;
+
+    @FXML
+    private Label FileLocation_Required_Lbl;
+
     // Initialize data
     public void initialize() {
-        // Add choices to typeChoiceBox
-        typeChoiceBox.getItems().addAll("word", "excel", "pdf");
+        // Add choices to DocType_ChoiceBox
+        DocType_ChoiceBox.getItems().addAll("word", "excel", "pdf");
 
-        // Populate storingLocationChoiceBox with data from the database
+        // Populate FileLocation_ChoiceBox with data from the database
         // This should ideally call a database method (mock example here)
-        storingLocationChoiceBox.getItems().addAll("Path1", "Path2", "Create New");
+        FileLocation_ChoiceBox.getItems().addAll("Path1", "Path2", "Create New");
 
         // Add event to "Create New" option
-        storingLocationChoiceBox.setOnAction(event -> {
-            if ("Create New".equals(storingLocationChoiceBox.getValue())) {
+        FileLocation_ChoiceBox.setOnAction(event -> {
+            if ("Create New".equals(FileLocation_ChoiceBox.getValue())) {
                 // Show a prompt or text field for new folder name
                 System.out.println("Enter name for new folder.");
             }
@@ -66,45 +75,124 @@ public class CreateDocController {
     }
 
     private void resetFields() {
-        documentTXT.clear();
-        authorTXT.clear();
-        tagsTXT.clear();
-        descriptionTXT.clear();
-        typeChoiceBox.setValue(null);
-        storingLocationChoiceBox.setValue(null);
+        DocName_TXT.clear();
+        Author_TXT.clear();
+        Tags_TXT.clear();
+        Description_TXT.clear();
+        DocType_ChoiceBox.setValue(null);
+        FileLocation_ChoiceBox.setValue(null);
     }
 
     private void clearFields() {
-        documentTXT.clear();
-        authorTXT.clear();
-        tagsTXT.clear();
-        descriptionTXT.clear();
+        DocName_TXT.clear();
+        Author_TXT.clear();
+        Tags_TXT.clear();
+        Description_TXT.clear();
     }
 
+    private void showAlert(String message) {
+        Alert alert = new Alert(Alert.AlertType.WARNING);
+        alert.setTitle("Warning");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
+    private boolean validateRequiredFields() {
+        boolean isValid = true;
+
+        // Reset all indicators
+        DocName_Required_Lbl.setVisible(false);
+        Type_Required_Lbl.setVisible(false);
+        FileLocation_Required_Lbl.setVisible(false);
+
+        // Check Document Name
+        if (DocName_TXT.getText().isEmpty()) {
+            System.out.println(DocName_Required_Lbl.isVisible());
+            DocName_Required_Lbl.setVisible(true);
+            isValid = false;
+        }
+
+        // Check Document Type
+        if (DocType_ChoiceBox.getValue() == null) {
+            System.out.println(Type_Required_Lbl.isVisible());
+            Type_Required_Lbl.setVisible(true);
+            isValid = false;
+        }
+
+        // Check File Location
+        if (FileLocation_ChoiceBox.getValue() == null) {
+            System.out.println(FileLocation_Required_Lbl.isVisible());
+            FileLocation_Required_Lbl.setVisible(true);
+            isValid = false;
+        }
+
+        return isValid;
+    }
+
+
+
     private void createDocument() {
-        if (documentTXT.getText().isEmpty() || typeChoiceBox.getValue() == null || storingLocationChoiceBox.getValue() == null) {
+        if (DocName_TXT.getText().isEmpty() || DocType_ChoiceBox.getValue() == null || FileLocation_ChoiceBox.getValue() == null) {
+            System.out.println("Required fields are missing.");
+            showAlert("Required fields are missing.");
+            validateRequiredFields();
+            return;
+        }
+
+//        String selectedLocation = FileLocation_ChoiceBox.getValue();
+//        if ("Create New".equals(selectedLocation)) {
+//            createNewFolder("newFolderName", "defaultParentDirectory"); // Placeholder
+//        } else {
+//            saveDocumentToFolder(selectedLocation);
+//        }
+
+        // Validate required fields
+        if (!validateRequiredFields()) {
             System.out.println("Required fields are missing.");
             return;
         }
 
-        String selectedLocation = storingLocationChoiceBox.getValue();
-        if ("Create New".equals(selectedLocation)) {
-            createNewFolder("newFolderName", "defaultParentDirectory"); // Placeholder
-        } else {
-            saveDocumentToFolder(selectedLocation);
-        }
+        saveDocumentToFolder("E:\\TestDocument");
 
         clearFields();
     }
 
-    private void createNewFolder(String folderName, String parentDirectory) {
-        System.out.println("Creating new folder: " + folderName + " in " + parentDirectory);
-        // Implement folder creation logic here
+    private void createFolder(String folderName) {
+        File folder = new File("E:\\TestDocument\\" + folderName);
+
+        if (folder.mkdir()) {
+            System.out.println("Creating new folder: " + folderName + " successfully!");
+        } else {
+            System.out.println("The folder already exists!");
+        }
     }
 
+    private void createFolder(String folderName, String parentDirectory) {
+        File folder = new File(parentDirectory + File.separator + folderName);
+
+        if (folder.mkdir()) {
+            System.out.println("Creating new folder: " + folderName + " in " + parentDirectory + " successfully!");
+        } else {
+            System.out.println("The folder already exists or couldn't be created!");
+        }
+    }
+
+    private void createMultiFolder(String[] folderList) {
+        for(String folder : folderList) {
+            createFolder(folder);
+        }
+    }
+
+    private void createMultipleFolderInAFolder(String folderName, String parentDirectory) {
+
+        System.out.println("Creating folder: " + folderName + " in " + parentDirectory);
+    }
+
+
     private void saveDocumentToFolder(String folder) {
-        String documentName = documentTXT.getText();
-        String type = typeChoiceBox.getValue();
+        String documentName = DocName_TXT.getText();
+        String type = DocType_ChoiceBox.getValue();
         String filePath = folder + File.separator + documentName;
 
         try {
@@ -135,15 +223,23 @@ public class CreateDocController {
 
     private void savePDFDocument(String filePath) throws IOException, DocumentException {
         Document pdfDocument = new Document();
-        try (FileOutputStream out = new FileOutputStream(new File(filePath))) {
+        FileOutputStream out = null;
+        try {
+            out = new FileOutputStream(new File(filePath));
             PdfWriter.getInstance(pdfDocument, out);
             pdfDocument.open();
             pdfDocument.add(new Paragraph("This is a test PDF document."));
             System.out.println("PDF document written successfully to " + filePath);
         } finally {
-            pdfDocument.close();
+            if (pdfDocument.isOpen()) {
+                pdfDocument.close();
+            }
+            if (out != null) {
+                out.close();
+            }
         }
     }
+
 
     private void saveExcelDocument(String filePath) throws IOException {
         try (FileOutputStream out = new FileOutputStream(new File(filePath));

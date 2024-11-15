@@ -20,7 +20,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="dashBoardTemp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1538.0" stylesheets="@../../../CSS/DashBoardFXMLStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.DashBoardController">
+<AnchorPane fx:id="dashBoardTemp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1538.0" stylesheets="@../../../CSS/DashBoardFXMLStyle.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.DashBoardController">
    <children>
       <BorderPane layoutY="-1.0" prefHeight="804.0" prefWidth="1537.0">
          <left>
@@ -206,7 +206,7 @@
                                     </InnerShadow>
                                  </effect>
                               </TextField>
-                              <Label layoutX="62.0" layoutY="11.0" styleClass="DashBoardBodyTitle_lbl" text="Document Management" textFill="#efecec">
+                              <Label layoutX="62.0" layoutY="11.0" styleClass="DashBoardBodyTitle_lbl" text="Document management" textFill="#efecec">
                                  <font>
                                     <Font name="Calibri Bold" size="27.0" />
                                  </font>
@@ -251,7 +251,7 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor></FontAwesomeIconView>
                               <Label layoutX="194.0" layoutY="136.0" styleClass="NormalContent_LBL" text="Document Name" />
-                              <Label layoutX="554.0" layoutY="136.0" text="Author">
+                              <Label layoutX="554.0" layoutY="136.0" text="Username">
                                  <styleClass>
                                     <String fx:value="NormalContent_LBL" />
                                     <String fx:value="General" />
