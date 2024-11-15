@@ -11,11 +11,12 @@ public class Document {
     private String SUMMARY;
     private LocalDateTime CREATEDATE;
     private String DOC_PATH;
+    private short isDeleted;
 
     public Document() {
     }
 
-    public Document(int DOC_ID, int FOLDER_ID, int USER_ID, int TYPEDOC_ID, String DOC_NAME, String SUMMARY, LocalDateTime CREATEDATE, String DOC_PATH) {
+    public Document(int DOC_ID, int FOLDER_ID, int USER_ID, int TYPEDOC_ID, String DOC_NAME, String SUMMARY, LocalDateTime CREATEDATE, String DOC_PATH, short isDeleted) {
         this.DOC_ID = DOC_ID;
         this.FOLDER_ID = FOLDER_ID;
         this.USER_ID = USER_ID;
@@ -24,6 +25,7 @@ public class Document {
         this.SUMMARY = SUMMARY;
         this.CREATEDATE = CREATEDATE;
         this.DOC_PATH = DOC_PATH;
+        this.isDeleted = isDeleted;
     }
 
     public int getDOC_ID() {
@@ -90,6 +92,14 @@ public class Document {
         this.DOC_PATH = DOC_PATH;
     }
 
+    public short getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(short isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
     @Override
     public String toString() {
         return "Document{" +
@@ -101,6 +111,7 @@ public class Document {
                 ", SUMMARY='" + SUMMARY + '\'' +
                 ", CREATEDATE=" + CREATEDATE +
                 ", DOC_PATH='" + DOC_PATH + '\'' +
+                ", isDeleted=" + isDeleted +
                 '}';
     }
 }

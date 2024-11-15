@@ -5,15 +5,17 @@ public class Folder {
     private int USER_ID;
     private String FOLDER_NAME;
     private String FOLDER_CREATEAT;
+    private short isDeleted;
 
     public Folder() {
     }
 
-    public Folder(int FOLDER_ID, int USER_ID, String FOLDER_NAME, String FOLDER_CREATEAT) {
+    public Folder(int FOLDER_ID, int USER_ID, String FOLDER_NAME, String FOLDER_CREATEAT, short isDeleted) {
         this.FOLDER_ID = FOLDER_ID;
         this.USER_ID = USER_ID;
         this.FOLDER_NAME = FOLDER_NAME;
         this.FOLDER_CREATEAT = FOLDER_CREATEAT;
+        this.isDeleted = isDeleted;
     }
 
     public int getFOLDER_ID() {
@@ -48,6 +50,14 @@ public class Folder {
         this.FOLDER_CREATEAT = FOLDER_CREATEAT;
     }
 
+    public short getIsDeleted() {
+        return isDeleted;
+    }
+
+    public void setIsDeleted(short isDeleted) {
+        this.isDeleted = isDeleted;
+    }
+
     @Override
     public String toString() {
         return "Folder{" +
@@ -55,6 +65,7 @@ public class Folder {
                 ", USER_ID=" + USER_ID +
                 ", FOLDER_NAME='" + FOLDER_NAME + '\'' +
                 ", FOLDER_CREATEAT='" + FOLDER_CREATEAT + '\'' +
+                ", isDeleted=" + isDeleted +
                 '}';
     }
 }

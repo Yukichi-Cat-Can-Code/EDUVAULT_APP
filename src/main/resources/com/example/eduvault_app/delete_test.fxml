@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<?import javafx.collections.FXCollections?>
+<?import java.lang.String?>
+<VBox alignment="CENTER" spacing="10" style="-fx-padding: 20; -fx-background-color: #f4f4f4;" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/17.0.2-ea" fx:controller="com.example.eduvault_app.controller.DeleteController">
+    <!-- Heading -->
+    <Text style="-fx-font-size: 18; -fx-font-weight: bold;" text="Delete, Restore, and Permanently Delete Items" />
+
+    <!-- Input for Item ID -->
+    <TextField fx:id="itemIdField" promptText="Enter item ID" style="-fx-pref-width: 200;" />
+
+    <!-- ComboBox for Item Type Selection -->
+    <ComboBox fx:id="itemTypeComboBox" promptText="Select Item Type" style="-fx-pref-width: 150;">
+        <items>
+            <FXCollections fx:factory="observableArrayList">
+                <String fx:value="Document" />
+                <String fx:value="Folder" />
+            </FXCollections>
+        </items>
+    </ComboBox>
+
+    <!-- Delete Item Button -->
+    <Button fx:id="deleteButton" onAction="#handleDeleteItem" text="Move Item to Trash" />
+
+    <!-- Restore Item Button -->
+    <Button fx:id="restoreButton" onAction="#handleRestoreItem" text="Restore Item" />
+
+    <!-- Permanently Delete Item Button -->
+    <Button fx:id="permanentDeleteButton" onAction="#handleDeletePermanently" text="Permanently Delete Item" />
+
+    <!-- Result Display Area -->
+    <Text fx:id="resultText" style="-fx-font-size: 14;" />
+</VBox>

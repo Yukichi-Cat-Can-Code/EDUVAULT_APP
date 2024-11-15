@@ -49,7 +49,7 @@ public class DocumentDAO implements DAOInterface<Document> {
             ps.setInt(3, document.getTYPEDOC_ID());
             ps.setString(4, document.getDOC_NAME());
             ps.setString(5, document.getSUMMARY());
-            ps.setTimestamp(7, Timestamp.valueOf(document.getCREATEDATE()));
+            ps.setTimestamp(6, Timestamp.valueOf(document.getCREATEDATE()));
             ps.setString(7, document.getDOC_PATH());
             ps.setInt(8, document.getDOC_ID());
 
@@ -107,7 +107,8 @@ public class DocumentDAO implements DAOInterface<Document> {
                         rs.getString("DOC_NAME"),
                         rs.getString("SUMMARY"),
                         rs.getTimestamp("CREATEDATE").toLocalDateTime(),
-                        rs.getString("DOC_PATH")
+                        rs.getString("DOC_PATH"),
+                        rs.getShort("isDeleted")
                 );
             }
 
@@ -136,7 +137,8 @@ public class DocumentDAO implements DAOInterface<Document> {
                         rs.getString("DOC_NAME"),
                         rs.getString("SUMMARY"),
                         rs.getTimestamp("CREATEDATE").toLocalDateTime(),
-                        rs.getString("DOC_PATH")
+                        rs.getString("DOC_PATH"),
+                        rs.getShort("isDeleted")
                 );
                 documents.add(document);
             }
