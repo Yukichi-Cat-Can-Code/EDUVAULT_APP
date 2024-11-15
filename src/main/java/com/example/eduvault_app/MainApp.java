@@ -14,6 +14,8 @@ import java.util.ResourceBundle;
 public class MainApp extends Application {
 
     private static String currentUser;
+    private static String currentPassword;
+    private static String joinedDate;
 
     public static void setCurrentUser(String name) {
         currentUser = name;
@@ -21,6 +23,14 @@ public class MainApp extends Application {
 
     public static String getCurrentUser() {
         return currentUser;
+    }
+
+    public static void setCurrentUserJoinedDate(String date) {
+        joinedDate = date;
+    }
+
+    public static String getCurrentUserJoinedDate() {
+        return joinedDate;
     }
 
     @Override

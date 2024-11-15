@@ -12,7 +12,7 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFFF;" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.UserdetailsController">
+<AnchorPane prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #FFFFFF;" xmlns="http://javafx.com/javafx/20" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.UserdetailsController">
    <children>
       <BorderPane layoutY="-9.0" prefHeight="800.0" prefWidth="1280.0" style="-fx-background-color: #000000;">
          <center>
