@@ -41,7 +41,7 @@
             <Image url="@../../../Images/z6013220897737_2a5f022004284f361efe5ced21206144.jpg" />
          </image>
       </ImageView>
-      <Label id="pwd_label" fx:id="message" alignment="CENTER" layoutX="-1.0" layoutY="562.0" prefHeight="29.0" prefWidth="1282.0" text="Invalid! Please try again!" textFill="#d36f17">
+      <Label id="pwd_label" fx:id="message" alignment="CENTER" layoutX="-1.0" layoutY="562.0" prefHeight="29.0" prefWidth="1282.0" text=" " textFill="#d36f17">
          <font>
             <Font size="24.0" />
          </font>

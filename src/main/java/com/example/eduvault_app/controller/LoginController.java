@@ -1,5 +1,6 @@
 package com.example.eduvault_app.controller;
 
+import com.example.eduvault_app.MainApp;
 import database_conn.DatabaseConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -39,8 +40,7 @@ public class LoginController implements Initializable {
     private TextField usernameTextField;
     @FXML
     private PasswordField enterPasswordField;
-    @FXML
-    private AnchorPane ap;
+
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
@@ -48,7 +48,7 @@ public class LoginController implements Initializable {
 //        Image brandingImage = new Image(brandingFile.toURI().toString());
 //        brandingImageView.setImage(brandingImage);
 
-        message.setText("");
+        //message.setText(" ");
     }
 
     public void loginButtonOnAction(ActionEvent event) throws IOException {
@@ -56,9 +56,10 @@ public class LoginController implements Initializable {
             message.setText("Please enter your username and password!");
         } else {
             if (validateLogin() == true) {
+                MainApp.setCurrentUser(usernameTextField.getText());
                 message.getScene().getWindow().hide();
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/DashBoard.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/userdetails.fxml"));
                     Parent root = loader.load();
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);
