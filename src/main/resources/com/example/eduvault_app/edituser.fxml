@@ -33,13 +33,13 @@
                      <font>
                         <Font size="22.0" />
                      </font></Button>
-                  <TextField fx:id="fullNameField" layoutX="503.0" layoutY="381.0" prefHeight="26.0" prefWidth="525.0" />
+                  <TextField fx:id="fullNameField" layoutX="503.0" layoutY="390.0" prefHeight="26.0" prefWidth="525.0" />
                   <Label fx:id="passwordLabel" layoutX="503.0" layoutY="442.0" prefHeight="27.0" prefWidth="217.0" text="Password" textFill="WHITE">
                      <font>
                         <Font size="24.0" />
                      </font>
                   </Label>
-                  <Button fx:id="cancelButton" cancelButton="true" layoutX="777.0" layoutY="551.0" mnemonicParsing="false" prefHeight="45.0" prefWidth="170.0" style="-fx-background-color: #D36F17;" text="Cancel">
+                  <Button fx:id="cancelButton" cancelButton="true" layoutX="777.0" layoutY="551.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="45.0" prefWidth="170.0" style="-fx-background-color: #D36F17;" text="Cancel">
                      <font>
                         <Font size="22.0" />
                      </font>

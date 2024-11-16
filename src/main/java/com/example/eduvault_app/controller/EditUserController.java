@@ -76,11 +76,11 @@ public class EditUserController implements Initializable {
                 e.getCause();
             }
         }
+        username.getScene().getWindow().hide();
         switchScene();
     }
 
     public void switchScene() throws IOException {
-        username.getScene().getWindow().hide();
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/userdetails.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
@@ -90,9 +90,14 @@ public class EditUserController implements Initializable {
         stage.show();
     }
 
+    public void cancelButtonOnAction(ActionEvent actionEvent) throws IOException {
+        Stage stage = (Stage) cancelButton.getScene().getWindow();
+        stage.close();
+        switchScene();
+    }
     @Override
     public void initialize(URL url, ResourceBundle resourceBundle) {
-        username.setText(MainApp.getCurrentUser());
+        username.setText("@" + MainApp.getCurrentUser());
         joinedDate.setText(MainApp.getCurrentUserJoinedDate());
     }
 }
