@@ -31,6 +31,10 @@ public class UserdetailsController implements Initializable {
     private Label totalDocs;
     @FXML
     private Button editButton;
+    @FXML
+    private Label totalFolder;
+    @FXML
+    private Label Email;
 
     public void editButtonOnAction(ActionEvent actionEvent) {
         username.getScene().getWindow().hide();
@@ -55,7 +59,7 @@ public class UserdetailsController implements Initializable {
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection connectDB = databaseConnection.getConnection();
 
-        String query = "SELECT FullName, user_createat FROM user WHERE username = ?";
+        String query = "SELECT * FROM user WHERE username = ?";
         try (PreparedStatement stmt = connectDB.prepareStatement(query)) {
             stmt.setString(1, username.getText());
             ResultSet rs = stmt.executeQuery();
@@ -63,6 +67,7 @@ public class UserdetailsController implements Initializable {
                 String name = rs.getString("FullName");
                 String date = rs.getDate("user_createat").toString();
                 FullName.setText(name);
+                Email.setText(rs.getString("email"));
                 username.setText("@"+MainApp.getCurrentUser());
                 joinedDate.setText("Joined: " + date);
             } else {
@@ -73,9 +78,24 @@ public class UserdetailsController implements Initializable {
             try (PreparedStatement stmt2 = connectDB.prepareStatement(query2)) {
                 ResultSet rs2 = stmt2.executeQuery();
                 if (rs2.next()) {
-                    totalDocs.setText("Number of files: " + String.valueOf(rs2.getInt(1)));
-                    MainApp.setCurrentUserJoinedDate(String.valueOf(rs2.getInt(1)));
+                    totalDocs.setText(String.valueOf(rs2.getInt(1)));
+                    MainApp.setCurrentUserJoinedDate(joinedDate.getText());
                 }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+
+            String query3 = "SELECT Count(FOLDER_ID) FROM folder JOIN user ON folder.user_id = user.user_id";
+            try (PreparedStatement stmt3 = connectDB.prepareStatement(query3)) {
+                ResultSet rs3 = stmt3.executeQuery();
+                if (rs3.next()) {
+                    totalFolder.setText(String.valueOf(rs3.getInt(1)));
+
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                e.getCause();
             }
         }catch (SQLException e) {
             e.printStackTrace();
