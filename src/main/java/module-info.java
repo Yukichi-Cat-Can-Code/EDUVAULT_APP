@@ -16,5 +16,8 @@ module com.example.eduvault_app {
     opens com.example.eduvault_app.controller to javafx.fxml;
     exports com.example.eduvault_app.controller;
 
+    opens com.example.eduvault_app.model to javafx.fxml;
+    exports com.example.eduvault_app.model;
+
     exports com.example.eduvault_app.testConnection to javafx.graphics;
 }

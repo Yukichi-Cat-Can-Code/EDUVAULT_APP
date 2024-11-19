@@ -1,6 +1,12 @@
 package com.example.eduvault_app.DAO;
 
+import com.example.eduvault_app.model.Trash;
+import com.example.eduvault_app.controller.DeleteController;
 import  com.example.eduvault_app.util.JDBCUtil;
+import javafx.beans.Observable;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
+import javafx.scene.control.cell.PropertyValueFactory;
 
 import java.sql.*;
 import java.time.LocalDateTime;
@@ -268,5 +274,7 @@ public class TrashDAO {
             return ps.executeQuery().getInt("ITEM_ID");
         }
     }
+
+
 }
 

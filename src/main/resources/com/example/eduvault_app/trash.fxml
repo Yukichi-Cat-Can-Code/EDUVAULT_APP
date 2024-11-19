@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="dashBoardTemp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1538.0" stylesheets="@../../../CSS/TrashFXML.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.DashBoardController">
+<AnchorPane fx:id="dashBoardTemp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1538.0" stylesheets="@../../../CSS/TrashFXML.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.DeleteController">
    <children>
       <BorderPane layoutY="-1.0" prefHeight="804.0" prefWidth="1537.0">
          <left>
@@ -190,40 +190,46 @@
                      <center>
                         <AnchorPane layoutY="600.0" prefHeight="704.0" prefWidth="1239.0" style="-fx-background-color: #1C1C1C;" styleClass="BodyPane" BorderPane.alignment="CENTER">
                            <children>
-                              <Label layoutX="60.0" layoutY="12.0" styleClass="DashBoardBodyTitle_lbl" text="Trash Bin" textFill="#efecec">
+                              <Label fx:id="trashLabel" layoutX="60.0" layoutY="12.0" styleClass="DashBoardBodyTitle_lbl" text="Trash Bin" textFill="#efecec">
                                  <font>
                                     <Font name="Calibri Bold" size="26.0" />
                                  </font>
                               </Label>
-                              <AnchorPane layoutX="28.0" layoutY="67.0" prefHeight="647.0" prefWidth="844.0" styleClass="bg-white">
+                              <AnchorPane layoutX="28.0" layoutY="67.0" prefHeight="647.0" prefWidth="869.0" styleClass="bg-white">
                                  <children>
-                                    <TableView layoutX="17.0" layoutY="68.0" prefHeight="569.0" prefWidth="810.0">
+                                    <TableView fx:id="trashTableView" layoutX="17.0" layoutY="55.0" onMouseClicked="#selectTrashList" prefHeight="583.0" prefWidth="841.0">
                                       <columns>
-                                        <TableColumn prefWidth="77.86663818359375" text="No" />
-                                        <TableColumn prefWidth="179.20004272460938" text="Name" />
-                                          <TableColumn minWidth="0.0" prefWidth="128.53335571289062" text="Type" />
-                                          <TableColumn prefWidth="427.46661376953125" text="Delete At" />
+                                        <TableColumn fx:id="trash_col_No" prefWidth="59.20001220703125" text="No" />
+                                        <TableColumn fx:id="trash_col_Name" prefWidth="393.5999450683594" text="Name" />
+                                          <TableColumn fx:id="trash_col_Type" minWidth="0.0" prefWidth="136.5333251953125" text="Type" />
+                                          <TableColumn fx:id="trash_col_DeleteAt" prefWidth="251.7332763671875" text="Delete At" />
                                       </columns>
                                     </TableView>
-                                    <TextField layoutX="17.0" layoutY="14.0" prefHeight="27.0" prefWidth="309.0" styleClass="searchText">
+                                    <TextField fx:id="trashSearch" layoutX="17.0" layoutY="13.0" prefHeight="27.0" prefWidth="310.0" styleClass="searchText">
                                        <padding>
                                           <Insets left="30.0" />
                                        </padding>
                                     </TextField>
-                                    <FontAwesomeIconView glyphName="SEARCH" layoutX="27.0" layoutY="34.0" size="17" />
+                                    <FontAwesomeIconView glyphName="SEARCH" layoutX="29.0" layoutY="31.0" size="17" />
+                                    <Button fx:id="trash_Clear" layoutX="339.0" layoutY="10.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="69.0" styleClass="clearBTN" text="Clear" />
                                  </children>
                               </AnchorPane>
                               <AnchorPane layoutX="913.0" layoutY="68.0" prefHeight="644.0" prefWidth="318.0" styleClass="bg-white">
                                  <children>
-                                    <AnchorPane layoutX="22.0" layoutY="413.0" prefHeight="220.0" prefWidth="274.0" style="-fx-background-color: #fff;" styleClass="textInFieldText" />
-                                    <TextField editable="false" layoutX="22.0" layoutY="63.0" prefHeight="22.0" prefWidth="273.0" styleClass="textInFieldText" />
-                                    <TextField editable="false" layoutX="21.0" layoutY="150.0" prefHeight="22.0" prefWidth="274.0" styleClass="textInFieldText" />
-                                    <TextField editable="false" layoutX="23.0" layoutY="235.0" prefHeight="22.0" prefWidth="270.0" styleClass="textInFieldText" />
+                                    <AnchorPane fx:id="trash_Noti" layoutX="22.0" layoutY="413.0" prefHeight="220.0" prefWidth="274.0" style="-fx-background-color: #fff;" styleClass="textInFieldText">
+                                       <children>
+                                          <BorderPane layoutX="34.0" layoutY="16.75" />
+                                          <Text fx:id="notiLabel" layoutX="37.0" layoutY="101.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Notification" visible="false" />
+                                          <Text layoutX="20.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Notification" />
+                                       </children></AnchorPane>
+                                    <TextField fx:id="trash_DocName" editable="false" layoutX="22.0" layoutY="63.0" prefHeight="22.0" prefWidth="273.0" styleClass="textInFieldText" />
+                                    <TextField fx:id="trash_Type" editable="false" layoutX="21.0" layoutY="150.0" prefHeight="22.0" prefWidth="274.0" styleClass="textInFieldText" />
+                                    <TextField fx:id="trash_DeleteAt" editable="false" layoutX="23.0" layoutY="235.0" prefHeight="22.0" prefWidth="270.0" styleClass="textInFieldText" />
                                     <Text fill="#f4f4f4" layoutX="23.0" layoutY="43.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Name" />
                                     <Text fill="#f4f4f4" layoutX="24.0" layoutY="222.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Deleted At" />
                                     <Text fill="#f4f4f4" layoutX="22.0" layoutY="131.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Type" />
-                                    <Button layoutX="177.0" layoutY="341.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="117.0" styleClass="deleteBTN" text="Delete" />
-                                    <Button layoutX="24.0" layoutY="341.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="113.0" styleClass="restoreBTN" text="Restore" />
+                                    <Button fx:id="trash_Delete" layoutX="175.0" layoutY="315.0" mnemonicParsing="false" onMouseClicked="#handleDeletePermanently" prefHeight="35.0" prefWidth="117.0" styleClass="deleteBTN" text="Delete" />
+                                    <Button fx:id="trash_Restore" layoutX="33.0" layoutY="315.0" mnemonicParsing="false" onMouseClicked="#handleRestoreItem" prefHeight="35.0" prefWidth="113.0" styleClass="restoreBTN" text="Restore" />
                                  </children>
                               </AnchorPane>
                            </children>

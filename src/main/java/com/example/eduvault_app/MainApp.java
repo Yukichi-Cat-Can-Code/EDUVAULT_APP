@@ -21,10 +21,10 @@ public class MainApp extends Application {
 //    }
     public void start(Stage primaryStage) throws Exception {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("DashBoard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("trash.fxml"));
             Scene scene = new Scene(loader.load());
             primaryStage.setScene(scene);
-            primaryStage.setTitle("DashBoard");
+            primaryStage.setTitle("Trash Bin");
             primaryStage.show();
         } catch (Exception e) {
             e.printStackTrace();

@@ -7,6 +7,15 @@ public class Trash {
     private int ITEM_ID;
     private String ITEM_TYPE;
     private Date TRASH_DELETEAT;
+    private String  itemName;
+
+    public String getItemName() {
+        return itemName;
+    }
+
+    public void setItemName(String itemName) {
+        this.itemName = itemName;
+    }
 
     public Trash() {
     }
@@ -14,6 +23,13 @@ public class Trash {
     public Trash(int TRASH_ID, int ITEM_ID, String ITEM_TYPE, Date TRASH_DELETEAT) {
         this.TRASH_ID = TRASH_ID;
         this.ITEM_ID = ITEM_ID;
+        this.ITEM_TYPE = ITEM_TYPE;
+        this.TRASH_DELETEAT = TRASH_DELETEAT;
+    }
+
+    public Trash(int TRASH_ID, String itemName, String ITEM_TYPE, Date TRASH_DELETEAT) {
+        this.TRASH_ID = TRASH_ID;
+        this.itemName = itemName;
         this.ITEM_TYPE = ITEM_TYPE;
         this.TRASH_DELETEAT = TRASH_DELETEAT;
     }

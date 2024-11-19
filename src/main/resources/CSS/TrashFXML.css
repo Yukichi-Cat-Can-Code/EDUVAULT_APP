@@ -103,6 +103,15 @@
     -fx-cursor: hand;
 }
 
+.clearBTN{
+    -fx-font-family: Calibri;
+    -fx-font-size: 19px;
+    -fx-text-fill: #eeeeee;
+    -fx-background-color: #646464;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+}
+
 .restoreBTN{
     -fx-font-family: Calibri;
     -fx-font-size: 19px;
