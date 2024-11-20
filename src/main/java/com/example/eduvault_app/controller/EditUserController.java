@@ -35,10 +35,13 @@ public class EditUserController implements Initializable {
     private Label joinedDate;
     @FXML
     private Label username;
+    @FXML
+    private TextField emailField;
 
     public void saveButtonOnAction(ActionEvent actionEvent) throws IOException {
         String fullName = fullNameField.getText();
         String password = passwordField.getText();
+        String email = emailField.getText();
         DatabaseConnection databaseConnection = new DatabaseConnection();
         Connection connectDB = databaseConnection.getConnection();
 
@@ -63,6 +66,23 @@ public class EditUserController implements Initializable {
             String query = "UPDATE user SET password = ? WHERE username = ?;";
             try (PreparedStatement stmt = connectDB.prepareStatement(query)) {
                 stmt.setString(1, passwordField.getText());
+                stmt.setString(2, MainApp.getCurrentUser());
+                int rowsAffected = stmt.executeUpdate();
+
+                if (rowsAffected > 0) {
+                    System.out.println("Update successful!");
+                } else {
+                    System.out.println("User not found.");
+                }
+            } catch (SQLException e) {
+                e.printStackTrace();
+                e.getCause();
+            }
+        }
+        if (!email.isEmpty()) {
+            String query = "UPDATE user SET email = ? WHERE username = ?;";
+            try (PreparedStatement stmt = connectDB.prepareStatement(query)) {
+                stmt.setString(1, emailField.getText());
                 stmt.setString(2, MainApp.getCurrentUser());
                 int rowsAffected = stmt.executeUpdate();
 
