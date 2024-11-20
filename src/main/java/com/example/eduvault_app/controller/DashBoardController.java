@@ -2,6 +2,7 @@ package com.example.eduvault_app.controller;
 
 import com.example.eduvault_app.DAO.*;
 import com.example.eduvault_app.model.*;
+import com.example.eduvault_app.util.JDBCUtil;
 import javafx.animation.PauseTransition;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
@@ -37,6 +38,8 @@ import java.util.List;
 import java.util.ResourceBundle;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+
+import static com.itextpdf.text.xml.xmp.XmpBasicProperties.CREATEDATE;
 
 public class DashBoardController implements Initializable {
 
@@ -100,19 +103,25 @@ public class DashBoardController implements Initializable {
 
     //TABLE
     @FXML
-    private TableColumn<?, ?> dateCreate_Col;
+    private TableColumn<DetailDocInfo, LocalDateTime> dateCreate_Col;
 
     @FXML
-    private TableView<?> docList_TableView;
+    private TableView<DetailDocInfo> docList_TableView;
 
     @FXML
-    private TableColumn<?, ?> docName_Col;
+    private TableColumn<DetailDocInfo, String> docName_Col;
 
     @FXML
-    private TableColumn<?, ?> type_Col;
+    private TableColumn<DetailDocInfo, String> type_Col;
 
     @FXML
-    private TableColumn<?, ?> author_Col;
+    private TableColumn<DetailDocInfo, String> author_Col;
+
+    @FXML
+    private TableColumn<DetailDocInfo, String> docPath_Col;
+
+    @FXML
+    private TableColumn<DetailDocInfo, Integer> docNo_Col;
 
     //LABEL
     @FXML
@@ -150,9 +159,10 @@ public class DashBoardController implements Initializable {
             String folder = FolderName_TXT.getText().trim();
             String docPath = new String("System/" + docName + ".");
             //Current Time nam/thang/ngay h/p/s
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss");
-            String formattedDate = LocalDate.now().format(formatter);
-            LocalDateTime formattedDateTime = LocalDate.parse(formattedDate, formatter).atStartOfDay();
+            LocalDateTime dateTime = LocalDateTime.now();
+            dateTime = dateTime.withSecond(0);
+//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+//            LocalDateTime formattedDateTime = dateTime.format(formatter);
 
             // Kiểm tra các trường bắt buộc
             if (docName.isEmpty() || type.isEmpty() || author.isEmpty() || folder.isEmpty()) {
@@ -167,20 +177,20 @@ public class DashBoardController implements Initializable {
             }
 
             // Lấy ID của Type và User dựa trên tên hiển thị
-            int typeId = new TypeOfDocumentDAO().findByName(type).getTYPEDOC_ID();
-            int userId = new UserDAO().findByName(author).getUSER_ID();
-
+//            int typeId = new TypeOfDocumentDAO().findByName(type).getTYPEDOC_ID();
+//            int userId = new UserDAO().findByName(author).getUSER_ID();
+            String temp = new String("A/B/C/D/Doc");
 
             // Tạo đối tượng Document mới
             Document newDocument = new Document(
                     0, // Auto-generated ID
-                    null, // FOLDER_ID (nếu không sử dụng thư mục)
-                    userId,
-                    typeId,
+                    1, // FOLDER_ID (nếu không sử dụng thư mục)
+                    1, //UserId
+                    1, //typeId
                     docName,
                     null, // Tóm tắt (có thể thêm trường nếu cần)
-                    formattedDateTime,
-                    System, // Đường dẫn tài liệu (chưa sử dụng trong UI hiện tại)
+                    dateTime,
+                    temp, // Đường dẫn tài liệu (chưa sử dụng trong UI hiện tại)
                     (short) 0 // isDeleted = 0
             );
 
@@ -191,13 +201,14 @@ public class DashBoardController implements Initializable {
             // Kiểm tra kết quả
             if (result > 0) {
                 showSuccessAlert("Thành công", "Tài liệu đã được thêm thành công.");
-                showAddDocsList(); // Cập nhật danh sách tài liệu
+//                showAddDocsList(); // Cập nhật danh sách tài liệu
                 clearDoc();
             } else {
                 showErrorAlert("Thất bại", "Không thể thêm tài liệu. Vui lòng thử lại.");
             }
         } catch (Exception e) {
             showErrorAlert("Lỗi hệ thống", "Đã xảy ra lỗi: " + e.getMessage());
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -206,9 +217,20 @@ public class DashBoardController implements Initializable {
     // CLEAR TEXTFIELD
     @FXML
     void HandleClearCreateItemInfo(MouseEvent event) {
-
+        author_TXT.clear();
+        docName_TXT.clear();
+        docPath_TXT.clear();
+        FolderName_TXT.clear();
+        type_TXT.clear();
     }
-
+    //CLEAR DATA FUNCTION
+    public void clearDoc(){
+        author_TXT.clear();
+        docName_TXT.clear();
+        docPath_TXT.clear();
+        FolderName_TXT.clear();
+        type_TXT.clear();
+    }
 
     //FILTERING
     @FXML
@@ -290,36 +312,112 @@ public class DashBoardController implements Initializable {
 
 
     //DISPLAY TABLE DATA
-    private ObservableList<DocumentTableData> listAddDocs;
-    public void showAddDocsList() {
-        // Fetch data using DAOs
-        List<Document> documents = new DocumentDAO().getAll();
-        List<TypeOfDocument> types = new TypeOfDocumentDAO().getAll();
-        List<User> users = new UserDAO().getAll();
 
-        // Filter out deleted documents
-        documents.removeIf(doc -> doc.getIsDeleted() == 1);
+    public ObservableList<DetailDocInfo> docList() {
+        ObservableList<DetailDocInfo> listData = FXCollections.observableArrayList();
 
-        // Prepare data for TableView
-        listAddDocs = FXCollections.observableArrayList();
+        String sql = """
+        SELECT
+            D.DOC_ID,
+            D.DOC_NAME,
+            D.TYPEDOC_ID,
+            D.CREATEDATE,
+            D.USER_ID,
+            U.FULLNAME,
+            T.TYPEDOC_NAME,
+            CASE\s
+                WHEN D.TYPEDOC_ID = T.TYPEDOC_ID THEN T.TYPEDOC_NAME
+                ELSE NULL
+            END AS DOCUMENT_TYPE_NAME
+        FROM DOCUMENT D
+        LEFT JOIN USER U ON D.USER_ID = U.USER_ID
+        LEFT JOIN TYPEOFDOCUMENT T ON D.TYPEDOC_ID = T.TYPEDOC_ID
+        WHERE D.isDeleted = 0;
+        
+    """;
 
-        for (Document doc : documents) {
-            String docName = doc.getDOC_NAME();
-            String typeName = getTypeName(doc.getTYPEDOC_ID(), types);
-            String authorName = getAuthorName(doc.getUSER_ID(), users);
-            String dateCreate = doc.getCREATEDATE().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm"));
+        try (Connection conn = JDBCUtil.getConnection();
+             PreparedStatement prepare = conn.prepareStatement(sql);
+             ResultSet resultSet = prepare.executeQuery()) {
 
-            listAddDocs.add(new DocumentTableData(docName, typeName, authorName, dateCreate));
+            while (resultSet.next()) {
+                DetailDocInfo detailDocInfo = new DetailDocInfo(
+                        resultSet.getInt("DOC_ID"),              // Lấy giá trị DOC_ID
+                        resultSet.getString("DOC_NAME"),         // Lấy giá trị DOC_NAME
+                        resultSet.getInt("TYPEDOC_ID"),          // Lấy giá trị TYPEDOC_ID
+                        resultSet.getTimestamp("CREATEDATE"),    // Lấy giá trị CREATEDATE (nếu có cả ngày và giờ)
+                        resultSet.getInt("USER_ID"),             // Lấy giá trị USER_ID
+                        resultSet.getString("FULLNAME"),         // Lấy giá trị FULLNAME từ bảng User
+                        resultSet.getString("TYPEDOC_NAME")      // Lấy giá trị TYPEDOC_NAME từ bảng TypeofDocument
+
+                );
+
+                listData.add(detailDocInfo);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
         }
 
-        // Link columns to data fields
-        docName_Col.setCellValueFactory(new PropertyValueFactory<>("docName"));
-        type_Col.setCellValueFactory(new PropertyValueFactory<>("type"));
-        author_Col.setCellValueFactory(new PropertyValueFactory<>("author"));
-        dateCreate_Col.setCellValueFactory(new PropertyValueFactory<>("dateCreate"));
+        return listData;
+    }
 
-        // Populate TableView
-        docList_TableView.setItems(listAddDocs);
+
+    @FXML
+    private TableColumn<DetailDocInfo, LocalDateTime> dateCreate_Col;
+
+    @FXML
+    private TableView<DetailDocInfo> docList_TableView;
+
+    @FXML
+    private TableColumn<DetailDocInfo, String> docName_Col;
+
+    @FXML
+    private TableColumn<DetailDocInfo, String> type_Col;
+
+    @FXML
+    private TableColumn<DetailDocInfo, String> author_Col;
+
+    @FXML
+    private TableColumn<DetailDocInfo, String> docPath_Col;
+
+    @FXML
+    private TableColumn<DetailDocInfo, Integer> docNo_Col;
+
+    private ObservableList<DetailDocInfo> listDoc;
+    public void showDocList() {
+        listDoc = docList();
+
+        docNo_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_ID"));
+        docName_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_NAME"));
+        type_Col.setCellValueFactory(new PropertyValueFactory<>("ITEM_TYPE"));
+        dateCreate_Col.setCellValueFactory(new PropertyValueFactory<>("TRASH_DELETEAT"));
+        author_Col.setCellValueFactory(new PropertyValueFactory<>("FULLNAME"));
+
+        DetailDocInfo.s(listDoc); //Thiết kế lại
+    }
+
+    public void selectTrashList() {
+        DetailDocInfo detailDocInfo = docList_TableView.getSelectionModel().getSelectedItem();
+        int num = docList_TableView.getSelectionModel().getSelectedIndex();
+
+        if((num -1) < -1) {
+            return;
+        }
+
+        // Hiển thị ITEM_NAME
+        docName_Col.setText(detailDocInfo.getDOC_NAME());
+
+        type_Col.setText(detailDocInfo.getTYPEDOC_NAME());
+
+        String getDate = String.valueOf(detailDocInfo.getCREATEDATE());
+        dateCreate_Col.setText(getDate);
+
+    }
+
+    public void refreshTrashList() {
+        listTrash = trashList(); // Tải lại danh sách từ cơ sở dữ liệu
+        trashTableView.setItems(listTrash); // Gán lại danh sách cho TableView
     }
 
 
@@ -345,17 +443,10 @@ public class DashBoardController implements Initializable {
     //RUN TO SHOW DATA
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        showAddDocsList();
+//        showAddDocsList();
     }
 
 
-
-    public void clearDoc(){
-        docName_TXT.clear();
-        type_TXT.clear();
-        author_TXT.clear();
-        FolderName_TXT.clear();
-    }
 
     private void showErrorAlert(String title, String message) {
         Alert alert = new Alert(Alert.AlertType.ERROR);

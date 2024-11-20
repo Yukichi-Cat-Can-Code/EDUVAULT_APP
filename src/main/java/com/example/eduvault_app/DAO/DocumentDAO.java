@@ -25,13 +25,12 @@ public class DocumentDAO implements DAOInterface<Document> {
     @Override
     public int add(Document document) {
         int result = 0;
-        String sql = "INSERT INTO DOCUMENT (DOC_ID, FOLDER_ID, USER_ID, TYPEDOC_ID, DOC_NAME, SUMMARY, CREATEDATE, DOC_PATH) VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
+        String sql = "INSERT INTO DOCUMENT (DOC_ID, FOLDER_ID, USER_ID, TYPEDOC_ID, DOC_NAME, SUMMARY, CREATEDATE, DOC_PATH,isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
         try (Connection conn = JDBCUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             //Get current time
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-            String formattedDate = LocalDate.now().format(formatter);
-            LocalDateTime formattedDateTime = LocalDate.parse(formattedDate, formatter).atStartOfDay();
+            LocalDateTime dateTime = LocalDateTime.now();
+            dateTime = dateTime.withSecond(0);
 
             // Step 2: Set parameters for PreparedStatement
             ps.setInt(1, document.getDOC_ID());
@@ -40,8 +39,9 @@ public class DocumentDAO implements DAOInterface<Document> {
             ps.setInt(4, document.getTYPEDOC_ID());
             ps.setString(5, document.getDOC_NAME());
             ps.setString(6, document.getSUMMARY());
-            ps.setTimestamp(7, Timestamp.valueOf(formattedDateTime));
+            ps.setTimestamp(7, Timestamp.valueOf(dateTime));
             ps.setString(8, document.getDOC_PATH());
+            ps.setInt(9,0);
 
             // Step 3: Execute SQL
             result =  ps.executeUpdate();
