@@ -10,6 +10,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -35,6 +36,27 @@ public class UserdetailsController implements Initializable {
     private Label totalFolder;
     @FXML
     private Label Email;
+
+    @FXML
+    private Label signOutLabel;
+
+    public void signOutLabelOnMouseClicked(MouseEvent mouseEvent) {
+        MainApp.setCurrentUser("");
+        MainApp.setCurrentUserJoinedDate("");
+        username.getScene().getWindow().hide();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/login.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Login");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
 
     public void editButtonOnAction(ActionEvent actionEvent) {
         username.getScene().getWindow().hide();
