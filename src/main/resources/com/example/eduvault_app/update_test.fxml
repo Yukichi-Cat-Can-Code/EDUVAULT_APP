@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
+
+<VBox xmlns:fx="http://javafx.com/fxml" fx:controller="com.example.eduvault_app.controller.UpdateController" spacing="10" alignment="CENTER">
+    <TextField fx:id="docNameField" promptText="Enter Document Name" />
+    <TextField fx:id="docSummaryField" promptText="Enter Document Summary" />
+    <Button text="Update Document" onAction="#updateDocument"/>
+
+    <TextField fx:id="folderNameField" promptText="Enter Folder Name" />
+    <Button text="Update Folder" onAction="#updateFolder"/>
+</VBox>

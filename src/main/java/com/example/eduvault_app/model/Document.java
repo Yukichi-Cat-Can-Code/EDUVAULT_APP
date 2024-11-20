@@ -28,6 +28,9 @@ public class Document {
         this.isDeleted = isDeleted;
     }
 
+    public Document(int i, String docName, String summary, Object o, Object o1, int i1, int i2) {
+    }
+
     public int getDOC_ID() {
         return DOC_ID;
     }

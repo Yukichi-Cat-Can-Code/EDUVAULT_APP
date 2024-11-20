@@ -15,6 +15,7 @@
         <javafx.version>20.0.1</javafx.version> <!-- JavaFX version property -->
     </properties>
 
+
     <dependencies>
         <dependency>
             <groupId>org.openjfx</groupId>
@@ -131,6 +132,12 @@
     </repositories>
 
     <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+            </resource>
+        </resources>
+
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -160,3 +167,4 @@
         </plugins>
     </build>
 </project>
+

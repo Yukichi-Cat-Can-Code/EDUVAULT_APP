@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.text.Text?>
+
+<HBox prefHeight="66.0" prefWidth="1403.0" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.DocItemController">
+   <children>
+      <VBox prefHeight="200.0" prefWidth="100.0">
+         <children>
+            <HBox prefHeight="0.0" prefWidth="1131.0">
+               <children>
+                  <CheckBox fx:id="chooseDoc_checkbox" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" styleClass="NormalContent_LBL" textFill="TRANSPARENT">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <padding>
+                        <Insets left="15.0" />
+                     </padding>
+                  </CheckBox>
+                  <FontAwesomeIconView fx:id="linkToDoc_icon" fill="#ccbdbd" glyphName="CHAIN" size="18">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets left="10.0" top="5.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <Text fx:id="docName_TXT" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Java Project.pdf">
+                     <HBox.margin>
+                        <Insets left="60.0" top="5.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Label fx:id="TypeTag_icon" alignment="CENTER" prefHeight="22.0" prefWidth="53.0" style="-fx-background-color: #015D57;" styleClass="Tags" text="Jobs">
+                     <opaqueInsets>
+                        <Insets />
+                     </opaqueInsets>
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets left="135.0" />
+                     </HBox.margin>
+                  </Label>
+                  <Text fx:id="AuthorName_TXT" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Le Lu Huyen Tran">
+                     <HBox.margin>
+                        <Insets left="65.0" top="5.0" />
+                     </HBox.margin>
+                  </Text>
+                  <Text fx:id="createdDate_date" fill="WHITE" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="08/11/2024">
+                     <HBox.margin>
+                        <Insets left="105.0" top="5.0" />
+                     </HBox.margin>
+                  </Text>
+                  <FontAwesomeIconView fx:id="download_icon" fill="#ccbdbd" glyphName="DOWNLOAD" size="24">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets left="100.0" top="2.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <FontAwesomeIconView fx:id="edit_icon" fill="#ccbdbd" glyphName="PENCIL" size="24">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets left="15.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+                  <FontAwesomeIconView fx:id="arrange_icon" fill="#ccbdbd" glyphName="TH" opacity="0.5" size="24" styleClass="Arrange_ICON">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                     <HBox.margin>
+                        <Insets left="125.0" />
+                     </HBox.margin>
+                  </FontAwesomeIconView>
+               </children>
+            </HBox>
+            <HBox prefHeight="100.0" prefWidth="200.0">
+               <children>
+                  <Line endX="936.0" endY="-1.52587890625E-5" startX="-120.0" startY="-1.52587890625E-5" stroke="#e1e1e1">
+                     <HBox.margin>
+                        <Insets top="20.0" />
+                     </HBox.margin>
+                  </Line>
+               </children>
+            </HBox>
+         </children>
+      </VBox>
+   </children>
+</HBox>

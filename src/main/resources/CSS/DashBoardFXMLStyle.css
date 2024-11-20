@@ -38,8 +38,8 @@
     -fx-border-radius: 20px;
     -fx-background-radius: 20px;
     -fx-text-fill: #5e5b5b ;
-    -fx-padding: 0 10px 0 0 ;
-    -fx-font-size: 17px;
+    -fx-padding: 0px 0px 0px 30px ;
+    -fx-font-size: 14px;
 }
 
 .FolderIcon{
@@ -87,7 +87,146 @@
     -fx-font-family: Calibri;
 }
 
+.transparent{
+    -fx-background-color: rgba(0,0,0,0);
+    -fx-fill: rgba(0,0,0,0);
+}
 .add-textfield:focused{
     -fx-border-color:#ae2d3c;
     -fx-border-width: 1.5px;
+}
+
+.bg-white{
+    -fx-background-color: #2f3030;
+    -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.3), 8,0,0,0);
+    -fx-background-radius: 8px;
+}
+
+.bg-white:hover{
+    fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.5), 8,0,0,0);
+}
+
+.textInFieldText{
+    -fx-font-family: Calibri;
+    -fx-font-size: 21px;
+    -fx-text-fill: #0e0e0e;
+    -fx-background-radius: 8px;
+    -fx-background-color: #eeeeee ;
+}
+
+.deleteBTN{
+    -fx-font-family: Calibri;
+    -fx-font-size: 19px;
+    -fx-text-fill: #eeeeee;
+    -fx-background-color: #fa1335;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.updateBTN{
+    -fx-font-family: Calibri;
+    -fx-font-size: 19px;
+    -fx-text-fill: #eeeeee;
+    -fx-background-color: #1547e8;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.FilterBTN{
+    -fx-font-family: Calibri;
+    -fx-font-size: 19px;
+    -fx-text-fill: #eeeeee;
+    -fx-background-color: rgba(55, 133, 189, 0.87);
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+    -fx-padding: 0px 0px 0px 10px;
+}
+
+.clearBTN{
+    -fx-font-family: Calibri;
+    -fx-font-size: 19px;
+    -fx-text-fill: #eeeeee;
+    -fx-background-color: rgba(253, 203, 28, 0.87);
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.addBTN{
+    -fx-font-family: Calibri;
+    -fx-font-size: 19px;
+    -fx-text-fill: #eeeeee;
+    -fx-background-color: #49b528;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.searchText{
+    -fx-font-size: 14px;
+    -fx-font-family: Calibri;
+    -fx-text-fill: #0a0a0a;
+    -fx-background-radius: 10px;
+    -fx-border-width: 1px;
+    -fx-border-color: #1e242e;
+}
+
+.searchText:hover{
+    -fx-border-color: #ae2d3c ;
+    -fx-border-width: 2px;
+}
+
+/*.table-view{*/
+/*    !*-fx-fill: #fff;*!*/
+/*    -fx-background-radius: 10px;*/
+/*    !*-fx-background-color: #fff;*!*/
+/*    -fx-border-radius: 10px;*/
+/*    !*-fx-border-color: #ae2d3c;*!*/
+/*}*/
+
+/*.table-view .column-header-background{*/
+/*    -fx-background-color: rgb(117, 117, 124);*/
+/*!*linear-gradient(to top left, #1e242e, #ae2d3c)*!*/
+/*    -fx-background-insets: 0 0 0 0;*/
+/*    -fx-background-radius: 10px 10px 0px 0px;*/
+/*}*/
+
+/*.table-view .column-header, .table-view .filler{*/
+/*    -fx-background-color: transparent;*/
+/*    -fx-size: 50px;*/
+/*    !*-fx-fill: #fff;*!*/
+/*    -fx-font-weight: bold;*/
+/*    -fx-font-size: 12px;*/
+/*}*/
+
+/*.table-view .column-header .label{*/
+/*    -fx-fill: #fff;*/
+/*}*/
+
+/*.editBoardTitle{*/
+/*    -fx-font-weight: bold;*/
+/*}*/
+
+.spinner{
+    -fx-background-color: #fff;
+    -fx-border-color: #000;
+    -fx-border-width: 0.8px;
+}
+
+/*Hieu ung gia chan tab*/
+.tab-active {
+    -fx-background-color: white;
+    -fx-font-size:16;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2F60A6
+}
+
+.tab-active:hover {
+    -fx-background-color:white;
+    -fx-font-size:16;
+    -fx-font-weight: bold;
+    -fx-text-fill: #2F60A6
 }

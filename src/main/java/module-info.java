@@ -20,4 +20,5 @@ module com.example.eduvault_app {
     exports com.example.eduvault_app.model;
 
     exports com.example.eduvault_app.testConnection to javafx.graphics;
+
 }

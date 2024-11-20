@@ -6,8 +6,9 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
@@ -16,7 +17,6 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.paint.Color?>
-<?import javafx.scene.shape.Line?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -38,19 +38,19 @@
                      </cursor>
                   </ImageView>
                   <GlyphsStack layoutX="51.0" layoutY="97.0" />
-                  <FontAwesomeIconView fill="#ccbdbd" glyphName="PIE_CHART" layoutX="25.0" layoutY="120.0" size="27">
+                  <FontAwesomeIconView fx:id="AnalystForm" fill="#ccbdbd" glyphName="PIE_CHART" layoutX="25.0" layoutY="120.0" size="27">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></FontAwesomeIconView>
-                  <FontAwesomeIconView fill="#ccbdbd" glyphName="CALENDAR" layoutX="25.0" layoutY="200.0" size="27" text="">
+                  <FontAwesomeIconView fx:id="CalendarForm" fill="#ccbdbd" glyphName="CALENDAR" layoutX="25.0" layoutY="200.0" size="27" text="">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></FontAwesomeIconView>
-                  <FontAwesomeIconView fill="#ccbdbd" glyphName="USER" layoutX="25.0" layoutY="280.0" size="27">
+                  <FontAwesomeIconView fx:id="UserForm" fill="#ccbdbd" glyphName="USER" layoutX="25.0" layoutY="280.0" size="27">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></FontAwesomeIconView>
-                  <FontAwesomeIconView fill="#ccbdbd" glyphName="FILE" layoutX="25.0" layoutY="360.0" size="27" text="">
+                  <FontAwesomeIconView fx:id="AddNewDoc_Icon" fill="#ccbdbd" glyphName="FILE" layoutX="25.0" layoutY="360.0" size="27" text="">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></FontAwesomeIconView>
@@ -58,14 +58,11 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></FontAwesomeIconView>
-                  <FontAwesomeIconView fill="#ccbdbd" glyphName="FILE_TEXT" layoutX="25.0" layoutY="440.0" size="27">
+                  <FontAwesomeIconView fx:id="UploadDownload_Icon" fill="#ccbdbd" glyphName="FILE_TEXT" layoutX="25.0" layoutY="440.0" size="27">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></FontAwesomeIconView>
-                  <FontAwesomeIconView fill="#ccbdbd" glyphName="STAR" layoutX="25.0" layoutY="520.0" size="27">
-                     <cursor>
-                        <Cursor fx:constant="HAND" />
-                     </cursor></FontAwesomeIconView>
+                  <FontAwesomeIconView fx:id="SignOut_Icon" fill="#ccbdbd" glyphName="SIGN_OUT" layoutX="22.0" layoutY="767.0" onMouseClicked="#HandleLogOut" size="40" text="" />
                </children></AnchorPane>
          </left>
          <center>
@@ -82,11 +79,11 @@
                               <String fx:value="General" />
                            </styleClass>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="118.0" prefHeight="22.0" prefWidth="142.0" styleClass="NormalContent_LBL" text="All Document">
+                        <Label fx:id="DashBoardForm_LBL" alignment="CENTER_RIGHT" layoutX="40.0" layoutY="118.0" prefHeight="22.0" prefWidth="142.0" styleClass="NormalContent_LBL" text="All Document">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="37.0" layoutY="167.0" prefHeight="22.0" prefWidth="82.0" styleClass="NormalContent_LBL" text="Trash">
+                        <Label fx:id="TrashForm" alignment="CENTER_RIGHT" layoutX="37.0" layoutY="167.0" prefHeight="22.0" prefWidth="82.0" styleClass="NormalContent_LBL" text="Trash">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Label>
@@ -95,7 +92,7 @@
                               <Font name="Calibri Bold" size="19.0" />
                            </font>
                         </Label>
-                        <Label alignment="CENTER" layoutX="44.0" layoutY="284.0" prefHeight="22.0" prefWidth="98.0" styleClass="NormalContent_LBL" text="Folder" textAlignment="CENTER">
+                        <Label fx:id="FolderForm" alignment="CENTER" layoutX="44.0" layoutY="284.0" prefHeight="22.0" prefWidth="98.0" styleClass="NormalContent_LBL" text="Folder" textAlignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Label>
@@ -143,7 +140,7 @@
                      <top>
                         <AnchorPane prefHeight="51.0" prefWidth="1259.0" style="-fx-background-color: #010101;" styleClass="Header" BorderPane.alignment="CENTER">
                            <children>
-                              <ImageView fitHeight="58.0" fitWidth="53.0" layoutX="1166.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #010101;" styleClass="UserImage">
+                              <ImageView fx:id="UserAvatar_Icon" fitHeight="58.0" fitWidth="53.0" layoutX="1166.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #010101;" styleClass="UserImage">
                                  <image>
                                     <Image url="@../../../Images/avatar.png" />
                                  </image>
@@ -152,7 +149,7 @@
                                  </cursor>
                               </ImageView>
                               <FontAwesomeIconView glyphName="BARS" layoutX="14.0" layoutY="38.0" size="24" styleClass="Menu_BTN" text="" />
-                              <FontAwesomeIconView fill="WHITE" glyphName="BELL" layoutX="234.0" layoutY="40.0" onMouseClicked="#ShowNotification" size="25" styleClass="BellIcon" textAlignment="CENTER" wrappingWidth="35.0">
+                              <FontAwesomeIconView fx:id="Notification_Icon" fill="WHITE" glyphName="BELL" layoutX="234.0" layoutY="40.0" onMouseClicked="#ShowNotification" size="25" styleClass="BellIcon" textAlignment="CENTER" wrappingWidth="35.0">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -160,17 +157,17 @@
                                     <Font size="23.0" />
                                  </font>
                               </FontAwesomeIconView>
-                              <FontAwesomeIconView fill="WHITE" glyphName="QUESTION" layoutX="166.0" layoutY="40.0" onMouseClicked="#AskForHelp" size="28" styleClass="QuestionIcon" text="" textAlignment="CENTER" wrappingWidth="38.428571701049805">
+                              <FontAwesomeIconView fx:id="GetHelp_Icon" fill="WHITE" glyphName="QUESTION" layoutX="166.0" layoutY="40.0" onMouseClicked="#AskForHelp" size="28" styleClass="QuestionIcon" text="" textAlignment="CENTER" wrappingWidth="38.428571701049805">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </FontAwesomeIconView>
-                              <FontAwesomeIconView fill="WHITE" glyphName="COMMENT" layoutX="98.0" layoutY="40.0" onMouseClicked="#ShowComment" selectionFill="#665656" size="28" styleClass="ChatIcon" textAlignment="CENTER" wrappingWidth="42.0">
+                              <FontAwesomeIconView fx:id="FeedBack_Icon" fill="WHITE" glyphName="COMMENT" layoutX="98.0" layoutY="40.0" onMouseClicked="#ShowComment" selectionFill="#665656" size="28" styleClass="ChatIcon" textAlignment="CENTER" wrappingWidth="42.0">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="35.0" layoutY="40.0" size="25" strokeMiterLimit="20.0" text="" wrappingWidth="19.8573260307312">
+                              <FontAwesomeIconView fx:id="AddDoc_Icon" fill="#efecec" glyphName="PLUS" layoutX="35.0" layoutY="40.0" size="25" strokeMiterLimit="20.0" text="" wrappingWidth="19.8573260307312">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></FontAwesomeIconView>
@@ -189,298 +186,95 @@
                         </AnchorPane>
                      </top>
                      <center>
-                        <AnchorPane layoutY="600.0" prefHeight="704.0" prefWidth="1239.0" style="-fx-background-color: #1C1C1C;" styleClass="BodyPane" BorderPane.alignment="CENTER">
+                        <AnchorPane fx:id="DashBoardForm_Pane" layoutY="600.0" prefHeight="704.0" prefWidth="1268.0" style="-fx-background-color: #1C1C1C;" styleClass="BodyPane" BorderPane.alignment="CENTER">
                            <children>
-                              <TextField alignment="CENTER" layoutX="778.0" layoutY="58.0" prefHeight="40.0" prefWidth="287.0" style="-fx-background-color: #444444; -fx-text-fill: #e6e6e6;" styleClass="SearchBox_TXT" text="Search for document">
-                                 <font>
-                                    <Font name="Calibri" size="16.0" />
-                                 </font>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <effect>
-                                    <InnerShadow>
-                                       <color>
-                                          <Color opacity="0.3893129825592041" />
-                                       </color>
-                                    </InnerShadow>
-                                 </effect>
-                              </TextField>
-                              <Label layoutX="62.0" layoutY="11.0" styleClass="DashBoardBodyTitle_lbl" text="Document management" textFill="#efecec">
-                                 <font>
-                                    <Font name="Calibri Bold" size="27.0" />
-                                 </font>
-                              </Label>
-                              <CheckBox layoutX="61.0" layoutY="66.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="111.0" text="Select All" textFill="WHITE">
-                                 <font>
-                                    <Font name="Calibri Bold" size="15.0" />
-                                 </font>
-                                 <styleClass>
-                                    <String fx:value="SelectAll_CheckBox" />
-                                    <String fx:value="NormalContent_LBL" />
-                                 </styleClass>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </CheckBox>
-                              <Button alignment="CENTER" centerShape="false" contentDisplay="CENTER" layoutX="234.0" layoutY="65.0" mnemonicParsing="false" prefHeight="27.0" prefWidth="198.0" style="-fx-background-color: #257ac5;" styleClass="NewDoc_BTN" text="   Add New Document" textAlignment="RIGHT" textFill="WHITE">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                                 <font>
-                                    <Font name="Calibri Bold" size="10.0" />
-                                 </font>
-                              </Button>
-                              <FontAwesomeIconView fill="#e6e6e6" glyphName="SEARCH" layoutX="799.0" layoutY="83.0" size="16.0" text="">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="WHITE" glyphName="FILE_TEXT" layoutX="247.0" layoutY="86.0" size="17" />
-                              <FontAwesomeIconView fill="WHITE" glyphName="PLUS" layoutX="261.0" layoutY="74.0" size="7" />
-                              <Button layoutX="1097.0" layoutY="62.0" mnemonicParsing="false" prefHeight="34.0" prefWidth="98.0" style="-fx-background-color: #257ac5;" text="Filter">
-                                 <styleClass>
-                                    <String fx:value="Filter_BTN" />
-                                    <String fx:value="NormalContent_LBL" />
-                                 </styleClass>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Button>
-                              <FontAwesomeIconView fill="WHITE" glyphName="SLIDERS" layoutX="1107.0" layoutY="86.0" size="18" text="">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <Label layoutX="207.0" layoutY="135.0" styleClass="NormalContent_LBL" text="Document Name" />
-                              <Label layoutX="566.0" layoutY="135.0" text="Author">
-                                 <styleClass>
-                                    <String fx:value="NormalContent_LBL" />
-                                    <String fx:value="General" />
-                                 </styleClass></Label>
-                              <Label layoutX="729.0" layoutY="136.0" styleClass="NormalContent_LBL" text="Date Created" />
-                              <Label layoutX="883.0" layoutY="136.0" text="Download/Edit">
-                                 <styleClass>
-                                    <String fx:value="NormalContent_LBL" />
-                                    <String fx:value="General" />
-                                 </styleClass></Label>
-                              <Line endX="936.0" endY="-1.52587890625E-5" layoutX="198.0" layoutY="166.0" startX="-120.0" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <CheckBox layoutX="91.0" layoutY="190.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </CheckBox>
-                              <CheckBox layoutX="91.0" layoutY="254.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </CheckBox>
-                              <CheckBox layoutX="91.0" layoutY="324.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </CheckBox>
-                              <CheckBox layoutX="91.0" layoutY="396.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </CheckBox>
-                              <CheckBox layoutX="91.0" layoutY="617.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </CheckBox>
-                              <CheckBox layoutX="91.0" layoutY="544.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </CheckBox>
-                              <CheckBox layoutX="91.0" layoutY="470.0" mnemonicParsing="false" prefHeight="26.0" prefWidth="25.0" selected="true" textFill="TRANSPARENT">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </CheckBox>
-                              <Line endX="936.0" endY="-1.52587890625E-5" layoutX="197.0" layoutY="372.0" startX="-120.0" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <Line endX="936.0" endY="-1.52587890625E-5" layoutX="198.0" layoutY="521.0" startX="-120.0" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <Line endX="936.0" endY="-1.52587890625E-5" layoutX="198.0" layoutY="595.0" startX="-120.0" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <Line endX="936.0" endY="-1.52587890625E-5" layoutX="198.0" layoutY="303.0" startX="-120.0" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <Line endX="936.0" endY="-1.52587890625E-5" layoutX="197.0" layoutY="445.0" startX="-120.0" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <Line endX="936.0" endY="-1.52587890625E-5" layoutX="198.0" layoutY="235.0" startX="-120.0" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <Line endX="936.0" endY="-1.52587890625E-5" layoutX="199.0" layoutY="666.0" startX="-120.0" startY="-1.52587890625E-5" stroke="#e1e1e1" />
-                              <Label alignment="CENTER" layoutX="406.0" layoutY="187.0" prefHeight="22.0" prefWidth="53.0" style="-fx-background-color: #015D57;" styleClass="Tags" text="Excel">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                              <Label alignment="CENTER" layoutX="406.0" layoutY="469.0" prefHeight="21.0" prefWidth="65.0" style="-fx-background-color: #9E44D2;" styleClass="Tags" text="PDF">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></Label>
-                              <Label alignment="CENTER" layoutX="406.0" layoutY="252.0" prefHeight="21.0" prefWidth="65.0" style="-fx-background-color: #9E44D2;" styleClass="Tags" text="PDF">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></Label>
-                              <Label alignment="CENTER" layoutX="406.0" layoutY="392.0" prefHeight="24.0" prefWidth="61.0" style="-fx-background-color: #304390;" styleClass="Tags" text="Word">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></Label>
-                              <Label alignment="CENTER" layoutX="406.0" layoutY="614.0" prefHeight="24.0" prefWidth="61.0" style="-fx-background-color: #304390;" styleClass="Tags" text="Word">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></Label>
-                              <Label alignment="CENTER" layoutX="406.0" layoutY="323.0" prefHeight="24.0" prefWidth="61.0" style="-fx-background-color: #304390;" styleClass="Tags" text="Word">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></Label>
-                              <Label alignment="CENTER" layoutX="406.0" layoutY="541.0" prefHeight="22.0" prefWidth="53.0" style="-fx-background-color: #015D57;" styleClass="Tags" text="Excel">
-                                 <opaqueInsets>
-                                    <Insets />
-                                 </opaqueInsets>
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor>
-                              </Label>
-                              <Text fill="WHITE" layoutX="734.0" layoutY="208.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="08/11/2024" />
-                              <Text fill="WHITE" layoutX="734.0" layoutY="273.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="01/11/2024" />
-                              <Text fill="WHITE" layoutX="734.0" layoutY="414.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="14/10/2024" />
-                              <Text fill="WHITE" layoutX="734.0" layoutY="489.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="15/08/2024" />
-                              <Text fill="WHITE" layoutX="734.0" layoutY="563.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="12/05/2024" />
-                              <Text fill="WHITE" layoutX="734.0" layoutY="635.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="03/03/2024" />
-                              <Text fill="WHITE" layoutX="734.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="28/10/2024" />
-                              <Text fill="WHITE" layoutX="532.0" layoutY="204.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Le Lu Huyen Tran" />
-                              <Text fill="WHITE" layoutX="532.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Le Lu Huyen Tran" />
-                              <Text fill="WHITE" layoutX="532.0" layoutY="486.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Mai Nhat Minh" />
-                              <Text fill="WHITE" layoutX="532.0" layoutY="269.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Mai Nhat Minh" />
-                              <Text fill="WHITE" layoutX="521.0" layoutY="559.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Pham Luu Khanh Van" />
-                              <Text fill="WHITE" layoutX="521.0" layoutY="632.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Pham Luu Khanh Van" />
-                              <Text fill="WHITE" layoutX="531.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Nhan Vinh Tien" />
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="PENCIL" layoutX="959.0" layoutY="209.0" size="24">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="DOWNLOAD" layoutX="919.0" layoutY="210.0" size="24">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="TH" layoutX="1084.0" layoutY="204.0" opacity="0.5" size="24" styleClass="Arrange_ICON">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="PENCIL" layoutX="959.0" layoutY="276.0" size="24">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="DOWNLOAD" layoutX="919.0" layoutY="277.0" size="24">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="TH" layoutX="1084.0" layoutY="271.0" opacity="0.5" size="24" styleClass="Arrange_ICON">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="PENCIL" layoutX="959.0" layoutY="348.0" size="24">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="DOWNLOAD" layoutX="919.0" layoutY="349.0" size="24">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccc2c2" glyphName="TH" layoutX="1085.0" layoutY="343.0" opacity="0.5" size="24" styleClass="Arrange_ICON">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="PENCIL" layoutX="959.0" layoutY="419.0" size="24">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="DOWNLOAD" layoutX="919.0" layoutY="420.0" size="24">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="TH" layoutX="1085.0" layoutY="414.0" opacity="0.5" size="24" styleClass="Arrange_ICON">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="PENCIL" layoutX="959.0" layoutY="489.0" size="24">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="DOWNLOAD" layoutX="919.0" layoutY="490.0" size="24">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="TH" layoutX="1085.0" layoutY="484.0" opacity="0.5" size="24" styleClass="Arrange_ICON" text="">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="PENCIL" layoutX="959.0" layoutY="569.0" size="24">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="DOWNLOAD" layoutX="919.0" layoutY="570.0" size="24">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="TH" layoutX="1085.0" layoutY="564.0" opacity="0.5" size="24" styleClass="Arrange_ICON">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="PENCIL" layoutX="959.0" layoutY="641.0" size="24">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="DOWNLOAD" layoutX="919.0" layoutY="642.0" size="24">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="TH" layoutX="1085.0" layoutY="636.0" opacity="0.5" size="24" styleClass="Arrange_ICON" text="">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="CHAIN" layoutX="132.0" layoutY="210.0" size="18">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="CHAIN" layoutX="132.0" layoutY="274.0" size="18">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="CHAIN" layoutX="132.0" layoutY="346.0" size="18">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="CHAIN" layoutX="132.0" layoutY="417.0" size="18">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="CHAIN" layoutX="131.0" layoutY="495.0" size="18">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="CHAIN" layoutX="132.0" layoutY="565.0" size="18">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="CHAIN" layoutX="130.0" layoutY="640.0" size="18">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <FontAwesomeIconView fill="#ccbdbd" glyphName="ANGLE_UP" layoutX="838.0" layoutY="152.0" size="15" />
-                              <Label layoutX="1067.0" layoutY="136.0" text="Arange">
-                                 <styleClass>
-                                    <String fx:value="NormalContent_LBL" />
-                                    <String fx:value="General" />
-                                 </styleClass></Label>
-                              <Label layoutX="428.0" layoutY="134.0" styleClass="NormalContent_LBL" text="Type" />
-                              <Text fill="WHITE" layoutX="208.0" layoutY="210.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Java Project.pdf" />
-                              <Text fill="WHITE" layoutX="185.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Java Project_Final.pdf" />
-                              <Text fill="WHITE" layoutX="183.0" layoutY="346.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="Java Project_N_Final.pdf" />
-                              <Text fill="WHITE" layoutX="214.0" layoutY="417.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="HaHa All day.pdf" />
-                              <Text fill="WHITE" layoutX="217.0" layoutY="494.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="SoemDoAn.pdf" />
-                              <Text fill="WHITE" layoutX="217.0" layoutY="561.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="AnySetup.docx" />
-                              <Text fill="WHITE" layoutX="232.0" layoutY="637.0" strokeType="OUTSIDE" strokeWidth="0.0" styleClass="NormalContent_LBL" text="anyExcel.xlsx" />
+                              <AnchorPane prefHeight="746.0" prefWidth="1260.0">
+                                 <children>
+                                    <Label layoutX="36.0" layoutY="14.0" styleClass="DashBoardBodyTitle_lbl" text="Document management" textFill="#efecec">
+                                       <font>
+                                          <Font name="Calibri Bold" size="27.0" />
+                                       </font>
+                                    </Label>
+                                    <AnchorPane layoutX="35.0" layoutY="226.0" prefHeight="512.0" prefWidth="1190.0" styleClass="bg-white">
+                                       <children>
+                                          <TableView fx:id="docList_TableView" layoutX="9.0" layoutY="59.0" prefHeight="442.0" prefWidth="1172.0">
+                                             <columns>
+                                                <TableColumn fx:id="docName_Col" prefWidth="176.0" text="Document Name" />
+                                                <TableColumn fx:id="type_Col" prefWidth="189.0" text="Type" />
+                                                <TableColumn fx:id="author_Col" minWidth="0.0" prefWidth="245.0" text="Author" />
+                                                <TableColumn fx:id="dateCreate_Col" prefWidth="205.0" text="Date Created" />
+                                                <TableColumn fx:id="dateCreate_Col1" prefWidth="348.800048828125" text="Document Path" />
+                                             </columns>
+                                          </TableView>
+                                          <TextField layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="331.0" promptText="Search for document" styleClass="SearchBox_TXT">
+                                             <font>
+                                                <Font name="Calibri" size="16.0" />
+                                             </font>
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                             <effect>
+                                                <InnerShadow>
+                                                   <color>
+                                                      <Color opacity="0.3893129825592041" />
+                                                   </color>
+                                                </InnerShadow>
+                                             </effect>
+                                          </TextField>
+                                          <FontAwesomeIconView fill="#e6e6e6" glyphName="SEARCH" layoutX="23.0" layoutY="34.0" size="16.0" text="">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </FontAwesomeIconView>
+                                          <Button fx:id="FilterBTN" alignment="CENTER_RIGHT" layoutX="374.0" layoutY="11.0" mnemonicParsing="false" onMouseClicked="#HandleFilteringItem" prefHeight="35.0" prefWidth="91.0" styleClass="FilterBTN" text="Filter" />
+                                          <FontAwesomeIconView fill="#ececec" glyphName="SLIDERS" layoutX="384.0" layoutY="34.0" size="15" />
+                                       </children>
+                                    </AnchorPane>
+                                    <AnchorPane layoutX="35.0" layoutY="45.0" prefHeight="168.0" prefWidth="1183.0" styleClass="bg-white">
+                                       <children>
+                                          <TextField fx:id="docName_TXT" alignment="CENTER" layoutX="11.0" layoutY="118.0" prefHeight="36.0" prefWidth="230.0" promptText="JavaProject" styleClass="textInFieldText" />
+                                          <TextField fx:id="type_TXT" alignment="CENTER" layoutX="460.0" layoutY="118.0" prefHeight="36.0" prefWidth="100.0" promptText="Word" styleClass="textInFieldText" />
+                                          <TextField fx:id="author_TXT" alignment="CENTER" layoutX="257.0" layoutY="118.0" prefHeight="36.0" prefWidth="186.0" promptText="Le Lu Huyen Trạn" styleClass="textInFieldText" />
+                                          <Text fill="#f4f4f4" layoutX="11.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Document Name">
+                                             <styleClass>
+                                                <String fx:value="NormalContent_LBL" />
+                                                <String fx:value="editBoardTitle" />
+                                             </styleClass>
+                                          </Text>
+                                          <Text fill="#f4f4f4" layoutX="265.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author">
+                                             <styleClass>
+                                                <String fx:value="NormalContent_LBL" />
+                                                <String fx:value="editBoardTitle" />
+                                             </styleClass>
+                                          </Text>
+                                          <Text fill="#f4f4f4" layoutX="471.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
+                                             <styleClass>
+                                                <String fx:value="NormalContent_LBL" />
+                                                <String fx:value="editBoardTitle" />
+                                             </styleClass>
+                                          </Text>
+                                          <TextField fx:id="FolderName_TXT" alignment="CENTER" layoutX="589.0" layoutY="118.0" prefHeight="36.0" prefWidth="120.0" promptText="JAVA" styleClass="textInFieldText" />
+                                          <Text fill="#f4f4f4" layoutX="597.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Folder">
+                                             <styleClass>
+                                                <String fx:value="NormalContent_LBL" />
+                                                <String fx:value="editBoardTitle" />
+                                             </styleClass>
+                                          </Text>
+                                          <Text fill="#f4f4f4" layoutX="740.0" layoutY="106.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Document Path">
+                                             <styleClass>
+                                                <String fx:value="NormalContent_LBL" />
+                                                <String fx:value="editBoardTitle" />
+                                             </styleClass>
+                                          </Text>
+                                          <TextField fx:id="docPath_TXT" alignment="CENTER" layoutX="730.0" layoutY="118.0" prefHeight="36.0" prefWidth="442.0" promptText="System/A/B/C/JavaProject.docx" styleClass="textInFieldText" />
+                                          <Button fx:id="addBTN" layoutX="693.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#HandleAddNewItem" prefHeight="36.0" prefWidth="91.0" styleClass="addBTN" text="Add" />
+                                          <Button fx:id="updateBTN" layoutX="921.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#HandleUpdateItem" prefHeight="38.0" prefWidth="98.0" styleClass="updateBTN" text="Update" />
+                                          <Button fx:id="deleteBTN" layoutX="1041.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#HandleMoveItemToTrash" prefHeight="39.0" prefWidth="128.0" styleClass="deleteBTN" text="Move to trash" />
+                                          <Button fx:id="clearBTN" layoutX="805.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#HandleClearCreateItemInfo" prefHeight="37.0" prefWidth="96.0" styleClass="clearBTN" text="Clear" />
+                                       </children>
+                                    </AnchorPane>
+                                 </children>
+                              </AnchorPane>
                            </children>
                            <effect>
                               <InnerShadow radius="34.565" width="119.26" />

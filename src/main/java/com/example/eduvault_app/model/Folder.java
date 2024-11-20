@@ -3,6 +3,7 @@ package com.example.eduvault_app.model;
 public class Folder {
     private int FOLDER_ID;
     private int USER_ID;
+    private int PARENT_ID;
     private String FOLDER_NAME;
     private String FOLDER_CREATEAT;
     private short isDeleted;
@@ -10,12 +11,16 @@ public class Folder {
     public Folder() {
     }
 
-    public Folder(int FOLDER_ID, int USER_ID, String FOLDER_NAME, String FOLDER_CREATEAT, short isDeleted) {
+    public Folder(int FOLDER_ID, int USER_ID, int PARENT_ID, String FOLDER_NAME, String FOLDER_CREATEAT, short isDeleted) {
         this.FOLDER_ID = FOLDER_ID;
         this.USER_ID = USER_ID;
+        this.PARENT_ID = PARENT_ID;
         this.FOLDER_NAME = FOLDER_NAME;
         this.FOLDER_CREATEAT = FOLDER_CREATEAT;
         this.isDeleted = isDeleted;
+    }
+
+    public Folder(int i, String folderName, int i1, int i2) {
     }
 
     public int getFOLDER_ID() {
@@ -32,6 +37,14 @@ public class Folder {
 
     public void setUSER_ID(int USER_ID) {
         this.USER_ID = USER_ID;
+    }
+
+    public int getPARENT_ID() {
+        return PARENT_ID;
+    }
+
+    public void setPARENT_ID(int PARENT_ID) {
+        this.PARENT_ID = PARENT_ID;
     }
 
     public String getFOLDER_NAME() {
@@ -63,9 +76,14 @@ public class Folder {
         return "Folder{" +
                 "FOLDER_ID=" + FOLDER_ID +
                 ", USER_ID=" + USER_ID +
+                ", PARENT_ID=" + PARENT_ID +
                 ", FOLDER_NAME='" + FOLDER_NAME + '\'' +
                 ", FOLDER_CREATEAT='" + FOLDER_CREATEAT + '\'' +
                 ", isDeleted=" + isDeleted +
                 '}';
     }
 }
+
+
+
+
