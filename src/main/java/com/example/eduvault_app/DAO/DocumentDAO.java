@@ -73,19 +73,17 @@ public class DocumentDAO implements DAOInterface<Document> {
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
             // Get current time yyyy/mm/dd
-            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
-            String formattedDate = LocalDate.now().format(formatter);
-            LocalDateTime formattedDateTime = LocalDate.parse(formattedDate, formatter).atStartOfDay();
+
+            LocalDateTime dateTime = LocalDateTime.now();
+            dateTime = dateTime.withNano(0);
 
             // Step 2: Set parameters
             ps.setInt(1, document.getFOLDER_ID());
             ps.setInt(2, document.getUSER_ID());
-            // ps.setInt(3, document.getTYPEDOC_ID());
             ps.setString(4, document.getDOC_NAME());
             ps.setString(5, document.getSUMMARY());
-            ps.setTimestamp(6, Timestamp.valueOf(formattedDateTime));
+            ps.setTimestamp(6, Timestamp.valueOf(dateTime));
             ps.setString(7, document.getDOC_PATH());
-            ps.setInt(8, document.getDOC_ID());
 
             // Step 3: Execute SQL
             result =  ps.executeUpdate();
@@ -99,10 +97,11 @@ public class DocumentDAO implements DAOInterface<Document> {
         return result;
     }
 
+    // Xoa file roi danh dau isDeleted = 1
     @Override
     public int delete(int id) {
         int result = 0;
-        String sql = "DELETE FROM DOCUMENT WHERE DOC_ID = ?";
+        String sql = "UPDATE DOCUMENT SET isDeleted = 1 WHERE DOC_ID = ?";
         try (Connection conn = JDBCUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             // Step 2: Set parameter

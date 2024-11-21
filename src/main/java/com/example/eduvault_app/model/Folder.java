@@ -1,17 +1,19 @@
 package com.example.eduvault_app.model;
 
+import java.time.LocalDateTime;
+
 public class Folder {
     private int FOLDER_ID;
     private int USER_ID;
     private int PARENT_ID;
     private String FOLDER_NAME;
-    private String FOLDER_CREATEAT;
+    private LocalDateTime FOLDER_CREATEAT;
     private short isDeleted;
 
     public Folder() {
     }
 
-    public Folder(int FOLDER_ID, int USER_ID, int PARENT_ID, String FOLDER_NAME, String FOLDER_CREATEAT, short isDeleted) {
+    public Folder(int FOLDER_ID, int USER_ID, int PARENT_ID, String FOLDER_NAME, LocalDateTime FOLDER_CREATEAT, short isDeleted) {
         this.FOLDER_ID = FOLDER_ID;
         this.USER_ID = USER_ID;
         this.PARENT_ID = PARENT_ID;
@@ -55,11 +57,11 @@ public class Folder {
         this.FOLDER_NAME = FOLDER_NAME;
     }
 
-    public String getFOLDER_CREATEAT() {
+    public LocalDateTime getFOLDER_CREATEAT() {
         return FOLDER_CREATEAT;
     }
 
-    public void setFOLDER_CREATEAT(String FOLDER_CREATEAT) {
+    public void setFOLDER_CREATEAT(LocalDateTime FOLDER_CREATEAT) {
         this.FOLDER_CREATEAT = FOLDER_CREATEAT;
     }
 

@@ -73,10 +73,10 @@ public class DashBoardController implements Initializable {
     private FontAwesomeIconView UserForm;
 
     @FXML
-    private FontAwesomeIconView UploadDownload_Icon;
+    private FontAwesomeIconView refresh_icon;
 
     @FXML
-    private FontAwesomeIconView refresh_icon;
+    private FontAwesomeIconView refreshFolder_icon;
 
     //Pane
     @FXML
@@ -84,6 +84,12 @@ public class DashBoardController implements Initializable {
 
     @FXML
     private AnchorPane dashBoardTemp;
+
+    @FXML
+    private AnchorPane DocumentPane;
+
+    @FXML
+    private AnchorPane FolderPane;
 
     @FXML
     private ImageView UserAvatar_Icon;
@@ -103,6 +109,18 @@ public class DashBoardController implements Initializable {
 
     @FXML
     private Button updateBTN;
+
+    @FXML
+    private Button addFolderBTN;
+
+    @FXML
+    private Button clearFolderBTN;
+
+    @FXML
+    private Button deleteFolderBTN;
+
+    @FXML
+    private Button updateFolderBTN;
 
     //TABLE
     @FXML
@@ -125,6 +143,21 @@ public class DashBoardController implements Initializable {
 
     @FXML
     private TableColumn<DetailDocInfo, Integer> docNo_Col;
+
+    @FXML
+    private TableColumn<DetailFolderInfo, String> authorFolder_Col;
+
+    @FXML
+    private TableColumn<DetailFolderInfo, LocalDateTime> dateFolderCreate_Col;
+
+    @FXML
+    private TableColumn<DetailFolderInfo, String> folderName_Col;
+
+    @FXML
+    private TableColumn<DetailFolderInfo, Integer> folderNo_Col;
+
+    @FXML
+    private TableColumn<DetailFolderInfo, String> folderPath_Col;
 
     //LABEL
     @FXML
@@ -149,6 +182,18 @@ public class DashBoardController implements Initializable {
     @FXML
     private ComboBox<String> type_TXT;
 
+    @FXML
+    private TextField nameFolder_TXT;
+
+    @FXML
+    private TextField authorFolder_TXT;
+
+    @FXML
+    private TextField folderPath_TXT;
+
+    @FXML
+    private TextField parentFolder_TXT;
+
     private MouseEvent mouseEvent;
 
     //RUN TO SHOW DATA
@@ -161,6 +206,8 @@ public class DashBoardController implements Initializable {
     }
 
 
+
+//CUA DOCUMENT
 
 //ADD NEW DOC
     @FXML
@@ -175,10 +222,10 @@ public class DashBoardController implements Initializable {
             String fileExtension;
 
             switch (type) {
-                case "WORD":
+                case "Word":
                     fileExtension = ".docx";
                     break;
-                case "EXCEL":
+                case "Excel":
                     fileExtension = ".xlsx";
                     break;
                 case "PDF":
@@ -188,15 +235,19 @@ public class DashBoardController implements Initializable {
                     fileExtension = ".allFiles";
                     break;
             }
+            String Formatfolder = "";
+            if(!folder.isEmpty()){
+               Formatfolder = folder + "/" ;
+            }
 
-            String docPath = new String("System/" + folder + "/" + docName + fileExtension);
+            String docPath = new String("System/" + Formatfolder + docName + fileExtension);
 
             //Current Time
             LocalDateTime dateTime = LocalDateTime.now();
             dateTime = dateTime.withNano(0);
 
 
-            if (docName.isEmpty() || type.isEmpty() || author.isEmpty() || folder.isEmpty()) {
+            if (docName.isEmpty() || type.isEmpty() || author.isEmpty()) {
                 showErrorAlert("Lỗi nhập liệu", "Vui lòng điền đầy đủ thông tin trước khi thêm.");
                 return;
             }
@@ -369,6 +420,7 @@ public class DashBoardController implements Initializable {
             D.TYPEDOC_ID,
             D.CREATEDATE,
             D.USER_ID,
+            D.DOC_PATH,
             U.FULLNAME,
             T.TYPEDOC_NAME,
             CASE\s
@@ -394,7 +446,8 @@ public class DashBoardController implements Initializable {
                         resultSet.getTimestamp("CREATEDATE"),    // Lấy giá trị CREATEDATE (nếu có cả ngày và giờ)
                         resultSet.getInt("USER_ID"),             // Lấy giá trị USER_ID
                         resultSet.getString("FULLNAME"),         // Lấy giá trị FULLNAME từ bảng User
-                        resultSet.getString("TYPEDOC_NAME")      // Lấy giá trị TYPEDOC_NAME từ bảng TypeofDocument
+                        resultSet.getString("TYPEDOC_NAME"),      // Lấy giá trị TYPEDOC_NAME từ bảng TypeofDocument
+                        resultSet.getString("DOC_PATH")
 
                 );
 
@@ -418,7 +471,7 @@ public class DashBoardController implements Initializable {
         type_Col.setCellValueFactory(new PropertyValueFactory<>("TYPEDOC_NAME"));
         dateCreate_Col.setCellValueFactory(new PropertyValueFactory<>("CREATEDATE"));
         author_Col.setCellValueFactory(new PropertyValueFactory<>("FULLNAME"));
-
+        docPath_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_PATH"));
         docList_TableView.setItems(listDoc);
     }
 
@@ -499,6 +552,109 @@ public class DashBoardController implements Initializable {
         alert.setContentText(message);
         alert.showAndWait();
     }
+
+
+    //CUA FOLDER
+    //TAO FOLDER MOI
+    @FXML
+    void HandleAddNewFolder(MouseEvent event) {
+        try {
+            String folderName = nameFolder_TXT.getText().trim();
+            String author = author_TXT.getText().trim();
+            String parentFolder = parentFolder_TXT.getText().trim();
+
+            String FolderInherit = "";
+            if (!folderName.isEmpty()) {
+                FolderInherit = parentFolder + "/" + folderName;
+            }
+
+            String folderPath = new String("System/" + FolderInherit);
+
+            //Current Time
+            LocalDateTime dateTime = LocalDateTime.now();
+            dateTime = dateTime.withNano(0);
+
+            if (folderName.isEmpty() || author.isEmpty()) {
+                showErrorAlert("Lỗi nhập liệu", "Vui lòng điền đầy đủ thông tin trước khi thêm.");
+                return;
+            }
+
+            int userId = new UserDAO().getUserIdForFolder(author);
+            int parentId = new UserDAO().getUserIdForFolder(parentFolder);
+
+
+            Folder folder = new Folder();
+            folder.setUSER_ID(userId);
+            folder.setFOLDER_NAME(folderName);
+            folder.setPARENT_ID(parentId);
+            folder.setFOLDER_CREATEAT(dateTime);
+            folder.setIsDeleted((short) 0);
+
+            FolderDAO folderDAO = new FolderDAO();
+            int result = folderDAO.add(folder);
+
+            if (result > 0) {
+                showSuccessAlert("Thành công", "Thư mục đã được tạo thành công.");
+                clearDoc();
+                refreshDocList();
+            } else {
+                showErrorAlert("Thất bại", "Không thể thêm thư mục. Vui lòng thử lại.");
+            }
+        }
+        catch (Exception e) {
+            showErrorAlert("Lỗi hệ thống", "Đã xảy ra lỗi: " + e.getMessage());
+            System.out.println(e.getMessage());
+            e.printStackTrace();
+        }
+    }
+
+    //XOA THONG TIN FOLDER
+    @FXML
+    void HandleClearCreateFolderInfo(MouseEvent event) {
+        folderPath_TXT.clear();
+        nameFolder_TXT.clear();
+        authorFolder_TXT.clear();
+        parentFolder_TXT.clear();
+    }
+
+    public void clearFolder (){
+        folderPath_TXT.clear();
+        nameFolder_TXT.clear();
+        authorFolder_TXT.clear();
+        parentFolder_TXT.clear();
+    }
+
+    //LOC FOLDER
+    @FXML
+    void HandleFilteringFolder(MouseEvent event) {
+
+    }
+
+    //DUA FOLDER VAO THUNG RAC
+    @FXML
+    void HandleMoveFolderToTrash(MouseEvent event) {
+
+    }
+
+    //CAP NHAT FOLDER
+    @FXML
+    void HandleUpdateFolder(MouseEvent event) {
+
+    }
+
+    //DISPLAY FOLDER DATA
+
+    public ObservableList<DetailFolderInfo> folderList() {
+        ObservableList<DetailFolderInfo> folderList = FXCollections.observableArrayList();
+
+    }
+
+    //CAP NHAT BANG DU LIEU FOLDER
+    @FXML
+    void RefreshFolderTable(MouseEvent event) {
+
+    }
+
 
 }
 
