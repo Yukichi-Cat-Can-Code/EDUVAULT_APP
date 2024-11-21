@@ -191,7 +191,7 @@
                                             <font>
                                                 <Font size="18.0" />
                                             </font></Label>
-                                        <ImageView fx:id="avatar" fitHeight="238.0" fitWidth="226.0" layoutX="247.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="avatar" fitHeight="238.0" fitWidth="226.0" layoutX="190.0" layoutY="236.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../../../Images/avatar_unlogin.png" />
                                             </image>
@@ -199,38 +199,38 @@
                                     <ColorAdjust brightness="1.0" contrast="1.0" saturation="-1.0" />
                                  </effect>
                                         </ImageView>
-                                        <Label fx:id="fullNameLabel" layoutX="566.0" layoutY="220.0" prefHeight="27.0" prefWidth="217.0" text="Full name" textFill="#dadada">
+                                        <Label fx:id="fullNameLabel" layoutX="509.0" layoutY="221.0" prefHeight="27.0" prefWidth="217.0" text="Full name" textFill="#dadada">
                                             <font>
                                                 <Font size="24.0" />
                                             </font>
                                         </Label>
-                                        <Button fx:id="saveButton" layoutX="802.0" layoutY="492.0" minHeight="30.0" mnemonicParsing="false" onAction="#saveButtonOnAction" prefHeight="38.0" prefWidth="147.0" style="-fx-background-color: #257AC5; -fx-background-radius: 20;" text="Save" textFill="WHITE">
+                                        <Button fx:id="saveButton" layoutX="745.0" layoutY="493.0" minHeight="30.0" mnemonicParsing="false" onAction="#saveButtonOnAction" prefHeight="38.0" prefWidth="147.0" style="-fx-background-color: #257AC5; -fx-background-radius: 20;" text="Save" textFill="WHITE">
                                             <font>
                                                 <Font name="System Bold" size="22.0" />
                                             </font></Button>
-                                        <TextField fx:id="fullNameField" layoutX="566.0" layoutY="255.0" prefHeight="36.0" prefWidth="526.0" style="-fx-background-radius: 15;" />
-                                        <Label fx:id="passwordLabel" layoutX="566.0" layoutY="385.0" prefHeight="27.0" prefWidth="217.0" text="Password" textFill="#dadada">
+                                        <TextField fx:id="fullNameField" layoutX="509.0" layoutY="256.0" prefHeight="36.0" prefWidth="526.0" style="-fx-background-radius: 15;" />
+                                        <Label fx:id="passwordLabel" layoutX="509.0" layoutY="386.0" prefHeight="27.0" prefWidth="217.0" text="Password" textFill="#dadada">
                                             <font>
                                                 <Font size="24.0" />
                                             </font>
                                         </Label>
-                                        <Button fx:id="cancelButton" cancelButton="true" layoutX="965.0" layoutY="492.0" minHeight="38.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #969696; -fx-background-radius: 20;" text="Cancel" textFill="WHITE">
+                                        <Button fx:id="cancelButton" cancelButton="true" layoutX="908.0" layoutY="493.0" minHeight="38.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #969696; -fx-background-radius: 20;" text="Cancel" textFill="WHITE">
                                             <font>
                                                 <Font name="System Bold" size="22.0" />
                                             </font>
                                         </Button>
-                                        <PasswordField fx:id="passwordField" layoutX="565.0" layoutY="421.0" prefHeight="37.0" prefWidth="526.0" style="-fx-background-radius: 15;" />
-                                        <Label fx:id="joinedDate" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="767.0" layoutY="182.0" prefHeight="23.0" prefWidth="318.0" text="Joined: 01-01-2000" textFill="#a1a1a1">
+                                        <PasswordField fx:id="passwordField" layoutX="508.0" layoutY="422.0" prefHeight="37.0" prefWidth="526.0" style="-fx-background-radius: 15;" />
+                                        <Label fx:id="joinedDate" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="710.0" layoutY="183.0" prefHeight="23.0" prefWidth="318.0" text="Joined: 01-01-2000" textFill="#a1a1a1">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="fullNameLabel1" layoutX="566.0" layoutY="301.0" prefHeight="27.0" prefWidth="217.0" text="Email" textFill="#dadada">
+                                        <Label fx:id="fullNameLabel1" layoutX="509.0" layoutY="302.0" prefHeight="27.0" prefWidth="217.0" text="Email" textFill="#dadada">
                                             <font>
                                                 <Font size="24.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="emailField" layoutX="566.0" layoutY="335.0" prefHeight="38.0" prefWidth="526.0" style="-fx-background-radius: 15;" />
+                                        <TextField fx:id="emailField" layoutX="509.0" layoutY="336.0" prefHeight="38.0" prefWidth="526.0" style="-fx-background-radius: 15;" />
                                     </children>
                                 </AnchorPane>
                             </center>
