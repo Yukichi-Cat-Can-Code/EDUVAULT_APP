@@ -9,6 +9,7 @@
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -25,7 +26,7 @@
                         <DropShadow height="0.0" radius="21.125" width="86.5" />
                     </effect>
                     <children>
-                        <ImageView fitHeight="46.0" fitWidth="38.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                        <ImageView fitHeight="46.0" fitWidth="38.0" layoutX="19.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                             <image>
                                 <Image url="@../../../Images/z6013220897737_2a5f022004284f361efe5ced21206144.jpg" />
                             </image>
@@ -34,19 +35,19 @@
                             </cursor>
                         </ImageView>
                         <GlyphsStack layoutX="51.0" layoutY="97.0" />
-                        <FontAwesomeIconView fx:id="AnalystForm" fill="#ccbdbd" glyphName="PIE_CHART" layoutX="25.0" layoutY="120.0" size="27">
+                        <FontAwesomeIconView fx:id="AnalystForm" fill="WHITE" glyphName="PIE_CHART" layoutX="25.0" layoutY="137.0" size="27">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor></FontAwesomeIconView>
-                        <FontAwesomeIconView fx:id="CalendarForm" fill="#ccbdbd" glyphName="CALENDAR" layoutX="25.0" layoutY="200.0" size="27" text="">
+                        <FontAwesomeIconView fx:id="CalendarForm" fill="WHITE" glyphName="CALENDAR" layoutX="25.0" layoutY="212.0" size="27" text="">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor></FontAwesomeIconView>
-                        <FontAwesomeIconView fx:id="UserForm" fill="#ccbdbd" glyphName="USER" layoutX="25.0" layoutY="280.0" size="27">
+                        <FontAwesomeIconView fx:id="UserForm" fill="WHITE" glyphName="USER" layoutX="25.0" layoutY="290.0" size="27">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor></FontAwesomeIconView>
-                        <FontAwesomeIconView fx:id="AddNewDoc_Icon" fill="#ccbdbd" glyphName="FILE" layoutX="25.0" layoutY="360.0" size="27" text="">
+                        <FontAwesomeIconView fx:id="AddNewDoc_Icon" fill="WHITE" glyphName="FILE" layoutX="25.0" layoutY="360.0" size="27" text="">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor></FontAwesomeIconView>
@@ -54,11 +55,11 @@
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor></FontAwesomeIconView>
-                        <FontAwesomeIconView fx:id="UploadDownload_Icon" fill="#ccbdbd" glyphName="FILE_TEXT" layoutX="25.0" layoutY="440.0" size="27">
+                        <FontAwesomeIconView fx:id="UploadDownload_Icon" fill="WHITE" glyphName="FILE_TEXT" layoutX="25.0" layoutY="440.0" size="27">
                             <cursor>
                                 <Cursor fx:constant="HAND" />
                             </cursor></FontAwesomeIconView>
-                        <FontAwesomeIconView fx:id="SignOut_Icon" fill="#ccbdbd" glyphName="SIGN_OUT" layoutX="22.0" layoutY="767.0" onMouseClicked="#signOutLabelOnMouseClicked" size="40" text="" />
+                        <FontAwesomeIconView fx:id="SignOut_Icon" fill="WHITE" glyphName="SIGN_OUT" layoutX="22.0" layoutY="767.0" onMouseClicked="#signOutLabelOnMouseClicked" size="40" text="" />
                     </children></AnchorPane>
             </left>
             <center>
@@ -66,7 +67,7 @@
                     <left>
                         <AnchorPane prefHeight="804.0" prefWidth="204.0" style="-fx-background-color: #1C1C1C;" styleClass="OptionPane" BorderPane.alignment="CENTER">
                             <children>
-                                <Label layoutX="31.0" layoutY="63.0" prefHeight="43.0" prefWidth="126.0" style="-fx-text-fill: #eeeeee;" text="Documents" textFill="WHITE">
+                                <Label layoutX="31.0" layoutY="63.0" prefHeight="46.0" prefWidth="146.0" style="-fx-text-fill: #eeeeee;" text="Documents" textFill="WHITE">
                                     <font>
                                         <Font name="Calibri Bold" size="33.0" />
                                     </font>
@@ -75,45 +76,45 @@
                                         <String fx:value="General" />
                                     </styleClass>
                                 </Label>
-                                <Label fx:id="DashBoardForm_LBL" alignment="CENTER_RIGHT" layoutX="40.0" layoutY="118.0" onMouseClicked="#showDocumentForm" prefHeight="22.0" prefWidth="142.0" styleClass="NormalContent_LBL" text="All Document">
+                                <Label fx:id="DashBoardForm_LBL" alignment="CENTER_RIGHT" layoutX="40.0" layoutY="137.0" onMouseClicked="#showDocumentForm" prefHeight="22.0" prefWidth="142.0" styleClass="NormalContent_LBL" text="All Document">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></Label>
-                                <Label fx:id="TrashForm" alignment="CENTER_RIGHT" layoutX="37.0" layoutY="167.0" onMouseClicked="#showTrashForm" prefHeight="22.0" prefWidth="82.0" styleClass="NormalContent_LBL" text="Trash">
+                                <Label fx:id="TrashForm" alignment="CENTER_RIGHT" layoutX="35.0" layoutY="188.0" onMouseClicked="#showTrashForm" prefHeight="22.0" prefWidth="82.0" styleClass="NormalContent_LBL" text="Trash">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></Label>
-                                <Label layoutX="27.0" layoutY="230.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Folders">
+                                <Label layoutX="27.0" layoutY="286.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Folders">
                                     <font>
                                         <Font name="Calibri Bold" size="19.0" />
                                     </font>
                                 </Label>
-                                <Label fx:id="FolderForm" alignment="CENTER" layoutX="44.0" layoutY="284.0" prefHeight="22.0" prefWidth="98.0" styleClass="NormalContent_LBL" text="Folder" textAlignment="CENTER">
+                                <Label fx:id="FolderForm" alignment="CENTER" layoutX="46.0" layoutY="340.0" prefHeight="22.0" prefWidth="98.0" styleClass="NormalContent_LBL" text="Folder" textAlignment="CENTER">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></Label>
-                                <Label layoutX="29.0" layoutY="343.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Tags">
+                                <Label layoutX="21.0" layoutY="431.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Tags">
                                     <font>
                                         <Font name="Calibri Bold" size="19.0" />
                                     </font>
                                 </Label>
-                                <FontAwesomeIconView fill="#c4c4c4fd" glyphName="FOLDER_OPEN_ALT" layoutX="42.0" layoutY="135.0" selectionFill="#e4e0e0" size="22" styleClass="FolderIcon">
+                                <FontAwesomeIconView fill="#fffffffc" glyphName="FOLDER_OPEN_ALT" layoutX="46.0" layoutY="157.0" size="22" styleClass="FolderIcon">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
-                                <FontAwesomeIconView fill="#efecec" glyphName="TRASH_ALT" layoutX="45.0" layoutY="184.0" size="22">
+                                <FontAwesomeIconView fill="#efecec" glyphName="TRASH_ALT" layoutX="43.0" layoutY="205.0" size="22">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
-                                <FontAwesomeIconView fill="#efecec" glyphName="FOLDER_ALT" layoutX="44.0" layoutY="301.0" size="22">
+                                <FontAwesomeIconView fill="WHITE" glyphName="FOLDER_ALT" layoutX="43.0" layoutY="358.0" size="22">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
-                                <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="129.0" layoutY="300.0" size="14">
+                                <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="126.0" layoutY="357.0" size="14">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
-                                <Label alignment="CENTER" layoutX="47.0" layoutY="480.0" prefHeight="22.0" prefWidth="53.0" style="-fx-background-color: #015D57;" styleClass="Tags" text="Excel">
+                                <Label alignment="CENTER" layoutX="25.0" layoutY="603.0" prefHeight="34.0" prefWidth="112.0" style="-fx-background-color: #015D57; -fx-background-radius: 12;" styleClass="Tags" text="Excel">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
@@ -121,15 +122,18 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Label>
-                                <Label alignment="CENTER" layoutX="47.0" layoutY="392.0" prefHeight="24.0" prefWidth="61.0" style="-fx-background-color: #304390;" styleClass="Tags" text="Word">
+                                <Label alignment="CENTER" layoutX="25.0" layoutY="492.0" minHeight="29.0" prefHeight="34.0" prefWidth="112.0" style="-fx-background-color: #304390; -fx-background-radius: 12;" styleClass="Tags" text="Word">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></Label>
-                                <Label alignment="CENTER" layoutX="48.0" layoutY="436.0" prefHeight="21.0" prefWidth="65.0" style="-fx-background-color: #dc863a;" styleClass="Tags" text="PDF">
+                                <Label alignment="CENTER" layoutX="25.0" layoutY="548.0" prefHeight="34.0" prefWidth="112.0" style="-fx-background-color: #dc863a; -fx-background-radius: 12;" styleClass="Tags" text="PDF">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></Label>
-                            </children></AnchorPane>
+                            </children>
+                     <effect>
+                        <DropShadow height="99.37" radius="68.7775" spread="0.25" width="177.74" />
+                     </effect></AnchorPane>
                     </left>
                     <center>
                         <BorderPane prefHeight="804.0" prefWidth="0.0" BorderPane.alignment="CENTER">
@@ -143,9 +147,12 @@
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
+                                 <effect>
+                                    <ColorAdjust brightness="-0.19" />
+                                 </effect>
                                         </ImageView>
                                         <FontAwesomeIconView glyphName="BARS" layoutX="14.0" layoutY="38.0" size="24" styleClass="Menu_BTN" text="" />
-                                        <FontAwesomeIconView fx:id="Notification_Icon" fill="WHITE" glyphName="BELL" layoutX="234.0" layoutY="40.0" onMouseClicked="#ShowNotification" size="25" styleClass="BellIcon" textAlignment="CENTER" wrappingWidth="35.0">
+                                        <FontAwesomeIconView fx:id="Notification_Icon" fill="WHITE" glyphName="BELL" layoutX="183.0" layoutY="45.0" onMouseClicked="#ShowNotification" size="25" styleClass="BellIcon" textAlignment="CENTER" wrappingWidth="35.0">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
@@ -153,31 +160,27 @@
                                                 <Font size="23.0" />
                                             </font>
                                         </FontAwesomeIconView>
-                                        <FontAwesomeIconView fx:id="GetHelp_Icon" fill="WHITE" glyphName="QUESTION" layoutX="166.0" layoutY="40.0" onMouseClicked="#AskForHelp" size="28" styleClass="QuestionIcon" text="" textAlignment="CENTER" wrappingWidth="38.428571701049805">
+                                        <FontAwesomeIconView fx:id="GetHelp_Icon" fill="WHITE" glyphName="QUESTION" layoutX="119.0" layoutY="46.0" onMouseClicked="#AskForHelp" size="28" styleClass="QuestionIcon" text="" textAlignment="CENTER" wrappingWidth="38.428571701049805">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </FontAwesomeIconView>
-                                        <FontAwesomeIconView fx:id="FeedBack_Icon" fill="WHITE" glyphName="COMMENT" layoutX="98.0" layoutY="40.0" onMouseClicked="#ShowComment" selectionFill="#665656" size="28" styleClass="ChatIcon" textAlignment="CENTER" wrappingWidth="42.0">
+                                        <FontAwesomeIconView fx:id="FeedBack_Icon" fill="WHITE" glyphName="COMMENT" layoutX="60.0" layoutY="44.0" onMouseClicked="#ShowComment" selectionFill="#665656" size="28" styleClass="ChatIcon" textAlignment="CENTER" wrappingWidth="42.0">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </FontAwesomeIconView>
-                                        <FontAwesomeIconView fx:id="AddDoc_Icon" fill="#efecec" glyphName="PLUS" layoutX="35.0" layoutY="40.0" size="25" strokeMiterLimit="20.0" text="" wrappingWidth="19.8573260307312">
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor></FontAwesomeIconView>
-                                        <Label fx:id="Fullname" layoutX="1006.0" layoutY="5.0" styleClass="HeaderTitle" text="Le Lu Huyen Tran" textFill="WHITE">
+                                        <Label fx:id="Fullname" layoutX="1006.0" layoutY="8.0" styleClass="HeaderTitle" text="Le Lu Huyen Tran" textFill="WHITE">
                                             <font>
                                                 <Font size="32.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="Email2" layoutX="937.0" layoutY="33.0" styleClass="EmailHeader" text="tranb2203588@student.ctu.edu" textFill="WHITE">
+                                        <Label fx:id="Email2" layoutX="937.0" layoutY="35.0" styleClass="EmailHeader" text="tranb2203588@student.ctu.edu" textFill="WHITE">
                                             <font>
                                                 <Font size="20.0" />
                                             </font>
                                         </Label>
-                                        <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="989.0" layoutY="22.0" size="12" text="" />
+                                        <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="988.0" layoutY="25.0" size="12" text="" />
                                     </children>
                                 </AnchorPane>
                             </top>
@@ -188,43 +191,46 @@
                                             <font>
                                                 <Font size="18.0" />
                                             </font></Label>
-                                        <ImageView fx:id="avatar" fitHeight="342.0" fitWidth="343.0" layoutX="169.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="avatar" fitHeight="238.0" fitWidth="226.0" layoutX="247.0" layoutY="235.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../../../Images/avatar_unlogin.png" />
                                             </image>
+                                 <effect>
+                                    <ColorAdjust brightness="1.0" contrast="1.0" saturation="-1.0" />
+                                 </effect>
                                         </ImageView>
-                                        <Label fx:id="fullNameLabel" layoutX="566.0" layoutY="214.0" prefHeight="27.0" prefWidth="217.0" text="Full name" textFill="WHITE">
+                                        <Label fx:id="fullNameLabel" layoutX="566.0" layoutY="220.0" prefHeight="27.0" prefWidth="217.0" text="Full name" textFill="#dadada">
                                             <font>
                                                 <Font size="24.0" />
                                             </font>
                                         </Label>
-                                        <Button fx:id="saveButton" layoutX="631.0" layoutY="461.0" mnemonicParsing="false" onAction="#saveButtonOnAction" prefHeight="45.0" prefWidth="170.0" style="-fx-background-color: #FFFFFF;" text="Save">
+                                        <Button fx:id="saveButton" layoutX="802.0" layoutY="492.0" minHeight="30.0" mnemonicParsing="false" onAction="#saveButtonOnAction" prefHeight="38.0" prefWidth="147.0" style="-fx-background-color: #257AC5; -fx-background-radius: 20;" text="Save" textFill="WHITE">
                                             <font>
-                                                <Font size="22.0" />
+                                                <Font name="System Bold" size="22.0" />
                                             </font></Button>
-                                        <TextField fx:id="fullNameField" layoutX="566.0" layoutY="249.0" prefHeight="26.0" prefWidth="525.0" />
-                                        <Label fx:id="passwordLabel" layoutX="566.0" layoutY="371.0" prefHeight="27.0" prefWidth="217.0" text="Password" textFill="WHITE">
+                                        <TextField fx:id="fullNameField" layoutX="566.0" layoutY="255.0" prefHeight="36.0" prefWidth="526.0" style="-fx-background-radius: 15;" />
+                                        <Label fx:id="passwordLabel" layoutX="566.0" layoutY="385.0" prefHeight="27.0" prefWidth="217.0" text="Password" textFill="#dadada">
                                             <font>
                                                 <Font size="24.0" />
                                             </font>
                                         </Label>
-                                        <Button fx:id="cancelButton" cancelButton="true" layoutX="838.0" layoutY="461.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="45.0" prefWidth="170.0" style="-fx-background-color: #D36F17;" text="Cancel">
+                                        <Button fx:id="cancelButton" cancelButton="true" layoutX="965.0" layoutY="492.0" minHeight="38.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="38.0" prefWidth="126.0" style="-fx-background-color: #969696; -fx-background-radius: 20;" text="Cancel" textFill="WHITE">
                                             <font>
-                                                <Font size="22.0" />
+                                                <Font name="System Bold" size="22.0" />
                                             </font>
                                         </Button>
-                                        <PasswordField fx:id="passwordField" layoutX="566.0" layoutY="407.0" prefHeight="26.0" prefWidth="525.0" />
-                                        <Label fx:id="joinedDate" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="772.0" layoutY="179.0" prefHeight="23.0" prefWidth="318.0" text="Joined: 01-01-2000" textFill="#a1a1a1">
+                                        <PasswordField fx:id="passwordField" layoutX="565.0" layoutY="421.0" prefHeight="37.0" prefWidth="526.0" style="-fx-background-radius: 15;" />
+                                        <Label fx:id="joinedDate" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="767.0" layoutY="182.0" prefHeight="23.0" prefWidth="318.0" text="Joined: 01-01-2000" textFill="#a1a1a1">
                                             <font>
                                                 <Font size="18.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="fullNameLabel1" layoutX="566.0" layoutY="293.0" prefHeight="27.0" prefWidth="217.0" text="Email" textFill="WHITE">
+                                        <Label fx:id="fullNameLabel1" layoutX="566.0" layoutY="301.0" prefHeight="27.0" prefWidth="217.0" text="Email" textFill="#dadada">
                                             <font>
                                                 <Font size="24.0" />
                                             </font>
                                         </Label>
-                                        <TextField fx:id="emailField" layoutX="566.0" layoutY="328.0" prefHeight="26.0" prefWidth="525.0" />
+                                        <TextField fx:id="emailField" layoutX="566.0" layoutY="335.0" prefHeight="38.0" prefWidth="526.0" style="-fx-background-radius: 15;" />
                                     </children>
                                 </AnchorPane>
                             </center>

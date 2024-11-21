@@ -22,7 +22,7 @@
             <left>
                 <AnchorPane prefHeight="804.0" prefWidth="74.0" style="-fx-background-color: #010101;" styleClass="LeftPane" BorderPane.alignment="CENTER">
                     <effect>
-                  <InnerShadow />
+                  <InnerShadow choke="0.09" />
                     </effect>
                     <children>
                         <ImageView fitHeight="46.0" fitWidth="38.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
@@ -68,7 +68,7 @@
                             <children>
                                 <Label layoutX="31.0" layoutY="63.0" prefHeight="43.0" prefWidth="126.0" style="-fx-text-fill: #eeeeee;" text="Documents" textFill="WHITE">
                                     <font>
-                                        <Font name="Tahoma Bold" size="41.0" />
+                                        <Font name="Tahoma Bold" size="44.0" />
                                     </font>
                                     <styleClass>
                                         <String fx:value="SideBarTitle_LBL" />
@@ -105,7 +105,7 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
-                                <FontAwesomeIconView fill="#efecec" glyphName="FOLDER_ALT" layoutX="42.0" layoutY="303.0" size="22">
+                                <FontAwesomeIconView fill="#efecec" glyphName="FOLDER_ALT" layoutX="44.0" layoutY="301.0" size="22">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
@@ -113,7 +113,7 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
-                                <Label alignment="CENTER" layoutX="47.0" layoutY="491.0" prefHeight="34.0" prefWidth="101.0" style="-fx-background-color: #015D57; -fx-background-radius: 10;" styleClass="Tags" text="Excel">
+                                <Label alignment="CENTER" layoutX="47.0" layoutY="549.0" prefHeight="34.0" prefWidth="111.0" style="-fx-background-color: #015D57; -fx-background-radius: 12;" styleClass="Tags" text="Excel">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
@@ -124,14 +124,14 @@
                               <Font name="Tahoma Bold" size="14.0" />
                            </font>
                                 </Label>
-                                <Label alignment="CENTER" layoutX="47.0" layoutY="392.0" prefHeight="34.0" prefWidth="101.0" style="-fx-background-color: #304390; -fx-background-radius: 10;" styleClass="Tags" text="Word" textFill="#fffdfd">
+                                <Label alignment="CENTER" layoutX="46.0" layoutY="420.0" minHeight="28.0" prefHeight="34.0" prefWidth="112.0" style="-fx-background-color: #304390; -fx-background-radius: 12;" styleClass="Tags" text="Word" textFill="#fffdfd">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                            <font>
                               <Font name="Tahoma Bold" size="17.0" />
                            </font></Label>
-                                <Label alignment="CENTER" layoutX="48.0" layoutY="443.0" prefHeight="34.0" prefWidth="100.0" style="-fx-background-color: #dc863a; -fx-background-radius: 10;" styleClass="Tags" text="PDF" textFill="WHITE">
+                                <Label alignment="CENTER" layoutX="47.0" layoutY="485.0" minHeight="30.0" prefHeight="34.0" prefWidth="110.0" style="-fx-background-color: #dc863a; -fx-background-radius: 12;" styleClass="Tags" text="PDF" textFill="WHITE">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
@@ -140,7 +140,7 @@
                            </font></Label>
                             </children>
                      <effect>
-                        <DropShadow height="94.695" radius="65.27125" width="168.39" />
+                        <DropShadow height="131.54" radius="61.614999999999995" spread="0.61" width="116.92" />
                      </effect></AnchorPane>
                     </left>
                     <center>
@@ -157,7 +157,7 @@
                                             </cursor>
                                         </ImageView>
                                         <FontAwesomeIconView glyphName="BARS" layoutX="14.0" layoutY="38.0" size="24" styleClass="Menu_BTN" text="" />
-                                        <FontAwesomeIconView fx:id="Notification_Icon" fill="WHITE" glyphName="BELL" layoutX="802.0" layoutY="38.0" onMouseClicked="#ShowNotification" size="25" styleClass="BellIcon" textAlignment="CENTER" wrappingWidth="35.0">
+                                        <FontAwesomeIconView fx:id="Notification_Icon" fill="WHITE" glyphName="BELL" layoutX="234.0" layoutY="40.0" onMouseClicked="#ShowNotification" size="25" styleClass="BellIcon" textAlignment="CENTER" wrappingWidth="35.0">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
@@ -165,23 +165,23 @@
                                                 <Font size="23.0" />
                                             </font>
                                         </FontAwesomeIconView>
-                                        <FontAwesomeIconView fx:id="GetHelp_Icon" fill="WHITE" glyphName="QUESTION" layoutX="756.0" layoutY="42.0" onMouseClicked="#AskForHelp" size="28" styleClass="QuestionIcon" text="" textAlignment="CENTER" wrappingWidth="38.428571701049805">
+                                        <FontAwesomeIconView fx:id="GetHelp_Icon" fill="WHITE" glyphName="QUESTION" layoutX="166.0" layoutY="40.0" onMouseClicked="#AskForHelp" size="28" styleClass="QuestionIcon" text="" textAlignment="CENTER" wrappingWidth="38.428571701049805">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </FontAwesomeIconView>
-                                        <FontAwesomeIconView fx:id="FeedBack_Icon" fill="WHITE" glyphName="COMMENT" layoutX="694.0" layoutY="41.0" onMouseClicked="#ShowComment" selectionFill="#665656" size="28" styleClass="ChatIcon" textAlignment="CENTER" wrappingWidth="42.0">
+                                        <FontAwesomeIconView fx:id="FeedBack_Icon" fill="WHITE" glyphName="COMMENT" layoutX="98.0" layoutY="40.0" onMouseClicked="#ShowComment" selectionFill="#665656" size="28" styleClass="ChatIcon" textAlignment="CENTER" wrappingWidth="42.0">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                         </FontAwesomeIconView>
-                                        <FontAwesomeIconView fx:id="AddDoc_Icon" fill="#efecec" glyphName="PLUS" layoutX="653.0" layoutY="41.0" size="25" strokeMiterLimit="20.0" text="" wrappingWidth="19.8573260307312">
+                                        <FontAwesomeIconView fx:id="AddDoc_Icon" fill="#efecec" glyphName="PLUS" layoutX="35.0" layoutY="40.0" size="25" strokeMiterLimit="20.0" text="" wrappingWidth="19.8573260307312">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor></FontAwesomeIconView>
                                         <Label fx:id="Fullname" layoutX="1008.0" layoutY="6.0" styleClass="HeaderTitle" text="Le Lu Huyen Tran" textFill="WHITE">
                                             <font>
-                                                <Font name="Tahoma Bold" size="25.0" />
+                                                <Font size="26.0" />
                                             </font>
                                         </Label>
                                         <Label fx:id="Email2" layoutX="937.0" layoutY="33.0" styleClass="EmailHeader" text="tranb2203588@student.ctu.edu" textFill="WHITE">
@@ -197,7 +197,7 @@
                                 </AnchorPane>
                             </top>
                             <center>
-                                <AnchorPane prefHeight="741.0" prefWidth="1212.0" BorderPane.alignment="CENTER">
+                                <AnchorPane prefHeight="794.0" prefWidth="1206.0" BorderPane.alignment="CENTER">
                                     <children>
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="195.0" layoutX="669.0" layoutY="99.0" stroke="BLACK" strokeWidth="2.0" style="-fx-arc-height: 50; -fx-arc-width: 50;" width="368.0" />
                                         <Rectangle arcHeight="5.0" arcWidth="5.0" height="196.0" layoutX="670.0" layoutY="411.0" stroke="BLACK" strokeWidth="2.0" style="-fx-arc-height: 50; -fx-arc-width: 50;" width="364.0" />
@@ -216,7 +216,7 @@
                                                 <Font name="Tahoma Bold" size="25.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="joinedDate" layoutX="201.0" layoutY="432.0" text="Joined: 12/12/2024" textFill="WHITE">
+                                        <Label fx:id="joinedDate" layoutX="201.0" layoutY="455.0" text="Joined: 12/12/2024" textFill="WHITE">
                                             <font>
                                                 <Font name="Tahoma Bold" size="25.0" />
                                             </font></Label>
@@ -229,14 +229,14 @@
                                                 <Font name=".VnHelvetIns Medium" size="22.0" />
                                             </font>
                                         </Label>
-                                        <Button fx:id="editButton" alignment="CENTER" layoutX="275.0" layoutY="550.0" mnemonicParsing="false" onAction="#editButtonOnAction" prefHeight="41.0" prefWidth="174.0" style="-fx-background-color: #257AC5; -fx-background-radius: 15;" text="Edit" textFill="WHITE">
+                                        <Button fx:id="editButton" alignment="CENTER" layoutX="282.0" layoutY="557.0" mnemonicParsing="false" onAction="#editButtonOnAction" prefHeight="34.0" prefWidth="153.0" style="-fx-background-color: #257AC5; -fx-background-radius: 15;" text="Edit" textFill="WHITE">
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor>
                                  <font>
-                                    <Font name="Tahoma Bold" size="21.0" />
+                                    <Font name="System Bold" size="17.0" />
                                  </font></Button>
-                                        <Label fx:id="Email" layoutX="201.0" layoutY="390.0" text="Email:" textFill="WHITE">
+                                        <Label fx:id="Email" layoutX="201.0" layoutY="401.0" text="Email:" textFill="WHITE">
                                             <font>
                                                 <Font name="Tahoma Bold" size="25.0" />
                                             </font>
@@ -252,6 +252,9 @@
                                             </font>
                                         </Label>
                                     </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
                                 </AnchorPane>
                             </center>
                         </BorderPane>

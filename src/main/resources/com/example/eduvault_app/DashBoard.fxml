@@ -11,6 +11,7 @@
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.effect.InnerShadow?>
 <?import javafx.scene.image.Image?>
@@ -27,10 +28,10 @@
          <left>
             <AnchorPane prefHeight="804.0" prefWidth="74.0" style="-fx-background-color: #010101;" styleClass="LeftPane" BorderPane.alignment="CENTER">
                <effect>
-                  <DropShadow height="0.0" radius="21.125" width="86.5" />
+                  <DropShadow height="73.86000000000001" radius="34.91250000000001" spread="0.45" width="67.79" />
                </effect>
                <children>
-                  <ImageView fitHeight="46.0" fitWidth="38.0" layoutX="20.0" layoutY="20.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="46.0" fitWidth="38.0" layoutX="19.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../../Images/z6013220897737_2a5f022004284f361efe5ced21206144.jpg" />
                      </image>
@@ -39,19 +40,19 @@
                      </cursor>
                   </ImageView>
                   <GlyphsStack layoutX="51.0" layoutY="97.0" />
-                  <FontAwesomeIconView fx:id="AnalystForm" fill="#ccbdbd" glyphName="PIE_CHART" layoutX="25.0" layoutY="120.0" size="27">
+                  <FontAwesomeIconView fx:id="AnalystForm" fill="WHITE" glyphName="PIE_CHART" layoutX="25.0" layoutY="137.0" size="27">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></FontAwesomeIconView>
-                  <FontAwesomeIconView fx:id="CalendarForm" fill="#ccbdbd" glyphName="CALENDAR" layoutX="25.0" layoutY="200.0" size="27" text="">
+                  <FontAwesomeIconView fx:id="CalendarForm" fill="WHITE" glyphName="CALENDAR" layoutX="25.0" layoutY="212.0" size="27" text="">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></FontAwesomeIconView>
-                  <FontAwesomeIconView fx:id="UserForm" fill="#ccbdbd" glyphName="USER" layoutX="25.0" layoutY="280.0" size="27">
+                  <FontAwesomeIconView fx:id="UserForm" fill="WHITE" glyphName="USER" layoutX="25.0" layoutY="290.0" size="27">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></FontAwesomeIconView>
-                  <FontAwesomeIconView fx:id="AddNewDoc_Icon" fill="#ccbdbd" glyphName="FILE" layoutX="25.0" layoutY="360.0" size="27" text="">
+                  <FontAwesomeIconView fx:id="AddNewDoc_Icon" fill="WHITE" glyphName="FILE" layoutX="25.0" layoutY="360.0" size="27" text="">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></FontAwesomeIconView>
@@ -59,17 +60,17 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></FontAwesomeIconView>
-                  <FontAwesomeIconView fx:id="UploadDownload_Icon" fill="#ccbdbd" glyphName="FILE_TEXT" layoutX="25.0" layoutY="440.0" size="27">
+                  <FontAwesomeIconView fx:id="UploadDownload_Icon" fill="WHITE" glyphName="FILE_TEXT" layoutX="25.0" layoutY="440.0" size="27">
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></FontAwesomeIconView>
-                  <FontAwesomeIconView fx:id="SignOut_Icon" fill="#ccbdbd" glyphName="SIGN_OUT" layoutX="22.0" layoutY="767.0" onMouseClicked="#signOutLabelOnMouseClicked" size="40" text="" />
+                  <FontAwesomeIconView fx:id="SignOut_Icon" fill="WHITE" glyphName="SIGN_OUT" layoutX="22.0" layoutY="767.0" onMouseClicked="#signOutLabelOnMouseClicked" size="40" text="" />
                </children></AnchorPane>
          </left>
          <center>
             <BorderPane prefHeight="801.0" prefWidth="1217.0" BorderPane.alignment="CENTER">
                <left>
-                  <AnchorPane prefHeight="804.0" prefWidth="204.0" style="-fx-background-color: #1C1C1C;" styleClass="OptionPane" BorderPane.alignment="CENTER">
+                  <AnchorPane prefHeight="806.0" prefWidth="231.0" style="-fx-background-color: #1C1C1C;" styleClass="OptionPane" BorderPane.alignment="CENTER">
                      <children>
                         <Label layoutX="31.0" layoutY="63.0" prefHeight="43.0" prefWidth="126.0" style="-fx-text-fill: #eeeeee;" text="Documents" textFill="WHITE">
                            <font>
@@ -80,48 +81,48 @@
                               <String fx:value="General" />
                            </styleClass>
                         </Label>
-                        <Label fx:id="DashBoardForm_LBL" alignment="CENTER_RIGHT" layoutX="40.0" layoutY="118.0" onMouseClicked="#showDocumentForm" prefHeight="22.0" prefWidth="142.0" styleClass="NormalContent_LBL" text="All Document">
+                        <Label fx:id="DashBoardForm_LBL" alignment="CENTER_RIGHT" layoutX="40.0" layoutY="137.0" onMouseClicked="#showDocumentForm" prefHeight="22.0" prefWidth="142.0" styleClass="NormalContent_LBL" text="All Document">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor>
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Label>
-                        <Label fx:id="TrashForm" alignment="CENTER_RIGHT" layoutX="37.0" layoutY="167.0" onMouseClicked="#showTrashForm" prefHeight="22.0" prefWidth="82.0" styleClass="NormalContent_LBL" text="Trash">
+                        <Label fx:id="TrashForm" alignment="CENTER_RIGHT" layoutX="35.0" layoutY="188.0" onMouseClicked="#showTrashForm" prefHeight="22.0" prefWidth="82.0" styleClass="NormalContent_LBL" text="Trash">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Label>
-                        <Label layoutX="27.0" layoutY="230.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Folders">
+                        <Label layoutX="27.0" layoutY="286.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Folders">
                            <font>
                               <Font name="Calibri Bold" size="19.0" />
                            </font>
                         </Label>
-                        <Label fx:id="FolderForm" alignment="CENTER" layoutX="44.0" layoutY="284.0" prefHeight="22.0" prefWidth="98.0" styleClass="NormalContent_LBL" text="Folder" textAlignment="CENTER">
+                        <Label fx:id="FolderForm" alignment="CENTER" layoutX="46.0" layoutY="340.0" prefHeight="22.0" prefWidth="98.0" styleClass="NormalContent_LBL" text="Folder" textAlignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Label>
-                        <Label layoutX="29.0" layoutY="343.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Tags">
+                        <Label layoutX="21.0" layoutY="431.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Tags">
                            <font>
                               <Font name="Calibri Bold" size="19.0" />
                            </font>
                         </Label>
-                        <FontAwesomeIconView fill="#c4c4c4fd" glyphName="FOLDER_OPEN_ALT" layoutX="42.0" layoutY="135.0" selectionFill="#e4e0e0" size="22" styleClass="FolderIcon">
+                        <FontAwesomeIconView fill="#c4c4c4fd" glyphName="FOLDER_OPEN_ALT" layoutX="42.0" layoutY="157.0" selectionFill="#e4e0e0" size="22" styleClass="FolderIcon" text="">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></FontAwesomeIconView>
-                        <FontAwesomeIconView fill="#efecec" glyphName="TRASH_ALT" layoutX="45.0" layoutY="184.0" size="22">
+                        <FontAwesomeIconView fill="#efecec" glyphName="TRASH_ALT" layoutX="43.0" layoutY="205.0" size="22" text="">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></FontAwesomeIconView>
-                        <FontAwesomeIconView fill="#efecec" glyphName="FOLDER_ALT" layoutX="44.0" layoutY="301.0" size="22">
+                        <FontAwesomeIconView fill="#efecec" glyphName="FOLDER_ALT" layoutX="43.0" layoutY="358.0" size="22">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></FontAwesomeIconView>
-                        <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="129.0" layoutY="300.0" size="14">
+                        <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="126.0" layoutY="357.0" size="14">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></FontAwesomeIconView>
-                        <Label alignment="CENTER" layoutX="47.0" layoutY="480.0" prefHeight="22.0" prefWidth="53.0" style="-fx-background-color: #015D57;" styleClass="Tags" text="Excel">
+                        <Label alignment="CENTER" layoutX="25.0" layoutY="603.0" minHeight="20.0" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: #015D57; -fx-background-radius: 12;" styleClass="Tags" text="Excel">
                            <opaqueInsets>
                               <Insets />
                            </opaqueInsets>
@@ -129,31 +130,41 @@
                               <Cursor fx:constant="HAND" />
                            </cursor>
                         </Label>
-                        <Label alignment="CENTER" layoutX="47.0" layoutY="392.0" prefHeight="24.0" prefWidth="61.0" style="-fx-background-color: #304390;" styleClass="Tags" text="Word">
+                        <Label alignment="CENTER" layoutX="25.0" layoutY="492.0" minHeight="20.0" prefHeight="34.0" prefWidth="108.0" style="-fx-background-color: #304390; -fx-background-radius: 12;" styleClass="Tags" text="Word">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Label>
-                        <Label alignment="CENTER" layoutX="48.0" layoutY="436.0" prefHeight="21.0" prefWidth="65.0" style="-fx-background-color: #dc863a;" styleClass="Tags" text="PDF">
+                        <Label alignment="CENTER" layoutX="25.0" layoutY="548.0" minHeight="20.0" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: F5831F; -fx-background-radius: 12;" styleClass="Tags" text="PDF">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Label>
-                     </children></AnchorPane>
+                     </children>
+                     <effect>
+                        <DropShadow height="33.3" radius="7.824999999999999" width="0.0">
+                           <color>
+                              <Color red="1.0" green="1.0" blue="1.0" />
+                           </color>
+                        </DropShadow>
+                     </effect></AnchorPane>
                </left>
                <center>
                   <BorderPane prefHeight="804.0" prefWidth="0.0" BorderPane.alignment="CENTER">
                      <top>
                         <AnchorPane prefHeight="51.0" prefWidth="1259.0" style="-fx-background-color: #010101;" styleClass="Header" BorderPane.alignment="CENTER">
                            <children>
-                              <ImageView fx:id="UserAvatar_Icon" fitHeight="58.0" fitWidth="53.0" layoutX="1170.0" layoutY="5.0" onMouseClicked="#showUserProfile" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #010101;" styleClass="UserImage">
+                              <ImageView fx:id="UserAvatar_Icon" fitHeight="58.0" fitWidth="53.0" layoutX="1170.0" layoutY="6.0" onMouseClicked="#showUserProfile" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #010101;" styleClass="UserImage">
                                  <image>
                                     <Image url="@../../../Images/avatar.png" />
                                  </image>
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
+                                 <effect>
+                                    <ColorAdjust brightness="-0.21" />
+                                 </effect>
                               </ImageView>
                               <FontAwesomeIconView glyphName="BARS" layoutX="14.0" layoutY="38.0" size="24" styleClass="Menu_BTN" text="" />
-                              <FontAwesomeIconView fx:id="Notification_Icon" fill="WHITE" glyphName="BELL" layoutX="234.0" layoutY="40.0" onMouseClicked="#ShowNotification" size="25" styleClass="BellIcon" textAlignment="CENTER" wrappingWidth="35.0">
+                              <FontAwesomeIconView fx:id="Notification_Icon" fill="WHITE" glyphName="BELL" layoutX="183.0" layoutY="45.0" onMouseClicked="#ShowNotification" size="25" styleClass="BellIcon" textAlignment="CENTER" wrappingWidth="35.0">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
@@ -161,47 +172,41 @@
                                     <Font size="23.0" />
                                  </font>
                               </FontAwesomeIconView>
-                              <FontAwesomeIconView fx:id="GetHelp_Icon" fill="WHITE" glyphName="QUESTION" layoutX="166.0" layoutY="40.0" onMouseClicked="#AskForHelp" size="28" styleClass="QuestionIcon" text="" textAlignment="CENTER" wrappingWidth="38.428571701049805">
+                              <FontAwesomeIconView fx:id="GetHelp_Icon" fill="WHITE" glyphName="QUESTION" layoutX="119.0" layoutY="46.0" onMouseClicked="#AskForHelp" size="28" styleClass="QuestionIcon" text="" textAlignment="CENTER" wrappingWidth="38.428571701049805">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </FontAwesomeIconView>
-                              <FontAwesomeIconView fx:id="FeedBack_Icon" fill="WHITE" glyphName="COMMENT" layoutX="98.0" layoutY="40.0" onMouseClicked="#ShowComment" selectionFill="#665656" size="28" styleClass="ChatIcon" textAlignment="CENTER" wrappingWidth="42.0">
+                              <FontAwesomeIconView fx:id="FeedBack_Icon" fill="WHITE" glyphName="COMMENT" layoutX="60.0" layoutY="44.0" onMouseClicked="#ShowComment" selectionFill="#665656" size="28" styleClass="ChatIcon" textAlignment="CENTER" wrappingWidth="42.0">
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </FontAwesomeIconView>
-                              <FontAwesomeIconView fx:id="AddDoc_Icon" fill="#efecec" glyphName="PLUS" layoutX="35.0" layoutY="40.0" size="25" strokeMiterLimit="20.0" text="" wrappingWidth="19.8573260307312">
-                                 <cursor>
-                                    <Cursor fx:constant="HAND" />
-                                 </cursor></FontAwesomeIconView>
-                              <Label fx:id="Fullname" layoutX="1006.0" layoutY="11.0" styleClass="HeaderTitle" text="Le Lu Huyen Tran" textFill="WHITE">
+                              <Label fx:id="Fullname" layoutX="1006.0" layoutY="13.0" styleClass="HeaderTitle" text="Le Lu Huyen Tran" textFill="WHITE">
                                  <font>
-                                    <Font size="32.0" />
+                                    <Font name="System Bold" size="32.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="Email" layoutX="937.0" layoutY="33.0" styleClass="EmailHeader" text="tranb2203588@student.ctu.edu" textFill="WHITE">
+                              <Label fx:id="Email" layoutX="937.0" layoutY="37.0" styleClass="EmailHeader" text="tranb2203588@student.ctu.edu" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Label>
-                              <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="992.0" layoutY="28.0" size="12" text="" />
+                              <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="988.0" layoutY="30.0" size="12" text="" />
                            </children>
+                           <effect>
+                              <DropShadow />
+                           </effect>
                         </AnchorPane>
                      </top>
                      <center>
                         <AnchorPane fx:id="DashBoardForm_Pane" layoutY="600.0" prefHeight="704.0" prefWidth="1268.0" style="-fx-background-color: #1C1C1C;" styleClass="BodyPane" BorderPane.alignment="CENTER">
                            <children>
-                              <AnchorPane prefHeight="746.0" prefWidth="1260.0">
+                              <AnchorPane layoutX="28.0" prefHeight="746.0" prefWidth="1232.0">
                                  <children>
-                                    <Label layoutX="36.0" layoutY="14.0" styleClass="DashBoardBodyTitle_lbl" text="Document management" textFill="#efecec">
-                                       <font>
-                                          <Font name="Calibri Bold" size="27.0" />
-                                       </font>
-                                    </Label>
-                                    <AnchorPane layoutX="35.0" layoutY="226.0" prefHeight="512.0" prefWidth="1190.0" styleClass="bg-white">
+                                    <AnchorPane layoutX="54.0" layoutY="226.0" prefHeight="512.0" prefWidth="1171.0" style="-fx-background-color: #1c1c1c;" styleClass="bg-white">
                                        <children>
-                                          <TableView fx:id="docList_TableView" layoutX="9.0" layoutY="59.0" prefHeight="442.0" prefWidth="1172.0">
+                                          <TableView fx:id="docList_TableView" layoutX="9.0" layoutY="59.0" prefHeight="442.0" prefWidth="1172.0" style="-fx-background-color: #010101;">
                                              <columns>
                                                 <TableColumn fx:id="docNo_Col" prefWidth="45.0" text="No." />
                                                 <TableColumn fx:id="docName_Col" prefWidth="154.0" text="Document Name" />
@@ -211,7 +216,7 @@
                                                 <TableColumn fx:id="docPath_Col" prefWidth="829.0" text="Document Path" />
                                              </columns>
                                           </TableView>
-                                          <TextField layoutX="14.0" layoutY="14.0" prefHeight="30.0" prefWidth="331.0" promptText="Search for document" styleClass="SearchBox_TXT">
+                                          <TextField layoutY="2.0" prefHeight="42.0" prefWidth="331.0" promptText="Search for document" style="-fx-background-color: #444444;" styleClass="SearchBox_TXT">
                                              <font>
                                                 <Font name="Calibri" size="16.0" />
                                              </font>
@@ -219,71 +224,117 @@
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                              <effect>
-                                                <InnerShadow>
-                                                   <color>
-                                                      <Color opacity="0.3893129825592041" />
-                                                   </color>
-                                                </InnerShadow>
+                                                <DropShadow spread="0.05" />
                                              </effect>
                                           </TextField>
-                                          <FontAwesomeIconView fill="#9e9595" glyphName="SEARCH" layoutX="23.0" layoutY="34.0" size="16.0" text="">
+                                          <FontAwesomeIconView fill="#9e9595" glyphName="SEARCH" layoutX="14.0" layoutY="29.0" size="16.0" text="">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
                                           </FontAwesomeIconView>
-                                          <Button fx:id="FilterBTN" alignment="CENTER" layoutX="374.0" layoutY="11.0" mnemonicParsing="false" onMouseClicked="#HandleFilteringItem" prefHeight="35.0" prefWidth="91.0" styleClass="FilterBTN" text="Filter" />
-                                          <FontAwesomeIconView fill="#ececec" glyphName="SLIDERS" layoutX="384.0" layoutY="34.0" size="15" />
+                                          <Button fx:id="FilterBTN" alignment="CENTER" layoutX="359.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#HandleFilteringItem" prefHeight="35.0" prefWidth="116.0" style="-fx-background-radius: 20; -fx-background-color: #257AC5;" styleClass="FilterBTN" text="Filter" />
+                                          <FontAwesomeIconView fill="#ececec" glyphName="SLIDERS" layoutX="381.0" layoutY="28.0" size="15" />
                                           <FontAwesomeIconView fx:id="refresh_icon" fill="#fcfcfc" glyphName="REFRESH" layoutX="1143.0" layoutY="37.0" onMouseClicked="#RefreshTable" size="24.0" />
                                        </children>
                                     </AnchorPane>
-                                    <AnchorPane layoutX="35.0" layoutY="45.0" prefHeight="168.0" prefWidth="1183.0" styleClass="bg-white">
+                                    <AnchorPane layoutX="35.0" layoutY="51.0" prefHeight="162.0" prefWidth="1183.0" style="-fx-background-radius: 20; -fx-background-color: #1c1c1c;" styleClass="bg-white">
                                        <children>
-                                          <TextField fx:id="docName_TXT" alignment="CENTER" layoutX="11.0" layoutY="118.0" prefHeight="36.0" prefWidth="230.0" promptText="JavaProject" styleClass="textInFieldText" />
-                                          <TextField fx:id="author_TXT" alignment="CENTER" layoutX="257.0" layoutY="118.0" prefHeight="36.0" prefWidth="186.0" promptText="Le Lu Huyen Trạn" styleClass="textInFieldText" />
-                                          <Text fill="#f4f4f4" layoutX="11.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Document Name">
+                                          <TextField fx:id="docName_TXT" alignment="CENTER" layoutX="24.0" layoutY="123.0" minHeight="30.0" prefHeight="32.0" prefWidth="230.0" promptText="JavaProject" style="-fx-background-radius: 20; -fx-background-color: #FFFFFFF;" styleClass="textInFieldText" />
+                                          <TextField fx:id="author_TXT" alignment="CENTER" layoutX="274.0" layoutY="123.0" minHeight="30.0" prefHeight="34.0" prefWidth="186.0" promptText="Le Lu Huyen Trạn" style="-fx-background-radius: 20;" styleClass="textInFieldText" />
+                                          <Text fill="#f4f4f4" layoutX="28.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Document Name">
                                              <styleClass>
                                                 <String fx:value="NormalContent_LBL" />
                                                 <String fx:value="editBoardTitle" />
                                              </styleClass>
+                                             <font>
+                                                <Font name="System Bold" size="21.0" />
+                                             </font>
                                           </Text>
-                                          <Text fill="#f4f4f4" layoutX="265.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author">
+                                          <Text fill="#f4f4f4" layoutX="281.0" layoutY="107.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Author">
                                              <styleClass>
                                                 <String fx:value="NormalContent_LBL" />
                                                 <String fx:value="editBoardTitle" />
                                              </styleClass>
+                                             <font>
+                                                <Font name="System Bold" size="21.0" />
+                                             </font>
                                           </Text>
-                                          <Text fill="#f4f4f4" layoutX="471.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
+                                          <Text fill="#f4f4f4" layoutX="483.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
                                              <styleClass>
                                                 <String fx:value="NormalContent_LBL" />
                                                 <String fx:value="editBoardTitle" />
                                              </styleClass>
+                                             <font>
+                                                <Font name="System Bold" size="21.0" />
+                                             </font>
                                           </Text>
-                                          <TextField fx:id="FolderName_TXT" alignment="CENTER" layoutX="612.0" layoutY="118.0" prefHeight="36.0" prefWidth="120.0" promptText="JAVA" styleClass="textInFieldText" />
-                                          <Text fill="#f4f4f4" layoutX="620.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Folder">
+                                          <TextField fx:id="FolderName_TXT" alignment="CENTER" layoutX="628.0" layoutY="123.0" minHeight="32.0" prefHeight="34.0" prefWidth="120.0" promptText="JAVA" style="-fx-background-radius: 20;" styleClass="textInFieldText" />
+                                          <Text fill="#f4f4f4" layoutX="630.0" layoutY="105.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Folder">
                                              <styleClass>
                                                 <String fx:value="NormalContent_LBL" />
                                                 <String fx:value="editBoardTitle" />
                                              </styleClass>
+                                             <font>
+                                                <Font name="System Bold" size="21.0" />
+                                             </font>
                                           </Text>
-                                          <Text fill="#f4f4f4" layoutX="765.0" layoutY="103.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Document Path">
+                                          <Text fill="#f4f4f4" layoutX="760.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Document Path">
                                              <styleClass>
                                                 <String fx:value="NormalContent_LBL" />
                                                 <String fx:value="editBoardTitle" />
                                              </styleClass>
+                                             <font>
+                                                <Font name="System Bold" size="21.0" />
+                                             </font>
                                           </Text>
-                                          <TextField fx:id="docPath_TXT" alignment="CENTER" editable="false" layoutX="751.0" layoutY="118.0" prefHeight="36.0" prefWidth="421.0" promptText="System/A/B/C/JavaProject.docx" styleClass="textInFieldText" />
-                                          <Button fx:id="addBTN" layoutX="655.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#HandleAddNewItem" prefHeight="36.0" prefWidth="91.0" styleClass="addBTN" text="Add" />
-                                          <Button fx:id="updateBTN" layoutX="883.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#HandleUpdateItem" prefHeight="38.0" prefWidth="98.0" styleClass="updateBTN" text="Update" />
-                                          <Button fx:id="deleteBTN" layoutX="1003.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#HandleMoveItemToTrash" prefHeight="39.0" prefWidth="148.0" styleClass="deleteBTN" text="Move to trash" />
-                                          <Button fx:id="clearBTN" layoutX="767.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#HandleClearCreateItemInfo" prefHeight="37.0" prefWidth="96.0" styleClass="clearBTN" text="Clear" />
-                                          <ComboBox fx:id="type_TXT" layoutX="456.0" layoutY="118.0" prefHeight="36.0" prefWidth="136.0" promptText="WORD" styleClass="textInFieldText" />
+                                          <TextField fx:id="docPath_TXT" alignment="CENTER" editable="false" layoutX="760.0" layoutY="123.0" minHeight="32.0" prefHeight="34.0" prefWidth="422.0" promptText="System/A/B/C/JavaProject.docx" style="-fx-background-radius: 20;" styleClass="textInFieldText" />
+                                          <ComboBox fx:id="type_TXT" layoutX="470.0" layoutY="122.0" minHeight="30.0" prefHeight="34.0" prefWidth="136.0" promptText="WORD" style="-fx-background-radius: 20;" styleClass="textInFieldText" />
+                                          <FontAwesomeIconView fx:id="AddDoc_Icon" fill="#efecec" glyphName="PLUS" layoutX="902.0" layoutY="67.0" size="25" strokeMiterLimit="20.0" text="" wrappingWidth="28.65731382369995">
+                                             <cursor>
+                                                <Cursor fx:constant="HAND" />
+                                             </cursor>
+                                          </FontAwesomeIconView>
+                                          <ImageView fitHeight="29.0" fitWidth="22.0" layoutX="941.0" layoutY="46.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../Images/Vector.png" />
+                                             </image>
+                                             <effect>
+                                                <ColorAdjust brightness="1.0" contrast="0.69" />
+                                             </effect>
+                                          </ImageView>
+                                          <Button fx:id="clearBTN" layoutX="1057.0" layoutY="39.0" minHeight="30.0" mnemonicParsing="false" onMouseClicked="#HandleClearCreateItemInfo" prefHeight="38.0" prefWidth="96.0" style="-fx-background-radius: 20; -fx-background-color: #444444;" styleClass="clearBTN" text="Clear" textFill="WHITE">
+                                             <effect>
+                                                <DropShadow />
+                                             </effect></Button>
+                                          <ImageView fitHeight="26.0" fitWidth="27.0" layoutX="1020.0" layoutY="45.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../Images/1366963.png" />
+                                             </image>
+                                             <effect>
+                                                <ColorAdjust brightness="1.0" contrast="1.0" saturation="-1.0" />
+                                             </effect>
+                                          </ImageView>
+                                          <ImageView fitHeight="34.0" fitWidth="22.0" layoutX="982.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
+                                             <image>
+                                                <Image url="@../../../Images/Group.png" />
+                                             </image>
+                                          </ImageView>
                                        </children>
+                                       <effect>
+                                          <InnerShadow choke="0.06" height="46.73" radius="21.112499999999997" width="39.72" />
+                                       </effect>
                                     </AnchorPane>
+                                    <Label layoutX="62.0" layoutY="26.0" styleClass="DashBoardBodyTitle_lbl" text="Document management" textFill="WHITE">
+                                       <font>
+                                          <Font name="Calibri Bold" size="31.0" />
+                                       </font>
+                                    </Label>
+                                    <FontAwesomeIconView layoutX="14.0" layoutY="103.0" text="" />
                                  </children>
                               </AnchorPane>
                            </children>
                            <effect>
-                              <InnerShadow radius="34.565" width="119.26" />
+                              <InnerShadow choke="0.39" height="46.74" radius="57.375" width="184.76" />
                            </effect>
                         </AnchorPane>
                      </center>
