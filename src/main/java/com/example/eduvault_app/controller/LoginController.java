@@ -60,7 +60,7 @@ public class LoginController implements Initializable {
                 MainApp.setCurrentUser(usernameTextField.getText());
                 message.getScene().getWindow().hide();
                 try {
-                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/userdetails.fxml"));
+                    FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/testMergeUser.fxml"));
                     Parent root = loader.load();
                     Stage stage = new Stage();
                     Scene scene = new Scene(root);

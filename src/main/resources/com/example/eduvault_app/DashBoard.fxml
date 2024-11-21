@@ -63,7 +63,7 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></FontAwesomeIconView>
-                  <FontAwesomeIconView fx:id="SignOut_Icon" fill="#ccbdbd" glyphName="SIGN_OUT" layoutX="22.0" layoutY="767.0" onMouseClicked="#HandleLogOut" size="40" text="" />
+                  <FontAwesomeIconView fx:id="SignOut_Icon" fill="#ccbdbd" glyphName="SIGN_OUT" layoutX="22.0" layoutY="767.0" onMouseClicked="#signOutLabelOnMouseClicked" size="40" text="" />
                </children></AnchorPane>
          </left>
          <center>
@@ -172,17 +172,17 @@
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></FontAwesomeIconView>
-                              <Text fill="WHITE" layoutX="997.0" layoutY="31.0" strokeType="OUTSIDE" styleClass="HeaderTitle" text="Nhan Vinh Tien">
+                              <Label fx:id="Fullname" layoutX="1022.0" layoutY="10.0" styleClass="HeaderTitle" text="Nhan Vinh Tien" textFill="WHITE">
                                  <font>
                                     <Font size="32.0" />
                                  </font>
-                              </Text>
-                              <Text fill="WHITE" layoutX="931.0" layoutY="51.0" strokeType="OUTSIDE" styleClass="EmailHeader" text="tienb2203586@student.ctu.edu">
+                              </Label>
+                              <Label fx:id="Email" layoutX="937.0" layoutY="33.0" styleClass="EmailHeader" text="tienb2203586@student.ctu.edu" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
-                              </Text>
-                              <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="1141.0" layoutY="30.0" size="12" text="" />
+                              </Label>
+                              <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="1005.0" layoutY="27.0" size="12" text="" />
                            </children>
                         </AnchorPane>
                      </top>

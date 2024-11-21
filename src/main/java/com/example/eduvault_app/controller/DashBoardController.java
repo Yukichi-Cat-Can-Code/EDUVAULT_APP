@@ -1,8 +1,10 @@
 package com.example.eduvault_app.controller;
 
 import com.example.eduvault_app.DAO.*;
+import com.example.eduvault_app.MainApp;
 import com.example.eduvault_app.model.*;
 import com.example.eduvault_app.util.JDBCUtil;
+import database_conn.DatabaseConnection;
 import javafx.animation.PauseTransition;
 import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView;
 import javafx.collections.FXCollections;
@@ -149,6 +151,15 @@ public class DashBoardController implements Initializable {
     @FXML
     private ComboBox<String> type_TXT;
 
+    @FXML
+    private Label Fullname;
+
+    @FXML
+    private Label Email;
+
+    @FXML
+    private Label username;
+
     private MouseEvent mouseEvent;
 
     //RUN TO SHOW DATA
@@ -158,8 +169,47 @@ public class DashBoardController implements Initializable {
         type_TXT.setItems(list);
         type_TXT.setValue("Word");
         showDocList();
+
+        username.setText(MainApp.getCurrentUser());
+        System.out.println("current" + MainApp.getCurrentUser());
+        JDBCUtil jdbcUtil = new JDBCUtil();
+        Connection connectDB = jdbcUtil.getConnection();
+
+        String query = "SELECT * FROM user WHERE username = ?";
+        try (PreparedStatement stmt = connectDB.prepareStatement(query)) {
+            stmt.setString(1, username.getText());
+            ResultSet rs = stmt.executeQuery();
+            if (rs.next()) {
+                String name = rs.getString("FULLNAME");
+                Fullname.setText(name);
+                Email.setText(rs.getString("EMAIL"));
+            } else {
+                Fullname.setText("User not found.");
+            }
+        }  catch (SQLException e) {
+        e.printStackTrace();
+        e.getCause();
+        }
     }
 
+    //sign out
+    public void signOutLabelOnMouseClicked(MouseEvent mouseEvent) {
+        MainApp.setCurrentUser("");
+        MainApp.setCurrentUserJoinedDate("");
+        username.getScene().getWindow().hide();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/login.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Login");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
 
 
 //ADD NEW DOC

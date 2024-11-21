@@ -8,8 +8,8 @@ public class DatabaseConnection {
     public Connection getConnection() {
         String databaseName = "Eduvault_DB";
         String databaseUser = "root";
-        String databasePassword = "";
-        String url = "jdbc:mysql://localhost:3306/" + databaseName;
+        String databasePassword = "admin";
+        String url = "jdbc:mysql://localhost:906/" + databaseName;
 
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");

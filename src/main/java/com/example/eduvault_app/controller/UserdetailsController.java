@@ -124,4 +124,13 @@ public class UserdetailsController implements Initializable {
             e.getCause();
         }
     }
+
+    public void ShowNotification(MouseEvent mouseEvent) {
+    }
+
+    public void AskForHelp(MouseEvent mouseEvent) {
+    }
+
+    public void ShowComment(MouseEvent mouseEvent) {
+    }
 }
