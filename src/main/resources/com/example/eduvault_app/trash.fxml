@@ -81,11 +81,11 @@
                               <String fx:value="General" />
                            </styleClass>
                         </Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="118.0" prefHeight="22.0" prefWidth="142.0" styleClass="NormalContent_LBL" text="All Document">
+                        <Label alignment="CENTER_RIGHT" layoutX="40.0" layoutY="118.0" onMouseClicked="#showDocumentForm" prefHeight="22.0" prefWidth="142.0" styleClass="NormalContent_LBL" text="All Document">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Label>
-                        <Label alignment="CENTER_RIGHT" layoutX="37.0" layoutY="167.0" prefHeight="22.0" prefWidth="82.0" styleClass="NormalContent_LBL" text="Trash">
+                        <Label alignment="CENTER_RIGHT" layoutX="37.0" layoutY="167.0" onMouseClicked="#showTrashForm" prefHeight="22.0" prefWidth="82.0" styleClass="NormalContent_LBL" text="Trash">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Label>
@@ -142,7 +142,7 @@
                      <top>
                         <AnchorPane prefHeight="51.0" prefWidth="1259.0" style="-fx-background-color: #010101;" styleClass="Header" BorderPane.alignment="CENTER">
                            <children>
-                              <ImageView fitHeight="58.0" fitWidth="53.0" layoutX="1179.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #010101;" styleClass="UserImage">
+                              <ImageView fitHeight="58.0" fitWidth="53.0" layoutX="1179.0" layoutY="6.0" onMouseClicked="#showUserProfile" pickOnBounds="true" preserveRatio="true" style="-fx-blend-mode: #010101;" styleClass="UserImage">
                                  <image>
                                     <Image url="@../../../Images/avatar.png" />
                                  </image>
@@ -173,17 +173,17 @@
                                  <cursor>
                                     <Cursor fx:constant="HAND" />
                                  </cursor></FontAwesomeIconView>
-                              <Text fill="WHITE" layoutX="1010.0" layoutY="32.0" strokeType="OUTSIDE" styleClass="HeaderTitle" text="Nhan Vinh Tien">
+                              <Text fill="WHITE" layoutX="1010.0" layoutY="32.0" strokeType="OUTSIDE" styleClass="HeaderTitle" text="Le Lu Huyen Tran">
                                  <font>
                                     <Font size="32.0" />
                                  </font>
                               </Text>
-                              <Text fill="WHITE" layoutX="944.0" layoutY="52.0" strokeType="OUTSIDE" styleClass="EmailHeader" text="tienb2203586@student.ctu.edu">
+                              <Text fill="WHITE" layoutX="944.0" layoutY="52.0" strokeType="OUTSIDE" styleClass="EmailHeader" text="tranb2203588@student.ctu.edu">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
                               </Text>
-                              <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="1154.0" layoutY="31.0" size="12" text="" />
+                              <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="992.0" layoutY="29.0" size="12" text="" />
                            </children>
                         </AnchorPane>
                      </top>

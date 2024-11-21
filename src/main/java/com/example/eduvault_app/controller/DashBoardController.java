@@ -170,26 +170,26 @@ public class DashBoardController implements Initializable {
         type_TXT.setValue("Word");
         showDocList();
 
-        username.setText(MainApp.getCurrentUser());
-        System.out.println("current" + MainApp.getCurrentUser());
-        JDBCUtil jdbcUtil = new JDBCUtil();
-        Connection connectDB = jdbcUtil.getConnection();
-
-        String query = "SELECT * FROM user WHERE username = ?";
-        try (PreparedStatement stmt = connectDB.prepareStatement(query)) {
-            stmt.setString(1, username.getText());
-            ResultSet rs = stmt.executeQuery();
-            if (rs.next()) {
-                String name = rs.getString("FULLNAME");
-                Fullname.setText(name);
-                Email.setText(rs.getString("EMAIL"));
-            } else {
-                Fullname.setText("User not found.");
-            }
-        }  catch (SQLException e) {
-        e.printStackTrace();
-        e.getCause();
-        }
+//        username.setText(MainApp.getCurrentUser());
+//        System.out.println("current" + MainApp.getCurrentUser());
+//        JDBCUtil jdbcUtil = new JDBCUtil();
+//        Connection connectDB = jdbcUtil.getConnection();
+//
+//        String query = "SELECT * FROM user WHERE username = ?";
+//        try (PreparedStatement stmt = connectDB.prepareStatement(query)) {
+//            stmt.setString(1, username.getText());
+//            ResultSet rs = stmt.executeQuery();
+//            if (rs.next()) {
+//                String name = rs.getString("FULLNAME");
+//                Fullname.setText(name);
+//                Email.setText(rs.getString("EMAIL"));
+//            } else {
+//                Fullname.setText("User not found.");
+//            }
+//        }  catch (SQLException e) {
+//        e.printStackTrace();
+//        e.getCause();
+//        }
     }
 
     //sign out
@@ -548,6 +548,52 @@ public class DashBoardController implements Initializable {
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
+    }
+
+    //chuyen trang
+    public void showDocumentForm(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/DashBoard.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Document management");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    public void showTrashForm(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/trash.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Junk document management");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    public void showUserProfile(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/testMergeUser.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("User Details");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
     }
 
 }

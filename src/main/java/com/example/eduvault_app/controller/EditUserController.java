@@ -12,6 +12,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.PasswordField;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 
 import java.io.IOException;
@@ -100,8 +101,26 @@ public class EditUserController implements Initializable {
         switchScene();
     }
 
+    public void signOutLabelOnMouseClicked(MouseEvent mouseEvent) {
+        MainApp.setCurrentUser("");
+        MainApp.setCurrentUserJoinedDate("");
+        username.getScene().getWindow().hide();
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/login.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Login");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
     public void switchScene() throws IOException {
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/userdetails.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/testMergeUser.fxml"));
         Parent root = loader.load();
         Stage stage = new Stage();
         Scene scene = new Scene(root);
@@ -119,5 +138,59 @@ public class EditUserController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         username.setText("@" + MainApp.getCurrentUser());
         joinedDate.setText(MainApp.getCurrentUserJoinedDate());
+    }
+
+    public void ShowNotification(MouseEvent mouseEvent) {
+    }
+
+    public void AskForHelp(MouseEvent mouseEvent) {
+    }
+
+    public void ShowComment(MouseEvent mouseEvent) {
+    }
+
+    public void showDocumentForm(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/DashBoard.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Document management");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    public void showTrashForm(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/trash.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Junk document management");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    public void showUserProfile(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/testMergeUser.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("User Details");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
     }
 }

@@ -7,15 +7,16 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane fx:id="dashBoardTemp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1538.0" stylesheets="@../../../CSS/DashBoardFXMLStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.UserdetailsController">
+<AnchorPane fx:id="dashBoardTemp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1538.0" stylesheets="@../../../CSS/DashBoardFXMLStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.EditUserController">
     <children>
         <BorderPane layoutY="-1.0" prefHeight="804.0" prefWidth="1537.0" style="-fx-background-color: #1c1c1c;">
             <left>
@@ -166,9 +167,9 @@
                                             <cursor>
                                                 <Cursor fx:constant="HAND" />
                                             </cursor></FontAwesomeIconView>
-                                        <Label fx:id="Fullname" layoutX="1008.0" layoutY="6.0" styleClass="HeaderTitle" text="Le Lu Huyen Tran" textFill="WHITE">
+                                        <Label fx:id="Fullname" layoutX="1006.0" layoutY="5.0" styleClass="HeaderTitle" text="Le Lu Huyen Tran" textFill="WHITE">
                                             <font>
-                                                <Font size="26.0" />
+                                                <Font size="32.0" />
                                             </font>
                                         </Label>
                                         <Label fx:id="Email2" layoutX="937.0" layoutY="33.0" styleClass="EmailHeader" text="tranb2203588@student.ctu.edu" textFill="WHITE">
@@ -176,62 +177,54 @@
                                                 <Font size="20.0" />
                                             </font>
                                         </Label>
-                                        <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="991.0" layoutY="23.0" size="12" text="" />
+                                        <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="989.0" layoutY="22.0" size="12" text="" />
                                     </children>
                                 </AnchorPane>
                             </top>
                             <center>
-                                <AnchorPane prefHeight="794.0" prefWidth="1206.0" BorderPane.alignment="CENTER">
+                                <AnchorPane prefHeight="429.0" prefWidth="583.0" BorderPane.alignment="CENTER">
                                     <children>
-                                        <Rectangle arcHeight="5.0" arcWidth="5.0" layoutX="668.0" layoutY="99.0" stroke="#c9c9c9" strokeWidth="2.0" width="364.0" />
-                                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="196.0" layoutX="670.0" layoutY="411.0" stroke="#c9c9c9" strokeWidth="2.0" width="364.0" />
-                                        <Rectangle arcHeight="5.0" arcWidth="5.0" height="528.0" layoutX="152.0" layoutY="89.0" stroke="#c9c9c9" strokeWidth="2.0" width="426.0" />
-                                        <Label fx:id="username" alignment="CENTER" contentDisplay="CENTER" layoutX="275.0" layoutY="276.0" prefHeight="17.0" prefWidth="170.0" text="\@username" textFill="#c9c9c9">
+                                        <Label fx:id="username" layoutX="623.0" layoutY="255.0" prefHeight="17.0" prefWidth="170.0" text="\@username" textFill="#a1a1a1">
                                             <font>
                                                 <Font size="18.0" />
                                             </font></Label>
-                                        <ImageView fx:id="avatar" fitHeight="154.0" fitWidth="170.0" layoutX="282.0" layoutY="119.0" pickOnBounds="true" preserveRatio="true">
+                                        <ImageView fx:id="avatar" fitHeight="342.0" fitWidth="343.0" layoutX="169.0" layoutY="144.0" pickOnBounds="true" preserveRatio="true">
                                             <image>
                                                 <Image url="@../../../Images/avatar_unlogin.png" />
                                             </image>
                                         </ImageView>
-                                        <Label fx:id="FullName" layoutX="201.0" layoutY="344.0" prefHeight="37.0" prefWidth="321.0" text="Fullname:" textFill="WHITE">
+                                        <Label fx:id="fullNameLabel" layoutX="566.0" layoutY="214.0" prefHeight="27.0" prefWidth="217.0" text="Full name" textFill="WHITE">
                                             <font>
                                                 <Font size="24.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="joinedDate" layoutX="201.0" layoutY="424.0" text="Joined: 12/12/2024" textFill="WHITE">
+                                        <Button fx:id="saveButton" layoutX="631.0" layoutY="461.0" mnemonicParsing="false" onAction="#saveButtonOnAction" prefHeight="45.0" prefWidth="170.0" style="-fx-background-color: #FFFFFF;" text="Save">
                                             <font>
-                                                <Font size="24.0" />
-                                            </font></Label>
-                                        <Label fx:id="totalDocsLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="668.0" layoutY="253.0" prefHeight="29.0" prefWidth="364.0" text="Total number of docs added" textFill="WHITE">
-                                            <font>
-                                                <Font size="24.0" />
-                                            </font></Label>
-                                        <Label fx:id="totalFolderLabel" alignment="CENTER" contentDisplay="CENTER" layoutX="670.0" layoutY="568.0" prefHeight="29.0" prefWidth="364.0" text="Total number of folders added" textFill="WHITE">
+                                                <Font size="22.0" />
+                                            </font></Button>
+                                        <TextField fx:id="fullNameField" layoutX="566.0" layoutY="249.0" prefHeight="26.0" prefWidth="525.0" />
+                                        <Label fx:id="passwordLabel" layoutX="566.0" layoutY="371.0" prefHeight="27.0" prefWidth="217.0" text="Password" textFill="WHITE">
                                             <font>
                                                 <Font size="24.0" />
                                             </font>
                                         </Label>
-                                        <Button fx:id="editButton" alignment="CENTER" layoutX="298.0" layoutY="554.0" mnemonicParsing="false" onAction="#editButtonOnAction" prefHeight="32.0" prefWidth="124.0" style="-fx-background-color: #3c3c3c; -fx-border-width: 1; -fx-border-color: #FFFFFF;" text="Edit" textFill="WHITE">
-                                            <cursor>
-                                                <Cursor fx:constant="HAND" />
-                                            </cursor></Button>
-                                        <Label fx:id="Email" layoutX="201.0" layoutY="384.0" text="Email:" textFill="WHITE">
+                                        <Button fx:id="cancelButton" cancelButton="true" layoutX="838.0" layoutY="461.0" mnemonicParsing="false" onAction="#cancelButtonOnAction" prefHeight="45.0" prefWidth="170.0" style="-fx-background-color: #D36F17;" text="Cancel">
+                                            <font>
+                                                <Font size="22.0" />
+                                            </font>
+                                        </Button>
+                                        <PasswordField fx:id="passwordField" layoutX="566.0" layoutY="407.0" prefHeight="26.0" prefWidth="525.0" />
+                                        <Label fx:id="joinedDate" alignment="CENTER_RIGHT" contentDisplay="CENTER" layoutX="772.0" layoutY="179.0" prefHeight="23.0" prefWidth="318.0" text="Joined: 01-01-2000" textFill="#a1a1a1">
+                                            <font>
+                                                <Font size="18.0" />
+                                            </font>
+                                        </Label>
+                                        <Label fx:id="fullNameLabel1" layoutX="566.0" layoutY="293.0" prefHeight="27.0" prefWidth="217.0" text="Email" textFill="WHITE">
                                             <font>
                                                 <Font size="24.0" />
                                             </font>
                                         </Label>
-                                        <Label fx:id="totalDocs" alignment="CENTER" contentDisplay="CENTER" layoutX="668.0" layoutY="106.0" prefHeight="147.0" prefWidth="364.0" text="30" textFill="WHITE">
-                                            <font>
-                                                <Font name="System Bold" size="120.0" />
-                                            </font>
-                                        </Label>
-                                        <Label fx:id="totalFolder" alignment="CENTER" contentDisplay="CENTER" layoutX="669.0" layoutY="416.0" prefHeight="147.0" prefWidth="367.0" text="30" textFill="WHITE">
-                                            <font>
-                                                <Font name="System Bold" size="120.0" />
-                                            </font>
-                                        </Label>
+                                        <TextField fx:id="emailField" layoutX="566.0" layoutY="328.0" prefHeight="26.0" prefWidth="525.0" />
                                     </children>
                                 </AnchorPane>
                             </center>

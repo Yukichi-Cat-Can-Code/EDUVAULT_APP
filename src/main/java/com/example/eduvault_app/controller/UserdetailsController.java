@@ -61,7 +61,7 @@ public class UserdetailsController implements Initializable {
     public void editButtonOnAction(ActionEvent actionEvent) {
         username.getScene().getWindow().hide();
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/edituser.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/testEditUser.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             Scene scene = new Scene(root);
@@ -132,5 +132,50 @@ public class UserdetailsController implements Initializable {
     }
 
     public void ShowComment(MouseEvent mouseEvent) {
+    }
+
+    public void showDocumentForm(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/DashBoard.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Document management");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    public void showTrashForm(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/trash.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Junk document management");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
+
+    public void showUserProfile(MouseEvent mouseEvent) {
+        try {
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/testMergeUser.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("User Details");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
     }
 }
