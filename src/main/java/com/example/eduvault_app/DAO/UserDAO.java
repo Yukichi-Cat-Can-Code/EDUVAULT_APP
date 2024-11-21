@@ -1,5 +1,6 @@
 package com.example.eduvault_app.DAO;
 
+import com.example.eduvault_app.model.Folder;
 import com.example.eduvault_app.model.User;
 import com.example.eduvault_app.util.JDBCUtil;
 
@@ -184,5 +185,31 @@ public class UserDAO implements DAOInterface<User> {
             Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
         return users;
+    }
+
+    public int getUserIdForFolder(String author) {
+        int userId = -1;
+        String sql = "SELECT * FROM USER WHERE FULLNAME = ?";
+
+        try (Connection conn = JDBCUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql);
+             ) {
+
+            ps.setString(1, author);
+            // Execute query
+            ResultSet rs = ps.executeQuery();
+            // Process result set
+            if (rs.next()) {
+                userId = rs.getInt("USER_ID");
+            }
+
+            JDBCUtil.closeConnection(conn);
+            return userId;
+        }
+        catch(SQLException ex){
+            Logger.getLogger(UserDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return -1;
+        }
+
     }
 }

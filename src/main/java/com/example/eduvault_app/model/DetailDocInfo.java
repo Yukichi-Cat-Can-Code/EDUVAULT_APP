@@ -47,6 +47,17 @@ public class DetailDocInfo {
         this.TYPEDOC_NAME = TYPEDOC_NAME;
     }
 
+    public DetailDocInfo(int DOC_ID, String DOC_NAME, int TYPEDOC_ID, Timestamp CREATEDATE, int USER_ID, String FULLNAME, String TYPEDOC_NAME, String DOC_PATH) {
+        this.DOC_ID = DOC_ID;
+        this.DOC_NAME = DOC_NAME;
+        this.TYPEDOC_ID = TYPEDOC_ID;
+        this.CREATEDATE = CREATEDATE.toLocalDateTime();
+        this.USER_ID = USER_ID;
+        this.FULLNAME = FULLNAME;
+        this.TYPEDOC_NAME = TYPEDOC_NAME;
+        this.DOC_PATH = DOC_PATH;
+    }
+
     public int getDOC_ID() {
         return DOC_ID;
     }
