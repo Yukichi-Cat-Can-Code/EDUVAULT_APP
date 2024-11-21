@@ -9,6 +9,7 @@ module com.example.eduvault_app {
     requires java.sql;
     requires itextpdf;
     requires org.apache.poi.ooxml;
+    requires jdk.compiler;
 
     opens com.example.eduvault_app to javafx.fxml;
     exports com.example.eduvault_app;
