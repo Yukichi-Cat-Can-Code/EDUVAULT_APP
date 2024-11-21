@@ -28,6 +28,17 @@ public class Document {
         this.isDeleted = isDeleted;
     }
 
+    public Document( int FOLDER_ID, int USER_ID, int TYPEDOC_ID, String DOC_NAME, String SUMMARY, LocalDateTime CREATEDATE, String DOC_PATH, short isDeleted) {
+        this.FOLDER_ID = FOLDER_ID;
+        this.USER_ID = USER_ID;
+        this.TYPEDOC_ID = TYPEDOC_ID;
+        this.DOC_NAME = DOC_NAME;
+        this.SUMMARY = SUMMARY;
+        this.CREATEDATE = CREATEDATE;
+        this.DOC_PATH = DOC_PATH;
+        this.isDeleted = isDeleted;
+    }
+
     public Document(int i, String docName, String summary, Object o, Object o1, int i1, int i2) {
     }
 

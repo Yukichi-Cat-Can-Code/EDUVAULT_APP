@@ -179,6 +179,16 @@
     -fx-border-width: 2px;
 }
 
+.refreshBTN{
+    -fx-font-family: Calibri;
+    -fx-font-size: 19px;
+    -fx-text-fill: #eeeeee;
+    -fx-background-color: #80807b;
+    -fx-background-radius: 8px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
 /*.table-view{*/
 /*    !*-fx-fill: #fff;*!*/
 /*    -fx-background-radius: 10px;*/

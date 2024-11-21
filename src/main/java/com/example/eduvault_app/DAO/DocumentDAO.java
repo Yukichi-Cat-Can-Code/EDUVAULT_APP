@@ -25,15 +25,24 @@ public class DocumentDAO implements DAOInterface<Document> {
     @Override
     public int add(Document document) {
         int result = 0;
+        String maxDocIdSQL = "SELECT COALESCE(MAX(DOC_ID), 0) + 1 AS NEXT_DOC_ID FROM DOCUMENT";
         String sql = "INSERT INTO DOCUMENT (DOC_ID, FOLDER_ID, USER_ID, TYPEDOC_ID, DOC_NAME, SUMMARY, CREATEDATE, DOC_PATH,isDeleted) VALUES (?, ?, ?, ?, ?, ?, ?, ?,?)";
         try (Connection conn = JDBCUtil.getConnection();
+             PreparedStatement PsMaxDocId = conn.prepareStatement(maxDocIdSQL);
              PreparedStatement ps = conn.prepareStatement(sql)) {
             //Get current time
             LocalDateTime dateTime = LocalDateTime.now();
-            dateTime = dateTime.withSecond(0);
+            dateTime = dateTime.withNano(0);
+
+            //Get base doc_id
+            int baseDocId;
+            try (ResultSet rs = PsMaxDocId.executeQuery()) {
+                rs.next();
+                baseDocId = rs.getInt("NEXT_DOC_ID");
+            }
 
             // Step 2: Set parameters for PreparedStatement
-            ps.setInt(1, document.getDOC_ID());
+            ps.setInt(1, baseDocId);
             ps.setInt(2, document.getFOLDER_ID());
             ps.setInt(3, document.getUSER_ID());
             ps.setInt(4, document.getTYPEDOC_ID());

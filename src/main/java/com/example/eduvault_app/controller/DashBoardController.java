@@ -75,6 +75,9 @@ public class DashBoardController implements Initializable {
     @FXML
     private FontAwesomeIconView UploadDownload_Icon;
 
+    @FXML
+    private FontAwesomeIconView refresh_icon;
+
     //Pane
     @FXML
     private AnchorPane DashBoardForm;
@@ -141,68 +144,87 @@ public class DashBoardController implements Initializable {
     private TextField FolderName_TXT;
 
     @FXML
-    private TextField type_TXT;
-
-    @FXML
     private TextField docPath_TXT;
 
+    @FXML
+    private ComboBox<String> type_TXT;
+
     private MouseEvent mouseEvent;
+
+    //RUN TO SHOW DATA
+    @Override
+    public void initialize(URL location, ResourceBundle resources) {
+        ObservableList<String> list = FXCollections.observableArrayList("Word", "Excel", "PDF");
+        type_TXT.setItems(list);
+        type_TXT.setValue("Word");
+        showDocList();
+    }
+
+
 
 //ADD NEW DOC
     @FXML
     void HandleAddNewItem(MouseEvent event) {
         try {
-            // Lấy thông tin từ các trường giao diện
+
             String docName = docName_TXT.getText().trim();
-            String type = type_TXT.getText().trim();
+            String type = type_TXT.getValue();  //Combobox
             String author = author_TXT.getText().trim();
             String folder = FolderName_TXT.getText().trim();
-            String docPath = new String("System/" + docName + ".");
-            //Current Time nam/thang/ngay h/p/s
-            LocalDateTime dateTime = LocalDateTime.now();
-            dateTime = dateTime.withSecond(0);
-//            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
-//            LocalDateTime formattedDateTime = dateTime.format(formatter);
 
-            // Kiểm tra các trường bắt buộc
+            String fileExtension;
+
+            switch (type) {
+                case "WORD":
+                    fileExtension = ".docx";
+                    break;
+                case "EXCEL":
+                    fileExtension = ".xlsx";
+                    break;
+                case "PDF":
+                    fileExtension = ".pdf";
+                    break;
+                default:
+                    fileExtension = ".allFiles";
+                    break;
+            }
+
+            String docPath = new String("System/" + folder + "/" + docName + fileExtension);
+
+            //Current Time
+            LocalDateTime dateTime = LocalDateTime.now();
+            dateTime = dateTime.withNano(0);
+
+
             if (docName.isEmpty() || type.isEmpty() || author.isEmpty() || folder.isEmpty()) {
                 showErrorAlert("Lỗi nhập liệu", "Vui lòng điền đầy đủ thông tin trước khi thêm.");
                 return;
             }
-            try {
-
-            } catch (DateTimeParseException e) {
-                showErrorAlert("Lỗi định dạng ngày", "Định dạng ngày không hợp lệ. Vui lòng sử dụng định dạng: yyyy-MM-dd HH:mm:ss.");
-                return;
-            }
 
             // Lấy ID của Type và User dựa trên tên hiển thị
-//            int typeId = new TypeOfDocumentDAO().findByName(type).getTYPEDOC_ID();
+            int typeId = new TypeOfDocumentDAO().findByName(type).getTYPEDOC_ID();
 //            int userId = new UserDAO().findByName(author).getUSER_ID();
-            String temp = new String("A/B/C/D/Doc");
 
             // Tạo đối tượng Document mới
             Document newDocument = new Document(
-                    0, // Auto-generated ID
                     1, // FOLDER_ID (nếu không sử dụng thư mục)
                     1, //UserId
-                    1, //typeId
+                    typeId, //typeId
                     docName,
-                    null, // Tóm tắt (có thể thêm trường nếu cần)
+                    null, // Tóm tắt
                     dateTime,
-                    temp, // Đường dẫn tài liệu (chưa sử dụng trong UI hiện tại)
+                    docPath, // Đường dẫn tài liệu
                     (short) 0 // isDeleted = 0
             );
 
-            // Thêm vào cơ sở dữ liệu
             DocumentDAO documentDAO = new DocumentDAO();
             int result = documentDAO.add(newDocument);
 
             // Kiểm tra kết quả
             if (result > 0) {
                 showSuccessAlert("Thành công", "Tài liệu đã được thêm thành công.");
-//                showAddDocsList(); // Cập nhật danh sách tài liệu
                 clearDoc();
+                refreshDocList();
             } else {
                 showErrorAlert("Thất bại", "Không thể thêm tài liệu. Vui lòng thử lại.");
             }
@@ -221,7 +243,7 @@ public class DashBoardController implements Initializable {
         docName_TXT.clear();
         docPath_TXT.clear();
         FolderName_TXT.clear();
-        type_TXT.clear();
+        type_TXT.setValue(type_TXT.getItems().get(0));
     }
     //CLEAR DATA FUNCTION
     public void clearDoc(){
@@ -229,7 +251,7 @@ public class DashBoardController implements Initializable {
         docName_TXT.clear();
         docPath_TXT.clear();
         FolderName_TXT.clear();
-        type_TXT.clear();
+        type_TXT.setValue(type_TXT.getItems().get(0));
     }
 
     //FILTERING
@@ -277,7 +299,28 @@ public class DashBoardController implements Initializable {
     //UPDATE DOC INFO
     @FXML
     void HandleUpdateItem(MouseEvent event) {
+        DetailDocInfo selectedDoc = docList_TableView.getSelectionModel().getSelectedItem();
 
+        if (selectedDoc == null) {
+            // Hiển thị thông báo nếu không có dòng nào được chọn
+            showErrorAlert("Error","No item selected!");
+            return;
+        }
+
+        // Lấy thông tin từ item được chọn
+        int docId = selectedDoc.getDOC_ID();
+
+        try {
+
+
+            refreshDocList();
+
+            showSuccessAlert("Update Document","Update document success!");
+        }
+        catch (Exception e) {
+            showErrorAlert("Error: ",e.getMessage());
+            e.printStackTrace();
+        }
     }
 
 
@@ -309,7 +352,10 @@ public class DashBoardController implements Initializable {
         }
     }
 
-
+    @FXML
+    void RefreshTable(MouseEvent event) {
+        refreshDocList();
+    }
 
     //DISPLAY TABLE DATA
 
@@ -363,41 +409,20 @@ public class DashBoardController implements Initializable {
     }
 
 
-    @FXML
-    private TableColumn<DetailDocInfo, LocalDateTime> dateCreate_Col;
-
-    @FXML
-    private TableView<DetailDocInfo> docList_TableView;
-
-    @FXML
-    private TableColumn<DetailDocInfo, String> docName_Col;
-
-    @FXML
-    private TableColumn<DetailDocInfo, String> type_Col;
-
-    @FXML
-    private TableColumn<DetailDocInfo, String> author_Col;
-
-    @FXML
-    private TableColumn<DetailDocInfo, String> docPath_Col;
-
-    @FXML
-    private TableColumn<DetailDocInfo, Integer> docNo_Col;
-
     private ObservableList<DetailDocInfo> listDoc;
     public void showDocList() {
         listDoc = docList();
 
         docNo_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_ID"));
         docName_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_NAME"));
-        type_Col.setCellValueFactory(new PropertyValueFactory<>("ITEM_TYPE"));
-        dateCreate_Col.setCellValueFactory(new PropertyValueFactory<>("TRASH_DELETEAT"));
+        type_Col.setCellValueFactory(new PropertyValueFactory<>("TYPEDOC_NAME"));
+        dateCreate_Col.setCellValueFactory(new PropertyValueFactory<>("CREATEDATE"));
         author_Col.setCellValueFactory(new PropertyValueFactory<>("FULLNAME"));
 
-        DetailDocInfo.s(listDoc); //Thiết kế lại
+        docList_TableView.setItems(listDoc);
     }
 
-    public void selectTrashList() {
+    public void selectDocList() {
         DetailDocInfo detailDocInfo = docList_TableView.getSelectionModel().getSelectedItem();
         int num = docList_TableView.getSelectionModel().getSelectedIndex();
 
@@ -412,12 +437,11 @@ public class DashBoardController implements Initializable {
 
         String getDate = String.valueOf(detailDocInfo.getCREATEDATE());
         dateCreate_Col.setText(getDate);
-
     }
 
-    public void refreshTrashList() {
-        listTrash = trashList(); // Tải lại danh sách từ cơ sở dữ liệu
-        trashTableView.setItems(listTrash); // Gán lại danh sách cho TableView
+    private void refreshDocList() {
+        listDoc = docList(); // Tải lại danh sách từ cơ sở dữ liệu
+        docList_TableView.setItems(listDoc); // Gán lại danh sách cho TableView
     }
 
 
@@ -439,13 +463,25 @@ public class DashBoardController implements Initializable {
         return "Unknown Author";
     }
 
-
-    //RUN TO SHOW DATA
-    @Override
-    public void initialize(URL location, ResourceBundle resources) {
-//        showAddDocsList();
+    // Phương thức phụ để tìm User tương ứng với Document
+    private User getUserForDocument(Document document, List<User> users) {
+        for (User user : users) {
+            if (user.getUSER_ID() == document.getUSER_ID()) {
+                return user;
+            }
+        }
+        return null;
     }
 
+    // Phương thức phụ để tìm TypeOfDocument tương ứng với Document
+    private TypeOfDocument getTypeForDocument(Document document, List<TypeOfDocument> typeOfDocuments) {
+        for (TypeOfDocument typeOfDoc : typeOfDocuments) {
+            if (typeOfDoc.getTYPEDOC_ID() == document.getTYPEDOC_ID()) {
+                return typeOfDoc;
+            }
+        }
+        return null;
+    }
 
 
     private void showErrorAlert(String title, String message) {
@@ -464,50 +500,5 @@ public class DashBoardController implements Initializable {
         alert.showAndWait();
     }
 
-
-    // Phương thức phụ để tìm User tương ứng với Document
-    private User getUserForDocument(Document document, List<User> users) {
-        for (User user : users) {
-            if (user.getUSER_ID() == document.getUSER_ID()) {
-                return user;
-            }
-        }
-        return null;  // Nếu không tìm thấy user
-    }
-
-    // Phương thức phụ để tìm TypeOfDocument tương ứng với Document
-    private TypeOfDocument getTypeForDocument(Document document, List<TypeOfDocument> typeOfDocuments) {
-        for (TypeOfDocument typeOfDoc : typeOfDocuments) {
-            if (typeOfDoc.getTYPEDOC_ID() == document.getTYPEDOC_ID()) {
-                return typeOfDoc;
-            }
-        }
-        return null;  // Nếu không tìm thấy typeOfDocument
-    }
-
-    private List<Document> documents() {
-        // Khởi tạo danh sách tài liệu
-        List<Document> docs = new ArrayList<>();
-        List<TypeOfDocument> typeOfDocuments = new TypeOfDocumentDAO().getAll(); // Lấy tất cả các loại tài liệu
-        List<User> users = new UserDAO().getAll();  // Lấy tất cả người dùng
-
-        // Lấy tất cả tài liệu từ DocumentDAO
-        docs = new DocumentDAO().getAll();
-
-        // Lọc tài liệu chưa bị xóa
-        docs.removeIf(doc -> doc.getIsDeleted() == 1);
-
-        // Gán thông tin user và loại tài liệu cho mỗi tài liệu
-        for (Document doc : docs) {
-            User user = getUserForDocument(doc, users);
-            TypeOfDocument typeOfDoc = getTypeForDocument(doc, typeOfDocuments);
-
-            // Gán hoặc xử lý thêm nếu cần thiết
-            // doc.setUser(user);
-            // doc.setTypeOfDocument(typeOfDoc);
-        }
-
-        return docs;
-    }
 }
 
