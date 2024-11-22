@@ -97,6 +97,35 @@ public class DocumentDAO implements DAOInterface<Document> {
         return result;
     }
 
+
+    public int updateDoc(int FOLDER_ID, String DOC_NAME, String SUMMARY,LocalDateTime CREATEDATE,String DOC_PATH, int DOC_ID) {
+        int result = 0;
+
+        String sql = "UPDATE DOCUMENT SET FOLDER_ID = ?, DOC_NAME = ?, SUMMARY = ?, CREATEDATE = ?, DOC_PATH = ? WHERE DOC_ID = ?";
+        try (Connection conn = JDBCUtil.getConnection();
+             PreparedStatement ps = conn.prepareStatement(sql)) {
+
+            // Step 2: Set parameters
+            ps.setInt(1, FOLDER_ID);
+            ps.setString(2, DOC_NAME);
+            ps.setString(3, SUMMARY);
+            ps.setTimestamp(4, Timestamp.valueOf(CREATEDATE));
+            ps.setString(5, DOC_PATH);
+            ps.setInt(6, DOC_ID);
+
+            // Step 3: Execute SQL
+            result =  ps.executeUpdate();
+
+            //close connection
+            JDBCUtil.closeConnection(conn);
+            return result;
+        } catch (SQLException ex) {
+            Logger.getLogger(DocumentDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+
+
     // Xoa file roi danh dau isDeleted = 1
     @Override
     public int delete(int id) {
