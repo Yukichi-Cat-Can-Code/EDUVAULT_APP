@@ -237,6 +237,9 @@ public class DashBoardController implements Initializable {
         MainApp.setCurrentUserJoinedDate("");
 //        username.getScene().getWindow().hide();
         try {
+            Stage currentStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/login.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();

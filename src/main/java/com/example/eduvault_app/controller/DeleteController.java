@@ -429,4 +429,26 @@ public class DeleteController implements Initializable {
             e.getCause();
         }
     }
+
+    //Sign out
+    public void signOutLabelOnMouseClicked(MouseEvent mouseEvent) {
+        MainApp.setCurrentUser("");
+        MainApp.setCurrentUserJoinedDate("");
+//        username.getScene().getWindow().hide();
+        try {
+            Stage currentStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/login.fxml"));
+            Parent root = loader.load();
+            Stage stage = new Stage();
+            Scene scene = new Scene(root);
+            stage.setScene(scene);
+            stage.setTitle("Login");
+            stage.show();
+        } catch (IOException e) {
+            e.printStackTrace();
+            e.getCause();
+        }
+    }
 }
