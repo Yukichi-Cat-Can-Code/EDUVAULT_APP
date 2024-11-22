@@ -145,11 +145,9 @@ public class UserdetailsController implements Initializable {
     }
 
     public void showDocumentForm(MouseEvent mouseEvent) {
-        Stage currentStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        currentStage.close();
         username.getScene().getWindow().hide();
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/TienDash.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/DashBoard.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             Scene scene = new Scene(root);
@@ -163,8 +161,6 @@ public class UserdetailsController implements Initializable {
     }
 
     public void showTrashForm(MouseEvent mouseEvent) {
-        Stage currentStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
-        currentStage.close();
         username.getScene().getWindow().hide();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/trash.fxml"));
