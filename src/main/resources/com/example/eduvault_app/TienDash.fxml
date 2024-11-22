@@ -1,29 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.GlyphsStack?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import java.lang.String?>
-<?import java.net.URL?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.ComboBox?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.TableColumn?>
-<?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.effect.InnerShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.paint.Color?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import de.jensd.fx.glyphs.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.lang.*?>
+<?import java.net.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.paint.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="dashBoardTemp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1538.0" stylesheets="@../../../CSS/DashBoardFXMLStyle.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.DashBoardController">
+<AnchorPane fx:id="dashBoardTemp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1538.0" stylesheets="@../../../CSS/DashBoardFXMLStyle.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.DashBoardController">
     <children>
         <BorderPane layoutY="-1.0" prefHeight="804.0" prefWidth="1537.0">
             <left>
@@ -93,10 +83,14 @@
                               <String fx:value="NormalContent_LBL" />
                               <String fx:value="doc" />
                            </styleClass></Label>
-                                <Label fx:id="TrashForm" alignment="CENTER_RIGHT" layoutX="30.0" layoutY="188.0" onMouseClicked="#showTrashForm" prefHeight="22.0" prefWidth="82.0" styleClass="NormalContent_LBL" text="Trash">
+                                <Label fx:id="TrashForm" alignment="CENTER" contentDisplay="CENTER" layoutX="47.0" layoutY="189.0" onMouseClicked="#showTrashForm" prefHeight="22.0" prefWidth="82.0" stylesheets="@../../../CSS/style1.css" text="Trash">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
-                                    </cursor></Label>
+                                    </cursor>
+                           <styleClass>
+                              <String fx:value="NormalContent_LBL" />
+                              <String fx:value="dark" />
+                           </styleClass></Label>
                                 <Label layoutX="27.0" layoutY="286.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Folders">
                                     <font>
                                         <Font name="Calibri Bold" size="19.0" />
@@ -106,7 +100,7 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></Label>
-                                <Label layoutX="21.0" layoutY="431.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Tags">
+                                <Label layoutX="21.0" layoutY="431.0" style="-fx-text-fill: #eeeeee;" styleClass="SideBarTitle_LBL" text="Type">
                                     <font>
                                         <Font name="Calibri Bold" size="19.0" />
                                     </font>
@@ -115,7 +109,7 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
-                                <FontAwesomeIconView fill="#efecec" glyphName="TRASH_ALT" layoutX="35.0" layoutY="210.0" size="22" text="">
+                                <FontAwesomeIconView fill="#efecec" glyphName="TRASH_ALT" layoutX="37.0" layoutY="210.0" size="22" text="">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
@@ -127,7 +121,7 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
-                                <Label alignment="CENTER" layoutX="25.0" layoutY="603.0" minHeight="20.0" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: #015D57; -fx-background-radius: 12;" styleClass="Tags" text="Excel">
+                                <Label alignment="CENTER" layoutX="25.0" layoutY="605.0" minHeight="20.0" prefHeight="34.0" prefWidth="109.0" style="-fx-background-color: #015D57; -fx-background-radius: 12;" styleClass="Tags" text="Excel">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
@@ -139,7 +133,7 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></Label>
-                                <Label alignment="CENTER" layoutX="25.0" layoutY="548.0" minHeight="20.0" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: F5831F; -fx-background-radius: 12;" styleClass="Tags" text="PDF">
+                                <Label alignment="CENTER" layoutX="25.0" layoutY="548.0" minHeight="20.0" prefHeight="34.0" prefWidth="109.0" style="-fx-background-color: #dc863a; -fx-background-radius: 12;" styleClass="Tags" text="PDF">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></Label>
@@ -227,7 +221,7 @@
                                                                 <TableColumn fx:id="docPath_Col" prefWidth="240.0" text="Document Path" />
                                                             </columns>
                                                         </TableView>
-                                                        <TextField layoutX="17.0" layoutY="15.0" prefHeight="30.0" prefWidth="331.0" promptText="Search for document">
+                                                        <TextField layoutX="17.0" layoutY="15.0" prefHeight="41.0" prefWidth="392.0" promptText="Search for document">
                                                             <font>
                                                                 <Font name="Calibri" size="16.0" />
                                                             </font>
@@ -250,49 +244,60 @@
                                                 <URL value="@../../../CSS/style1.css" />
                                              </stylesheets>
                                                         </TextField>
-                                                        <FontAwesomeIconView fill="#9e9595" glyphName="SEARCH" layoutX="28.0" layoutY="35.0" size="16.0" text="">
+                                                        <FontAwesomeIconView fill="#9e9595" glyphName="SEARCH" layoutX="28.0" layoutY="40.0" size="16.0" text="">
                                                             <cursor>
                                                                 <Cursor fx:constant="HAND" />
                                                             </cursor>
                                                         </FontAwesomeIconView>
-                                                        <Button fx:id="FilterBTN" alignment="CENTER" layoutX="366.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#HandleFilteringItem" prefHeight="30.0" prefWidth="100.0" stylesheets="@../../../CSS/style1.css" text="Filter">
+                                                        <Button fx:id="FilterBTN" alignment="CENTER" layoutX="431.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#HandleFilteringItem" prefHeight="42.0" prefWidth="131.0" stylesheets="@../../../CSS/style1.css" text="Filter">
                                              <styleClass>
                                                 <String fx:value="FilterBTN" />
                                                 <String fx:value="userpass" />
                                              </styleClass></Button>
-                                                        <FontAwesomeIconView fill="#ececec" glyphName="SLIDERS" layoutX="380.0" layoutY="36.0" size="15" />
+                                                        <FontAwesomeIconView fill="#ececec" glyphName="SLIDERS" layoutX="456.0" layoutY="39.0" size="15" />
                                                         <FontAwesomeIconView fx:id="refresh_icon" fill="#fcfcfc" glyphName="REFRESH" layoutX="805.0" layoutY="44.0" onMouseClicked="#RefreshTable" size="24.0" />
+                                                        <ComboBox fx:id="type_TXT" layoutX="579.0" layoutY="15.0" prefHeight="32.0" prefWidth="152.0" promptText="WORD" stylesheets="@../../../CSS/style1.css">
+                                             <styleClass>
+                                                <String fx:value="textInFieldText" />
+                                                <String fx:value="userpass" />
+                                             </styleClass></ComboBox>
                                                     </children>
                                                 </AnchorPane>
                                                 <AnchorPane layoutX="872.0" layoutY="61.0" prefHeight="666.0" prefWidth="354.0" styleClass="bg-white">
                                                     <children>
-                                                        <TextField fx:id="docName_TXT" alignment="TOP_LEFT" layoutX="9.0" layoutY="37.0" prefHeight="36.0" prefWidth="216.0" promptText="JavaProject" styleClass="textInFieldText" />
-                                                        <Text fill="#f4f4f4" layoutX="12.0" layoutY="29.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Document Name">
+                                                        <TextField fx:id="docName_TXT" alignment="TOP_LEFT" layoutX="12.0" layoutY="60.0" prefHeight="36.0" prefWidth="216.0" promptText="JavaProject" style="-fx-background-radius: 15;" stylesheets="@../../../CSS/style1.css">
+                                             <styleClass>
+                                                <String fx:value="textInFieldText" />
+                                                <String fx:value="up" />
+                                             </styleClass></TextField>
+                                                        <Text fill="#f4f4f4" layoutX="14.0" layoutY="34.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Document Name">
                                                             <styleClass>
                                                                 <String fx:value="NormalContent_LBL" />
                                                                 <String fx:value="editBoardTitle" />
                                                             </styleClass>
                                                         </Text>
-                                                        <Text fill="#f4f4f4" layoutX="28.0" layoutY="220.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Type">
+                                                        <TextField fx:id="FolderName_TXT" alignment="TOP_LEFT" layoutX="15.0" layoutY="167.0" prefHeight="36.0" prefWidth="147.0" promptText="JAVA" style="-fx-background-radius: 15;" stylesheets="@../../../CSS/style1.css">
+                                             <styleClass>
+                                                <String fx:value="textInFieldText" />
+                                                <String fx:value="up" />
+                                             </styleClass></TextField>
+                                                        <Text fill="#f4f4f4" layoutX="20.0" layoutY="142.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Folder">
                                                             <styleClass>
                                                                 <String fx:value="NormalContent_LBL" />
                                                                 <String fx:value="editBoardTitle" />
                                                             </styleClass>
                                                         </Text>
-                                                        <TextField fx:id="FolderName_TXT" alignment="TOP_LEFT" layoutX="11.0" layoutY="138.0" prefHeight="36.0" prefWidth="147.0" promptText="JAVA" styleClass="textInFieldText" />
-                                                        <Text fill="#f4f4f4" layoutX="21.0" layoutY="125.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Folder">
+                                                        <Text fill="#f4f4f4" layoutX="21.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Document Path">
                                                             <styleClass>
                                                                 <String fx:value="NormalContent_LBL" />
                                                                 <String fx:value="editBoardTitle" />
                                                             </styleClass>
                                                         </Text>
-                                                        <Text fill="#f4f4f4" layoutX="29.0" layoutY="320.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Document Path">
-                                                            <styleClass>
-                                                                <String fx:value="NormalContent_LBL" />
-                                                                <String fx:value="editBoardTitle" />
-                                                            </styleClass>
-                                                        </Text>
-                                                        <TextField fx:id="docPath_TXT" alignment="TOP_LEFT" editable="false" layoutX="16.0" layoutY="331.0" prefHeight="36.0" prefWidth="312.0" promptText="System/A/B/C/JavaProject.docx" styleClass="textInFieldText" />
+                                                        <TextField fx:id="docPath_TXT" alignment="TOP_LEFT" editable="false" layoutX="16.0" layoutY="287.0" prefHeight="36.0" prefWidth="312.0" promptText="System/A/B/C/JavaProject.docx" style="-fx-background-radius: 15;" stylesheets="@../../../CSS/style1.css">
+                                             <styleClass>
+                                                <String fx:value="textInFieldText" />
+                                                <String fx:value="up" />
+                                             </styleClass></TextField>
                                                         <Button fx:id="addBTN" layoutX="18.0" layoutY="607.0" mnemonicParsing="false" onMouseClicked="#HandleAddNewItem" prefHeight="36.0" prefWidth="102.0" stylesheets="@../../../CSS/style1.css" text="Add">
                                                             <cursor>
                                                                 <Cursor fx:constant="HAND" />
@@ -317,20 +322,23 @@
                                                 <String fx:value="deleteBTN" />
                                                 <String fx:value="demo4" />
                                              </styleClass></Button>
-                                                        <ComboBox fx:id="type_TXT" layoutX="11.0" layoutY="230.0" prefHeight="42.0" prefWidth="152.0" promptText="WORD" styleClass="textInFieldText" />
-                                                        <TextField fx:id="Summary_TXT" alignment="TOP_LEFT" layoutX="18.0" layoutY="413.0" prefHeight="157.0" prefWidth="312.0" promptText="Document summary content" styleClass="textInFieldText" />
-                                                        <Text fill="#f4f4f4" layoutX="28.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Summary">
+                                                        <TextField fx:id="Summary_TXT" alignment="TOP_LEFT" layoutX="18.0" layoutY="401.0" prefHeight="169.0" prefWidth="312.0" promptText="Document summary content" style="-fx-background-radius: 15;" stylesheets="@../../../CSS/style1.css">
+                                             <styleClass>
+                                                <String fx:value="textInFieldText" />
+                                                <String fx:value="up" />
+                                             </styleClass></TextField>
+                                                        <Text fill="#f4f4f4" layoutX="24.0" layoutY="370.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Summary">
                                                             <styleClass>
                                                                 <String fx:value="NormalContent_LBL" />
                                                                 <String fx:value="editBoardTitle" />
                                                             </styleClass>
                                                         </Text>
-                                                        <FontAwesomeIconView fx:id="deleteBTN" fill="#e1e1e1" glyphName="TRASH" layoutX="301.0" layoutY="62.0" onMouseClicked="#handleDeleteItem" size="30">
+                                                        <FontAwesomeIconView fx:id="deleteBTN" fill="#e1e1e1" glyphName="TRASH" layoutX="303.0" layoutY="88.0" onMouseClicked="#handleDeleteItem" size="30">
                                                             <cursor>
                                                                 <Cursor fx:constant="HAND" />
                                                             </cursor>
                                                         </FontAwesomeIconView>
-                                                        <FontAwesomeIconView fx:id="downloadBTN" fill="#e1e1e1" glyphName="DOWNLOAD" layoutX="245.0" layoutY="63.0" onMouseClicked="#HandleDownloadItem" size="30">
+                                                        <FontAwesomeIconView fx:id="downloadBTN" fill="#e1e1e1" glyphName="DOWNLOAD" layoutX="245.0" layoutY="90.0" onMouseClicked="#HandleDownloadItem" size="30">
                                                             <cursor>
                                                                 <Cursor fx:constant="HAND" />
                                                             </cursor>

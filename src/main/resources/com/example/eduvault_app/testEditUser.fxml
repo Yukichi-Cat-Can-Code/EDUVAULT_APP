@@ -1,23 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import de.jensd.fx.glyphs.GlyphsStack?>
-<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
-<?import java.lang.String?>
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.Cursor?>
-<?import javafx.scene.control.Button?>
-<?import javafx.scene.control.Label?>
-<?import javafx.scene.control.PasswordField?>
-<?import javafx.scene.control.TextField?>
-<?import javafx.scene.effect.ColorAdjust?>
-<?import javafx.scene.effect.DropShadow?>
-<?import javafx.scene.image.Image?>
-<?import javafx.scene.image.ImageView?>
-<?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.BorderPane?>
-<?import javafx.scene.text.Font?>
+<?import de.jensd.fx.glyphs.*?>
+<?import de.jensd.fx.glyphs.fontawesome.*?>
+<?import java.lang.*?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<AnchorPane fx:id="dashBoardTemp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1538.0" stylesheets="@../../../CSS/DashBoardFXMLStyle.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.EditUserController">
+<AnchorPane fx:id="dashBoardTemp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1538.0" stylesheets="@../../../CSS/DashBoardFXMLStyle.css" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.EditUserController">
     <children>
         <BorderPane layoutY="-1.0" prefHeight="804.0" prefWidth="1537.0" style="-fx-background-color: #1c1c1c;">
             <left>
@@ -76,10 +70,14 @@
                                         <String fx:value="General" />
                                     </styleClass>
                                 </Label>
-                                <Label fx:id="DashBoardForm_LBL" alignment="CENTER_RIGHT" layoutX="40.0" layoutY="137.0" onMouseClicked="#showDocumentForm" prefHeight="22.0" prefWidth="142.0" styleClass="NormalContent_LBL" text="All Document">
+                                <Label fx:id="DashBoardForm_LBL" alignment="CENTER_RIGHT" layoutX="40.0" layoutY="137.0" onMouseClicked="#showDocumentForm" prefHeight="22.0" prefWidth="142.0" stylesheets="@../../../CSS/style1.css" text="All Document">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
-                                    </cursor></Label>
+                                    </cursor>
+                           <styleClass>
+                              <String fx:value="NormalContent_LBL" />
+                              <String fx:value="dark" />
+                           </styleClass></Label>
                                 <Label fx:id="TrashForm" alignment="CENTER_RIGHT" layoutX="35.0" layoutY="188.0" onMouseClicked="#showTrashForm" prefHeight="22.0" prefWidth="82.0" styleClass="NormalContent_LBL" text="Trash">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
@@ -102,7 +100,7 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
-                                <FontAwesomeIconView fill="#efecec" glyphName="TRASH_ALT" layoutX="43.0" layoutY="205.0" size="22">
+                                <FontAwesomeIconView fill="#efecec" glyphName="TRASH_ALT" layoutX="37.0" layoutY="208.0" size="22">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
