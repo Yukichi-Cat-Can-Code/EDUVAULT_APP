@@ -205,6 +205,77 @@ public class DocumentDAO implements DAOInterface<Document> {
         }
         return null;
     }
+
+    public static void moveToTrash(int itemId, String itemType) throws SQLException {
+        String getMaxTrashIdSQL = "SELECT COALESCE(MAX(TRASH_ID), 0) + 1 AS NEXT_TRASH_ID FROM TRASH";
+        String trashSQL = "INSERT INTO TRASH (TRASH_ID, ITEM_ID, ITEM_TYPE, TRASH_DELETEAT) VALUES (?, ?, ?, ?)";
+        String updateDocumentSQL = "UPDATE DOCUMENT SET isDeleted = 1 WHERE DOC_ID = ?";
+        String updateFolderSQL = "UPDATE FOLDER SET isDeleted = 1 WHERE FOLDER_ID = ?";
+        String insertDocumentsInFolderToTrashSQL = """
+        INSERT INTO TRASH (TRASH_ID, ITEM_ID, ITEM_TYPE, TRASH_DELETEAT)
+        SELECT (ROW_NUMBER() OVER (ORDER BY DOC_ID) + (SELECT COALESCE(MAX(TRASH_ID), 0) FROM TRASH)) AS TRASH_ID,
+               DOC_ID, 'DOCUMENT', ?
+        FROM DOCUMENT WHERE FOLDER_ID = ?
+    """;
+        String updateDocumentsInFolderToTrashSQL = "UPDATE DOCUMENT SET isDeleted = 1 WHERE FOLDER_ID = ?";
+
+        String normalizedItemType = itemType.toUpperCase();
+
+        try (Connection conn = JDBCUtil.getConnection();
+             PreparedStatement psGetMaxId = conn.prepareStatement(getMaxTrashIdSQL);
+             PreparedStatement psTrash = conn.prepareStatement(trashSQL);
+             PreparedStatement psUpdateDocument = conn.prepareStatement(updateDocumentSQL);
+             PreparedStatement psUpdateFolder = conn.prepareStatement(updateFolderSQL);
+             PreparedStatement psInsertDocumentsInFolderToTrash = conn.prepareStatement(insertDocumentsInFolderToTrashSQL);
+             PreparedStatement psUpdateDocumentsInFolder = conn.prepareStatement(updateDocumentsInFolderToTrashSQL))
+        {
+
+            // Start transaction
+            conn.setAutoCommit(false);
+
+            // Get the base TRASH_ID
+            int baseTrashId;
+            try (ResultSet rs = psGetMaxId.executeQuery()) {
+                rs.next();
+                baseTrashId = rs.getInt("NEXT_TRASH_ID");
+            }
+
+            // Insert main item into TRASH
+            psTrash.setInt(1, baseTrashId);
+            psTrash.setInt(2, itemId);
+            psTrash.setString(3, normalizedItemType);
+            psTrash.setTimestamp(4, Timestamp.valueOf(LocalDateTime.now()));
+            psTrash.executeUpdate();
+
+            if ("DOCUMENT".equals(normalizedItemType)) {
+                psUpdateDocument.setInt(1, itemId);
+                psUpdateDocument.executeUpdate();
+            } else if ("FOLDER".equals(normalizedItemType)) {
+                psUpdateFolder.setInt(1, itemId);
+                psUpdateFolder.executeUpdate();
+
+                psUpdateDocumentsInFolder.setInt(1, itemId);
+                psUpdateDocumentsInFolder.executeUpdate();
+
+                // Move documents in the folder to trash
+                psInsertDocumentsInFolderToTrash.setTimestamp(1, Timestamp.valueOf(LocalDateTime.now())); // TRASH_DELETEAT
+                psInsertDocumentsInFolderToTrash.setInt(2, itemId); // FOLDER_ID
+                psInsertDocumentsInFolderToTrash.executeUpdate();
+            } else {
+                conn.rollback();
+                LOGGER.severe("Invalid item type encountered: " + itemType);
+                throw new IllegalArgumentException("Invalid item type: " + itemType);
+            }
+
+            conn.commit();
+
+        } catch (SQLException e) {
+            LOGGER.severe("SQL error in moveToTrash for itemType: " + itemType + ", itemId: " + itemId + ". Error: " + e.getMessage());
+            throw e;
+        }
+    }
+
+
 }
 
 

@@ -63,7 +63,7 @@ public class MainApp extends Application {
 //        Parent root = loader.load();
             try {
                 // Your code to initialize the application
-                FXMLLoader loader = new FXMLLoader(getClass().getResource("DashBoard.fxml"));
+                FXMLLoader loader = new FXMLLoader(getClass().getResource("login.fxml"));
                 Parent root = loader.load(); // If loading an FXML file
 
                 Scene scene = new Scene(root);

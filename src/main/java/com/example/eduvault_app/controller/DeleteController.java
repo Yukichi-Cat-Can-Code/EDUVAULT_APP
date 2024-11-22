@@ -80,56 +80,71 @@ public class DeleteController implements Initializable {
     // Method to handle the Delete Item button click
     @FXML
     private void handleDeleteItem() {
-        String itemIdText = itemIdField.getText();  // Get the text input for item ID
-        String itemType = itemTypeComboBox.getValue();
+//        String itemIdText = itemIdField.getText();  // Get the text input for item ID
+//        String itemType = itemTypeComboBox.getValue();
+//
+//        if (itemType == null || itemIdText.isEmpty()) {
+//            resultText.setText("Please select an item type and enter an item ID.");
+//            return;
+//        }
+//
+//        int itemId;
+//        try {
+//            itemId = Integer.parseInt(itemIdText);  // Convert input to an integer
+//        } catch (NumberFormatException e) {
+//            resultText.setText("Invalid item ID. Please enter a valid number.");
+//            return;
+//        }
+//
+//        // Normalize item type
+//        String normalizedItemType = itemType.trim().toUpperCase();
+//
+//        // Validate item type
+//        if (!"DOCUMENT".equals(normalizedItemType) && !"FOLDER".equals(normalizedItemType)) {
+//            resultText.setText("Invalid item type. Please select either 'Document' or 'Folder'.");
+//            return;
+//        }
 
-        if (itemType == null || itemIdText.isEmpty()) {
-            resultText.setText("Please select an item type and enter an item ID.");
-            return;
-        }
-
-        int itemId;
-        try {
-            itemId = Integer.parseInt(itemIdText);  // Convert input to an integer
-        } catch (NumberFormatException e) {
-            resultText.setText("Invalid item ID. Please enter a valid number.");
-            return;
-        }
-
-        // Normalize item type
-        String normalizedItemType = itemType.trim().toUpperCase();
-
-        // Validate item type
-        if (!"DOCUMENT".equals(normalizedItemType) && !"FOLDER".equals(normalizedItemType)) {
-            resultText.setText("Invalid item type. Please select either 'Document' or 'Folder'.");
-            return;
-        }
-
-        // Show confirmation dialog
-        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
-                "Are you sure you want to move this " + normalizedItemType.toLowerCase() + " to the trash?",
-                ButtonType.YES, ButtonType.NO);
-        alert.setTitle("Delete Confirmation");
-
-        alert.showAndWait().ifPresent(response -> {
-            if (response == ButtonType.YES) {
-                try {
-                    // Move item to trash
-                    trashDAO.moveToTrash(itemId, normalizedItemType);
-
-                    // Update result text on success
-                    resultText.setText(normalizedItemType + " with ID " + itemId + " moved to trash successfully.");
-
-                    // Optionally clear input fields
-                    itemIdField.clear();
-                    itemTypeComboBox.setValue(null);
-
-                } catch (SQLException e) {
-                    resultText.setText("Error while moving to trash: " + e.getMessage());
-                    e.printStackTrace();
-                }
-            }
-        });
+        // Lấy item được chọn từ TableView
+//        Trash selectedTrash = trashTableView.getSelectionModel().getSelectedItem();
+//
+//        if (selectedTrash == null) {
+//            // Hiển thị thông báo nếu không có dòng nào được chọn
+//            showNotification("No item selected!");
+//            return;
+//        }
+//
+//        // Lấy thông tin từ item được chọn
+//        int trashId = selectedTrash.getTRASH_ID(); // ID của Trash
+//        int itemId = selectedTrash.getITEM_ID(); // ID của Trash
+//        String itemType = selectedTrash.getITEM_TYPE(); // Loại item
+//
+//        // Show confirmation dialog
+//        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+//                "Are you sure you want to delete this " + itemType.toLowerCase() + " permanently?",
+//                ButtonType.YES, ButtonType.NO);
+//        alert.setTitle("Restore Confirmation");
+//
+//
+//        alert.showAndWait().ifPresent(response -> {
+//            if (response == ButtonType.YES) {
+//                try {
+//                    // Move item to trash
+//                    trashDAO.moveToTrash(itemId, normalizedItemType);
+//
+//                    // Update result text on success
+//                    resultText.setText(normalizedItemType + " with ID " + itemId + " moved to trash successfully.");
+//
+//                    // Optionally clear input fields
+//                    itemIdField.clear();
+//                    itemTypeComboBox.setValue(null);
+//
+//                } catch (SQLException e) {
+//                    resultText.setText("Error while moving to trash: " + e.getMessage());
+//                    e.printStackTrace();
+//                }
+//            }
+//        });
     }
 
 
@@ -159,21 +174,34 @@ public class DeleteController implements Initializable {
             return;
         }
 
+
         // Lấy thông tin từ item được chọn
         int trashId = selectedTrash.getTRASH_ID(); // ID của Trash
+        String itemType = selectedTrash.getITEM_TYPE(); // Loại item
 
-        try {
-            // Call restoreFromTrash with just trashId (no itemType needed)
-            trashDAO.restoreFromTrash(trashId);
 
-            //refresh table view
-            refreshTrashList();
+        // Show confirmation dialog
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+                "Are you sure you want to restore this " + itemType.toLowerCase() + " ?",
+                ButtonType.YES, ButtonType.NO);
+        alert.setTitle("Restore Confirmation");
 
-            showNotification("Restored successfully.");
-        } catch (SQLException e) {
-            showNotification("Error: " + e.getMessage());
-            e.printStackTrace();
-        }
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.YES) {
+                try {
+                    // Call restoreFromTrash with just trashId (no itemType needed)
+                    trashDAO.restoreFromTrash(trashId);
+
+                    //refresh table view
+                    refreshTrashList();
+
+                    showNotification("Restored successfully.");
+                } catch (SQLException e) {
+                    showNotification("Error: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
 
@@ -209,17 +237,27 @@ public class DeleteController implements Initializable {
         int itemId = selectedTrash.getITEM_ID(); // ID của Trash
         String itemType = selectedTrash.getITEM_TYPE(); // Loại item
 
-        try {
-            trashDAO.deleteFromTrash(trashId);
+        // Show confirmation dialog
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+                "Are you sure you want to delete this " + itemType.toLowerCase() + " permanently?",
+                ButtonType.YES, ButtonType.NO);
+        alert.setTitle("Restore Confirmation");
 
-            //refresh table view
-            refreshTrashList();
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.YES) {
+                try {
+                    trashDAO.deleteFromTrash(trashId);
 
-            showNotification("Permanently deleted.");
-        } catch (SQLException e) {
-            showNotification("Error: " + e.getMessage());
-            e.printStackTrace();
-        }
+                    //refresh table view
+                    refreshTrashList();
+
+                    showNotification("Permanently deleted.");
+                } catch (SQLException e) {
+                    showNotification("Error: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        });
     }
 
     //show table

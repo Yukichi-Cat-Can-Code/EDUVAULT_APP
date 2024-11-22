@@ -819,5 +819,62 @@ public class DashBoardController implements Initializable {
         listFolder = folderList();
         folderList_TableView.setItems(listFolder);
     }
+
+    // Method to handle the Delete Item button click
+    @FXML
+    private void handleDeleteItem() {
+        // Lấy item được chọn từ bảng
+        DetailDocInfo selectedDocument = docList_TableView.getSelectionModel().getSelectedItem();
+
+        if (selectedDocument == null) {
+            // Hiển thị thông báo nếu không có dòng nào được chọn
+            showNotification("No document selected!");
+            return;
+        }
+
+        // Lấy thông tin từ document được chọn
+        int documentId = selectedDocument.getDOC_ID();
+        int folderId = selectedDocument.getFOLDER_ID(); // Nếu cần xóa theo thư mục
+        String itemType = (folderId == 0) ? "DOCUMENT" : "FOLDER";
+
+        // Hiển thị hộp thoại xác nhận
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION,
+                "Are you sure you want to move this " + itemType.toLowerCase() + " to trash?",
+                ButtonType.YES, ButtonType.NO);
+        alert.setTitle("Delete Confirmation");
+
+        alert.showAndWait().ifPresent(response -> {
+            if (response == ButtonType.YES) {
+                try {
+                    // Gọi phương thức moveToTrash
+                    if ("DOCUMENT".equalsIgnoreCase(itemType)) {
+                        DocumentDAO.moveToTrash(documentId, itemType);
+                    } else if ("FOLDER".equalsIgnoreCase(itemType)) {
+                        DocumentDAO.moveToTrash(folderId, itemType);
+                    }
+
+                    // Làm mới danh sách tài liệu
+                    refreshDocList();
+
+                    // Hiển thị thông báo thành công
+                    showNotification(itemType + " moved to trash successfully.");
+                } catch (SQLException e) {
+                    // Hiển thị thông báo lỗi
+                    showNotification("Error while moving to trash: " + e.getMessage());
+                    e.printStackTrace();
+                }
+            }
+        });
+    }
+
+    // Phương thức hiển thị thông báo
+    private void showNotification(String message) {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Notification");
+        alert.setHeaderText(null);
+        alert.setContentText(message);
+        alert.showAndWait();
+    }
+
 }
 
