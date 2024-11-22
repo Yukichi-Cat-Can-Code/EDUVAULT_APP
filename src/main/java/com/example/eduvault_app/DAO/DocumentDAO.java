@@ -109,8 +109,8 @@ public class DocumentDAO implements DAOInterface<Document> {
             ps.setInt(1, FOLDER_ID);
             ps.setString(2, DOC_NAME);
             ps.setString(3, SUMMARY);
-            ps.setString(4, SUMMARY);
-            ps.setTimestamp(5, Timestamp.valueOf(CREATEDATE));
+            ps.setTimestamp(4, Timestamp.valueOf(CREATEDATE));
+            ps.setString(5, DOC_PATH);
             ps.setInt(6, DOC_ID);
 
             // Step 3: Execute SQL
