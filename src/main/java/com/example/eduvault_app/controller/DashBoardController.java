@@ -204,6 +204,11 @@ public class DashBoardController implements Initializable {
     private TextField parentFolder_TXT;
     private String username;
 
+    @FXML
+    private Label Fullname;
+    @FXML
+    private Label Email;
+
     private MouseEvent mouseEvent;
 
     //RUN TO SHOW DATA
@@ -212,6 +217,8 @@ public class DashBoardController implements Initializable {
         ObservableList<String> list = FXCollections.observableArrayList("Word", "Excel", "PDF");
         type_TXT.setItems(list);
         type_TXT.setValue("Word");
+        Fullname.setText(MainApp.getFullName());
+        Email.setText(MainApp.getEmail());
         showDocList();
 
 //        username.setText(MainApp.getCurrentUser());
@@ -605,6 +612,9 @@ public class DashBoardController implements Initializable {
     //chuyen trang
     public void showDocumentForm(MouseEvent mouseEvent) {
         try {
+            Stage currentStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/DashBoard.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
@@ -635,6 +645,9 @@ public class DashBoardController implements Initializable {
 
     public void showUserProfile(MouseEvent mouseEvent) {
         try {
+            Stage currentStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/testMergeUser.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();

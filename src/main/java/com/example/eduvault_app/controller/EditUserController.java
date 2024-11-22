@@ -6,6 +6,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -38,6 +39,10 @@ public class EditUserController implements Initializable {
     private Label username;
     @FXML
     private TextField emailField;
+    @FXML
+    private Label Fullname;
+    @FXML
+    private Label Email2;
 
     public void saveButtonOnAction(ActionEvent actionEvent) throws IOException {
         String fullName = fullNameField.getText();
@@ -138,6 +143,8 @@ public class EditUserController implements Initializable {
     public void initialize(URL url, ResourceBundle resourceBundle) {
         username.setText("@" + MainApp.getCurrentUser());
         joinedDate.setText(MainApp.getCurrentUserJoinedDate());
+        Email2.setText(MainApp.getEmail());
+        Fullname.setText(MainApp.getFullName());
     }
 
     public void ShowNotification(MouseEvent mouseEvent) {
@@ -181,6 +188,9 @@ public class EditUserController implements Initializable {
 
     public void showUserProfile(MouseEvent mouseEvent) {
         try {
+            Stage currentStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/testMergeUser.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();

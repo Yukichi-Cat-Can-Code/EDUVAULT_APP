@@ -16,6 +16,8 @@ public class MainApp extends Application {
     private static String currentUser;
     private static String currentPassword;
     private static String joinedDate;
+    private static String fullName;
+    private static String email;
 
     public static void setCurrentUser(String name) {
         currentUser = name;
@@ -31,6 +33,22 @@ public class MainApp extends Application {
 
     public static String getCurrentUserJoinedDate() {
         return joinedDate;
+    }
+
+    public static void setFullName(String fname) {
+        fullName = fname;
+    }
+
+    public static String getFullName() {
+        return fullName;
+    }
+
+    public static void setEmail(String Email) {
+        email = Email;
+    }
+
+    public static String getEmail() {
+        return email;
     }
 
     @Override

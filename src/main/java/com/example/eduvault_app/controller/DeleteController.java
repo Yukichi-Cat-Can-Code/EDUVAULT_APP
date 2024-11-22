@@ -1,5 +1,6 @@
 package com.example.eduvault_app.controller;
 
+import com.example.eduvault_app.MainApp;
 import com.example.eduvault_app.model.Trash;
 import com.example.eduvault_app.util.JDBCUtil;
 import javafx.animation.PauseTransition;
@@ -71,8 +72,16 @@ public class DeleteController implements Initializable {
     @FXML
     private TableColumn<Trash, LocalDateTime> trash_col_DeleteAt;
 
+    @FXML
+    private Text Fullname;
+
+    @FXML
+    private Text Email2;
+
     //khoi tao
     public void initialize(URL location, ResourceBundle resources) {
+        Fullname.setText(MainApp.getFullName());
+        Email2.setText(MainApp.getEmail());
         showTrashList();
     }
 
@@ -387,6 +396,9 @@ public class DeleteController implements Initializable {
 
     public void showTrashForm(MouseEvent mouseEvent) {
         try {
+            Stage currentStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/trash.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
@@ -402,6 +414,9 @@ public class DeleteController implements Initializable {
 
     public void showUserProfile(MouseEvent mouseEvent) {
         try {
+            Stage currentStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/testMergeUser.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();

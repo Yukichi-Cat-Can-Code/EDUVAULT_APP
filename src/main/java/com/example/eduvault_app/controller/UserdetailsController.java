@@ -1,11 +1,13 @@
 package com.example.eduvault_app.controller;
 
 import com.example.eduvault_app.MainApp;
+import com.sun.tools.javac.Main;
 import database_conn.DatabaseConnection;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
+import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -36,7 +38,10 @@ public class UserdetailsController implements Initializable {
     private Label totalFolder;
     @FXML
     private Label Email;
-
+    @FXML
+    private Label Fullname;
+    @FXML
+    private Label Email2;
     @FXML
     private Label signOutLabel;
 
@@ -92,6 +97,8 @@ public class UserdetailsController implements Initializable {
                 Email.setText(rs.getString("email"));
                 username.setText("@"+MainApp.getCurrentUser());
                 joinedDate.setText("Joined: " + date);
+                MainApp.setFullName(name);
+                MainApp.setEmail(Email.getText());
             } else {
                 FullName.setText("User not found.");
             }
@@ -123,6 +130,9 @@ public class UserdetailsController implements Initializable {
             e.printStackTrace();
             e.getCause();
         }
+
+        Fullname.setText(MainApp.getFullName());
+        Email2.setText(MainApp.getEmail());
     }
 
     public void ShowNotification(MouseEvent mouseEvent) {
@@ -135,6 +145,7 @@ public class UserdetailsController implements Initializable {
     }
 
     public void showDocumentForm(MouseEvent mouseEvent) {
+        username.getScene().getWindow().hide();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/DashBoard.fxml"));
             Parent root = loader.load();
@@ -150,6 +161,7 @@ public class UserdetailsController implements Initializable {
     }
 
     public void showTrashForm(MouseEvent mouseEvent) {
+        username.getScene().getWindow().hide();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/trash.fxml"));
             Parent root = loader.load();
@@ -166,6 +178,9 @@ public class UserdetailsController implements Initializable {
 
     public void showUserProfile(MouseEvent mouseEvent) {
         try {
+            Stage currentStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            currentStage.close();
+
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/testMergeUser.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();

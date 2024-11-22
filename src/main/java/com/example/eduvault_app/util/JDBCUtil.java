@@ -8,12 +8,13 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 
 public class JDBCUtil {
-    public static final String strDbUrl = "jdbc:mysql://localhost:906/Eduvault_DB?user=root&password=admin&useSSL=false&serverTimezone=UTC";
-
+    public static final String strDbUrl = "jdbc:mysql://localhost:3306/Eduvault_DB";
+    public static final String uid = "root";
+    public static final String pass = "";
     // Method to establish and return a connection
     public static Connection getConnection() {
         try {
-            Connection conn = DriverManager.getConnection(strDbUrl);
+            Connection conn = DriverManager.getConnection(strDbUrl, uid, pass);
             System.out.println("Connect successfully!");
             return conn;
         } catch (SQLException ex) {
