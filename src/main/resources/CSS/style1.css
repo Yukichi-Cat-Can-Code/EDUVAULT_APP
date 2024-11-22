@@ -5,6 +5,17 @@
     -fx-background-color: #444444;
     -fx-background-radius: 20px;
 }
+.demo1:hover {
+    -fx-border-color: linear-gradient(to right, #42E695, #3BB2B8);
+    -fx-border-width: 4px;
+    -fx-border-radius: 10px;
+    -fx-background-color: #1C1C1C;
+    -fx-background-radius: 20px;
+}
+.demo1:pressed {
+    -fx-background-color: #1c1c1c; /* Darker background */
+    -fx-text-fill: lightgray; /* Subtle text color change */
+}
 .demo2{
     -fx-border-color: linear-gradient(to right, #17EAD9, #6078EA);
     -fx-border-width: 4px;
@@ -19,12 +30,35 @@
     -fx-background-color: #444444;
     -fx-background-radius: 20px;
 }
+.demo3:hover {
+    -fx-border-color: linear-gradient(to right, #FF7676, #F54EA2);
+    -fx-border-width: 4px;
+    -fx-border-radius: 10px;
+    -fx-background-color: #1C1C1C;
+    -fx-background-radius: 20px;
+}
+.demo3:pressed {
+    -fx-background-color: #1c1c1c; /* Darker background */
+    -fx-text-fill: lightgray; /* Subtle text color change */
+}
 .demo4{
     -fx-border-color: linear-gradient(to right, #F02FC2, #6094EA);
     -fx-border-width: 4px;
     -fx-border-radius: 20px;
     -fx-background-color: #444444;
     -fx-background-radius: 20px;
+}
+
+.demo4:hover {
+    -fx-border-color: linear-gradient(to right, #6094EA, #F02FC2);
+    -fx-border-width: 4px;
+    -fx-border-radius: 10px;
+    -fx-background-color: #1C1C1C;
+    -fx-background-radius: 20px;
+}
+.demo4:pressed {
+    -fx-background-color: #1c1c1c; /* Darker background */
+    -fx-text-fill: lightgray; /* Subtle text color change */
 }
 .login{
     -fx-background-color: linear-gradient(to right, #F869D5, #5650DE);
@@ -35,5 +69,11 @@
     -fx-border-width: 2px;
     -fx-border-radius: 10px;
     -fx-background-color: #1C1C1C;
+    -fx-background-radius: 20px;
+}
+.doc{
+    -fx-text-fill: linear-gradient(to right, #FF7676, #F54EA2);
+    -fx-background-color: #000000;
+    -fx-background-size: 200;
     -fx-background-radius: 20px;
 }
