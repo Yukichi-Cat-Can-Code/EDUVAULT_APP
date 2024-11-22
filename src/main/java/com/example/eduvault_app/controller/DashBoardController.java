@@ -409,20 +409,20 @@ public class DashBoardController implements Initializable {
 
         try {
             int docId = selectedDoc.getDOC_ID();
-            String docName = selectedDoc.getDOC_NAME().trim();
-            String folderName = selectedDoc.getFOLDER_NAME().trim();
-            String docType = selectedDoc.getTYPEDOC_NAME().trim();
+            String docName = docName_TXT.getText().trim();
+            String folderName = FolderName_TXT.getText().trim();
+            String docType = type_TXT.getValue().trim();
 
-            if (docName.isEmpty() || folderName.isEmpty() || docType.isEmpty()) {
+            if (docName.isEmpty() || docType.isEmpty()) {
                 showErrorAlert("Failed", "Please fill all the required fields before updating!");
                 return;
             }
 
             FolderDAO folderDAO = new FolderDAO();
             int folderId = folderDAO.getFolderId(folderName);
-
-            DocumentDAO docDao = new DocumentDAO();
-            Document doc = docDao.get(docId);
+            if (folderId == 0) {
+                folderId = 1;
+            }
 
             String Formatfolder = (folderName.isEmpty()) ? "" : folderName + "/";
             String fileExtension = switch (docType) {
@@ -434,8 +434,10 @@ public class DashBoardController implements Initializable {
 
             String docPath = "System/" + Formatfolder + docName + fileExtension;
 
-            String summary = doc.getSUMMARY().trim();
+            String summary = Summary_TXT.getText().trim();
             LocalDateTime dateTime = LocalDateTime.now().withNano(0);
+
+            DocumentDAO docDao = new DocumentDAO();
 
             int updateResult = docDao.updateDoc(folderId, docName, summary, dateTime, docPath, docId);
 
@@ -514,7 +516,6 @@ public class DashBoardController implements Initializable {
         LEFT JOIN TYPEOFDOCUMENT T ON D.TYPEDOC_ID = T.TYPEDOC_ID
         LEFT JOIN FOLDER F ON D.FOLDER_ID = F.FOLDER_ID
         WHERE D.isDeleted = 0;
-        
     """;
 
         try (Connection conn = JDBCUtil.getConnection();

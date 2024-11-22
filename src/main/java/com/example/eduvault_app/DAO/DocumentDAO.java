@@ -121,10 +121,15 @@ public class DocumentDAO implements DAOInterface<Document> {
                 Logger.getLogger(DocumentDAO.class.getName()).log(Level.WARNING, "No rows were updated for DOC_ID=" + DOC_ID);
             }
 
+            Logger.getLogger(DocumentDAO.class.getName()).log(Level.SEVERE, "Error updating document: DOC_ID=" + DOC_ID);
+            Logger.getLogger(DocumentDAO.class.getName()).log(Level.INFO,
+                    String.format("Updating document: FOLDER_ID=%d, DOC_NAME=%s, SUMMARY=%s, CREATEDATE=%s, DOC_PATH=%s, DOC_ID=%d",
+                            FOLDER_ID, DOC_NAME, SUMMARY, CREATEDATE, DOC_PATH, DOC_ID));
+
         } catch (SQLException ex) {
             Logger.getLogger(DocumentDAO.class.getName()).log(Level.SEVERE, "Error updating document: DOC_ID=" + DOC_ID, ex);
             Logger.getLogger(DocumentDAO.class.getName()).log(Level.INFO,
-                    String.format("Updating document: FOLDER_ID=%d, DOC_NAME=%s, SUMMARY=%s, CREATEDATE=%s, DOC_PATH=%s, DOC_ID=%d",
+                    String.format("Can not update document: FOLDER_ID=%d, DOC_NAME=%s, SUMMARY=%s, CREATEDATE=%s, DOC_PATH=%s, DOC_ID=%d",
                             FOLDER_ID, DOC_NAME, SUMMARY, CREATEDATE, DOC_PATH, DOC_ID));
 
         }
