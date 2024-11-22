@@ -11,6 +11,8 @@ public class DetailFolderInfo {
     private LocalDateTime FOLDER_CREATEAT;
     private int isDeleted;
 
+    private String PARENT_NAME;
+    private String FULL_NAME;
     private String SUMMARY;
     private String FolderName;
 
@@ -101,6 +103,24 @@ public class DetailFolderInfo {
         FolderName = folderName;
     }
 
+    public String getFULL_NAME() {
+        return FULL_NAME;
+    }
+
+    public void setFULL_NAME(String FULL_NAME) {
+        this.FULL_NAME = FULL_NAME;
+    }
+
+    public String getPARENT_NAME() {
+        return PARENT_NAME;
+    }
+
+    public void setPARENT_NAME(String PARENT_NAME) {
+        this.PARENT_NAME = PARENT_NAME;
+    }
+
+
+
     @Override
     public String toString() {
         return "DetailFolderInfo{" +
@@ -111,6 +131,8 @@ public class DetailFolderInfo {
                 ", PARENT_ID=" + PARENT_ID +
                 ", FOLDER_CREATEAT=" + FOLDER_CREATEAT +
                 ", isDeleted=" + isDeleted +
+                ", PARENT_NAME='" + PARENT_NAME + '\'' +
+                ", FULL_NAME='" + FULL_NAME + '\'' +
                 ", SUMMARY='" + SUMMARY + '\'' +
                 ", FolderName='" + FolderName + '\'' +
                 '}';

@@ -80,6 +80,12 @@ public class DashBoardController implements Initializable {
     @FXML
     private FontAwesomeIconView refreshFolder_icon;
 
+    @FXML
+    private FontAwesomeIconView downloadBTN;
+
+    @FXML
+    private FontAwesomeIconView deleteBTN;
+
     //Pane
     @FXML
     private AnchorPane DashBoardForm;
@@ -104,9 +110,6 @@ public class DashBoardController implements Initializable {
     private Button clearBTN;
 
     @FXML
-    private Button deleteBTN;
-
-    @FXML
     private Button addBTN;
 
     @FXML
@@ -123,6 +126,7 @@ public class DashBoardController implements Initializable {
 
     @FXML
     private Button updateFolderBTN;
+
 
     //TABLE
     @FXML
@@ -145,6 +149,9 @@ public class DashBoardController implements Initializable {
 
     @FXML
     private TableColumn<DetailDocInfo, Integer> docNo_Col;
+
+    @FXML
+    private TableView<DetailFolderInfo> folderList_TableView;
 
     @FXML
     private TableColumn<DetailFolderInfo, String> authorFolder_Col;
@@ -195,6 +202,7 @@ public class DashBoardController implements Initializable {
 
     @FXML
     private TextField parentFolder_TXT;
+    private String username;
 
     private MouseEvent mouseEvent;
 
@@ -232,7 +240,7 @@ public class DashBoardController implements Initializable {
     public void signOutLabelOnMouseClicked(MouseEvent mouseEvent) {
         MainApp.setCurrentUser("");
         MainApp.setCurrentUserJoinedDate("");
-        username.getScene().getWindow().hide();
+//        username.getScene().getWindow().hide();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/login.fxml"));
             Parent root = loader.load();
@@ -289,7 +297,7 @@ public class DashBoardController implements Initializable {
 
 
             if (docName.isEmpty() || type.isEmpty() || author.isEmpty()) {
-                showErrorAlert("Lỗi nhập liệu", "Vui lòng điền đầy đủ thông tin trước khi thêm.");
+                showErrorAlert("ADD ERROR", "Please fill all the fields before adding!");
                 return;
             }
 
@@ -314,14 +322,14 @@ public class DashBoardController implements Initializable {
 
             // Kiểm tra kết quả
             if (result > 0) {
-                showSuccessAlert("Thành công", "Tài liệu đã được thêm thành công.");
+                showSuccessAlert("Success", "Document added successfully!");
                 clearDoc();
                 refreshDocList();
             } else {
-                showErrorAlert("Thất bại", "Không thể thêm tài liệu. Vui lòng thử lại.");
+                showErrorAlert("Failed", "Can not add the document. Please try again!");
             }
         } catch (Exception e) {
-            showErrorAlert("Lỗi hệ thống", "Đã xảy ra lỗi: " + e.getMessage());
+            showErrorAlert("System error", "ERROR OCCUR: " + e.getMessage());
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
@@ -640,6 +648,12 @@ public class DashBoardController implements Initializable {
         }
     }
 
+    //Download Document
+    @FXML
+    void HandleDownloadItem(MouseEvent event) {
+
+    }
+
 
     //CUA FOLDER
     //TAO FOLDER MOI
@@ -681,15 +695,15 @@ public class DashBoardController implements Initializable {
             int result = folderDAO.add(folder);
 
             if (result > 0) {
-                showSuccessAlert("Thành công", "Thư mục đã được tạo thành công.");
+                showSuccessAlert("Success", "Folder added successfully!");
                 clearDoc();
                 refreshDocList();
             } else {
-                showErrorAlert("Thất bại", "Không thể thêm thư mục. Vui lòng thử lại.");
+                showErrorAlert("Failed", "Can not create the folder. Please try again!");
             }
         }
         catch (Exception e) {
-            showErrorAlert("Lỗi hệ thống", "Đã xảy ra lỗi: " + e.getMessage());
+            showErrorAlert("System error", "ERROR OCCUR: " + e.getMessage());
             System.out.println(e.getMessage());
             e.printStackTrace();
         }
@@ -733,15 +747,77 @@ public class DashBoardController implements Initializable {
 
     public ObservableList<DetailFolderInfo> folderList() {
         ObservableList<DetailFolderInfo> folderList = FXCollections.observableArrayList();
+        String sql = """
+         SELECT
+             F.FOLDER_ID,
+             F.FOLDER_NAME,
+             F.PARENT_ID,
+             F.USER_ID,
+             U.FULLNAME,
+             F.FOLDER_CREATEAT
+         FROM FOLDER F
+         LEFT JOIN USER U ON F.USER_ID = U.USER_ID
+         WHERE F.isDeleted = 0
+         """;
+        try (Connection conn = JDBCUtil.getConnection();
+             PreparedStatement prepare = conn.prepareStatement(sql);
+             ResultSet resultSet = prepare.executeQuery()) {
 
+            while (resultSet.next()) {
+                DetailFolderInfo detailFolderInfo = new DetailFolderInfo();
+                detailFolderInfo.setFOLDER_ID(resultSet.getInt("FOLDER_ID"));
+                detailFolderInfo.setFOLDER_NAME(resultSet.getString("FOLDER_NAME"));
+                detailFolderInfo.setPARENT_ID(resultSet.getInt("PARENT_ID"));
+                detailFolderInfo.setUSER_ID(resultSet.getInt("USER_ID"));
+                detailFolderInfo.setFOLDER_CREATEAT(resultSet.getTimestamp("FOLDER_CREATEAT").toLocalDateTime());
+                folderList.add(detailFolderInfo);
+            }
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return folderList;
+    }
+
+    private ObservableList<DetailFolderInfo> listFolder;
+    public void showFolderList() {
+        listFolder = folderList();
+
+        folderNo_Col.setCellValueFactory(new PropertyValueFactory<>("FOLDER_ID"));
+        folderName_Col.setCellValueFactory(new PropertyValueFactory<>("FOLDER_NAME"));
+        authorFolder_Col.setCellValueFactory(new PropertyValueFactory<>("FULLNAME"));
+        dateFolderCreate_Col.setCellValueFactory(new PropertyValueFactory<>("FOLDER_CREATEAT"));
+
+        docList_TableView.setItems(listDoc);
+    }
+
+    public void selectFolderList() {
+        DetailFolderInfo detailFolderInfo = folderList_TableView.getSelectionModel().getSelectedItem();
+        int num = folderList_TableView.getSelectionModel().getSelectedIndex();
+
+        if((num -1) < -1) {
+            return;
+        }
+
+        // Hiển thị ITEM_NAME
+        folderName_Col.setText(detailFolderInfo.getFOLDER_NAME());
+
+        authorFolder_Col.setText(detailFolderInfo.getFULL_NAME());
+
+        String getDate = String.valueOf(detailFolderInfo.getFOLDER_CREATEAT());
+        dateFolderCreate_Col.setText(getDate);
     }
 
     //CAP NHAT BANG DU LIEU FOLDER
     @FXML
     void RefreshFolderTable(MouseEvent event) {
-
+        refreshFolderList();
     }
 
-
+    void refreshFolderList() {
+        listFolder = folderList();
+        folderList_TableView.setItems(listFolder);
+    }
 }
 

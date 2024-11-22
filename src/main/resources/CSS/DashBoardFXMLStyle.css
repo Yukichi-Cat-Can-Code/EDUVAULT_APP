@@ -8,7 +8,7 @@
 
 .DashBoardBodyTitle_lbl{
     -fx-text-fill: #efecec;
-    -fx-font-size: 27px;
+    -fx-font-size: 30px;
     -fx-font-weight: bold;
 }
 
@@ -65,8 +65,9 @@
 
 .NormalContent_LBL{
     -fx-font-family: Calibri;
-    -fx-font-size: 19px;
+    -fx-font-size: 21px;
     -fx-text-fill: #eeeeee;
+    -fx-font-weight: bold;
 }
 
 .LinkChain_ICON{
@@ -108,7 +109,7 @@
 
 .textInFieldText{
     -fx-font-family: Calibri;
-    -fx-font-size: 21px;
+    -fx-font-size: 18px;
     -fx-text-fill: #0e0e0e;
     -fx-background-radius: 8px;
     -fx-background-color: #eeeeee ;
@@ -116,9 +117,9 @@
 
 .deleteBTN{
     -fx-font-family: Calibri;
-    -fx-font-size: 19px;
+    -fx-font-size: 15px;
     -fx-text-fill: #eeeeee;
-    -fx-background-color: #fa1335;
+    -fx-background-color: #9c0b1b;
     -fx-background-radius: 8px;
     -fx-cursor: hand;
     -fx-font-weight: bold;
@@ -126,9 +127,9 @@
 
 .updateBTN{
     -fx-font-family: Calibri;
-    -fx-font-size: 19px;
+    -fx-font-size: 15px;
     -fx-text-fill: #eeeeee;
-    -fx-background-color: #1547e8;
+    -fx-background-color: #6586d8;
     -fx-background-radius: 8px;
     -fx-cursor: hand;
     -fx-font-weight: bold;
@@ -136,7 +137,7 @@
 
 .FilterBTN{
     -fx-font-family: Calibri;
-    -fx-font-size: 19px;
+    -fx-font-size: 15px;
     -fx-text-fill: #eeeeee;
     -fx-background-color: rgba(55, 133, 189, 0.87);
     -fx-background-radius: 8px;
@@ -147,9 +148,9 @@
 
 .clearBTN{
     -fx-font-family: Calibri;
-    -fx-font-size: 19px;
+    -fx-font-size: 15px;
     -fx-text-fill: #eeeeee;
-    -fx-background-color: rgba(253, 203, 28, 0.87);
+    -fx-background-color: rgba(10, 69, 158, 0.76);
     -fx-background-radius: 8px;
     -fx-cursor: hand;
     -fx-font-weight: bold;
@@ -157,9 +158,9 @@
 
 .addBTN{
     -fx-font-family: Calibri;
-    -fx-font-size: 19px;
+    -fx-font-size: 15px;
     -fx-text-fill: #eeeeee;
-    -fx-background-color: #49b528;
+    -fx-background-color: #0b44b8;
     -fx-background-radius: 8px;
     -fx-cursor: hand;
     -fx-font-weight: bold;
