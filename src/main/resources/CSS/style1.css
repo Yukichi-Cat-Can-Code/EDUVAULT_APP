@@ -26,3 +26,14 @@
     -fx-background-color: #444444;
     -fx-background-radius: 20px;
 }
+.login{
+    -fx-background-color: linear-gradient(to right, #F869D5, #5650DE);
+    -fx-background-radius: 20px;
+}
+.userpass{
+    -fx-border-color: linear-gradient(to right, #7BF2E9, #B65EBA);
+    -fx-border-width: 2px;
+    -fx-border-radius: 10px;
+    -fx-background-color: #1C1C1C;
+    -fx-background-radius: 20px;
+}
