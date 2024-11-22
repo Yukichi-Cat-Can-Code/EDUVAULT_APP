@@ -181,12 +181,12 @@
                                     <Cursor fx:constant="HAND" />
                                  </cursor>
                               </FontAwesomeIconView>
-                              <Text fx:id="Fullname" fill="WHITE" layoutX="1002.0" layoutY="29.0" strokeType="OUTSIDE" styleClass="HeaderTitle" text="Le Lu Huyen Tran">
+                              <Text fill="WHITE" layoutX="1002.0" layoutY="29.0" strokeType="OUTSIDE" styleClass="HeaderTitle" text="Le Lu Huyen Tran">
                                  <font>
                                     <Font name="System Bold" size="20.0" />
                                  </font>
                               </Text>
-                              <Text fx:id="Email2" fill="WHITE" layoutX="957.0" layoutY="50.0" strokeType="OUTSIDE" styleClass="EmailHeader" text="tranb2203588@student.ctu.edu">
+                              <Text fill="WHITE" layoutX="957.0" layoutY="50.0" strokeType="OUTSIDE" styleClass="EmailHeader" text="tranb2203588@student.ctu.edu">
                                  <font>
                                     <Font size="15.0" />
                                  </font>
@@ -213,12 +213,12 @@
                                           <TableColumn fx:id="trash_col_DeleteAt" prefWidth="251.7332763671875" text="Delete At" />
                                       </columns>
                                     </TableView>
-                                    <TextField fx:id="trashSearch" layoutX="23.0" layoutY="11.0" prefHeight="30.0" prefWidth="304.0" promptText="Search for item" styleClass="SearchBox_TXT" stylesheets="@../../../CSS/DashBoardFXMLStyle.css">
+                                    <TextField fx:id="trashSearch" layoutX="17.0" layoutY="8.0" prefHeight="36.0" prefWidth="310.0" style="-fx-background-radius: 20; -fx-background-color: #444444;" styleClass="searchText">
                                        <padding>
                                           <Insets left="30.0" />
                                        </padding>
                                     </TextField>
-                                    <FontAwesomeIconView fill="#9e9595" glyphName="SEARCH" layoutX="34.0" layoutY="30.0" size="17" text="" />
+                                    <FontAwesomeIconView glyphName="SEARCH" layoutX="29.0" layoutY="31.0" size="17" />
                                     <Button fx:id="trash_Clear" layoutX="339.0" layoutY="9.0" mnemonicParsing="false" prefHeight="35.0" prefWidth="115.0" style="-fx-background-radius: 20; -fx-background-color: #909090;" styleClass="clearBTN" text="Clear" textFill="WHITE">
                                        <font>
                                           <Font name="System Bold" size="13.0" />

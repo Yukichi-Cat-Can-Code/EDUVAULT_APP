@@ -233,14 +233,18 @@
                                                                 <Cursor fx:constant="HAND" />
                                                             </cursor>
                                                         </FontAwesomeIconView>
-                                                        <Button fx:id="FilterBTN" alignment="CENTER" layoutX="527.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#HandleFilteringItem" prefHeight="30.0" prefWidth="122.0" style="-fx-background-radius: 15; -fx-background-color: #257AC5;" styleClass="FilterBTN" text="Filter">
+                                                        <Button fx:id="FilterBTN" alignment="CENTER" layoutX="527.0" layoutY="16.0" mnemonicParsing="false" onMouseClicked="#HandleFilteringItem" prefHeight="30.0" prefWidth="122.0" stylesheets="@../../../CSS/style1.css" text="Filter">
                                              <effect>
                                                 <DropShadow spread="0.29">
                                                    <color>
                                                       <Color red="0.06315789371728897" green="0.06315789371728897" blue="0.06315789371728897" />
                                                    </color>
                                                 </DropShadow>
-                                             </effect></Button>
+                                             </effect>
+                                             <styleClass>
+                                                <String fx:value="FilterBTN" />
+                                                <String fx:value="userpass" />
+                                             </styleClass></Button>
                                                         <FontAwesomeIconView fill="#ececec" glyphName="SLIDERS" layoutX="543.0" layoutY="37.0" size="15" />
                                                         <FontAwesomeIconView fx:id="refresh_icon" fill="#fcfcfc" glyphName="REFRESH" layoutX="713.0" layoutY="40.0" onMouseClicked="#RefreshTable" size="24.0" />
                                                     </children>
