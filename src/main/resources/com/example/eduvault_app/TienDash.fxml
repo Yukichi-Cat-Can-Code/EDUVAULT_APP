@@ -3,6 +3,7 @@
 <?import de.jensd.fx.glyphs.GlyphsStack?>
 <?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import java.lang.String?>
+<?import java.net.URL?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
@@ -19,6 +20,8 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
@@ -246,9 +249,9 @@
                                           </DropShadow>
                                        </effect>
                                                 </AnchorPane>
-                                                <AnchorPane layoutX="792.0" layoutY="55.0" prefHeight="677.0" prefWidth="450.0" style="-fx-background-radius: 20;" styleClass="bg-white">
+                                                <AnchorPane layoutX="792.0" layoutY="55.0" prefHeight="677.0" prefWidth="450.0" style="-fx-background-radius: 20; -fx-background-color: #444444;" styleClass="bg-white">
                                                     <children>
-                                                        <TextField fx:id="docName_TXT" alignment="TOP_LEFT" layoutX="33.0" layoutY="49.0" prefHeight="36.0" prefWidth="247.0" promptText="JavaProject" style="-fx-background-radius: 15;" styleClass="textInFieldText" />
+                                                        <TextField fx:id="docName_TXT" alignment="TOP_LEFT" layoutX="33.0" layoutY="49.0" prefHeight="26.0" prefWidth="247.0" promptText="JavaProject" style="-fx-background-radius: 15;" styleClass="textInFieldText" />
                                                         <Text fill="#f4f4f4" layoutX="33.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Document Name">
                                                             <styleClass>
                                                                 <String fx:value="NormalContent_LBL" />
@@ -275,10 +278,42 @@
                                                             </styleClass>
                                                         </Text>
                                                         <TextField fx:id="docPath_TXT" alignment="TOP_LEFT" editable="false" layoutX="31.0" layoutY="303.0" prefHeight="36.0" prefWidth="371.0" promptText="System/A/B/C/JavaProject.docx" style="-fx-background-radius: 15;" styleClass="textInFieldText" />
-                                                        <Button fx:id="addBTN" layoutX="54.0" layoutY="554.0" mnemonicParsing="false" onMouseClicked="#HandleAddNewItem" prefHeight="47.0" prefWidth="149.0" style="-fx-background-color: #257AC5; -fx-background-radius: 20;" styleClass="addBTN" text="Add" />
-                                                        <Button fx:id="updateBTN" layoutX="13.0" layoutY="618.0" mnemonicParsing="false" onMouseClicked="#HandleUpdateItem" prefHeight="47.0" prefWidth="114.0" style="-fx-background-radius: 20; -fx-background-color: #FFAA1D;" styleClass="updateBTN" text="Update" />
-                                                        <Button fx:id="deleteBTN" layoutX="148.0" layoutY="622.0" mnemonicParsing="false" onMouseClicked="#HandleMoveItemToTrash" prefHeight="42.0" prefWidth="166.0" style="-fx-background-radius: 20;" styleClass="deleteBTN" text="Move to trash" />
-                                                        <Button fx:id="clearBTN" layoutX="329.0" layoutY="619.0" mnemonicParsing="false" onMouseClicked="#HandleClearCreateItemInfo" prefHeight="44.0" prefWidth="106.0" style="-fx-background-color: #444444; -fx-background-radius: 20;" styleClass="clearBTN" text="Clear" />
+                                                        <Button fx:id="addBTN" layoutX="40.0" layoutY="548.0" mnemonicParsing="false" onMouseClicked="#HandleAddNewItem" prefHeight="43.0" prefWidth="156.0" text="Add" textFill="WHITE" wrapText="true">
+                                             <stylesheets>
+                                                <URL value="@../../../CSS/Style.css" />
+                                                <URL value="@../../../CSS/style1.css" />
+                                             </stylesheets>
+                                             <styleClass>
+                                                <String fx:value="addBTN" />
+                                                <String fx:value="demo2" />
+                                             </styleClass></Button>
+                                                        <Button fx:id="updateBTN" layoutX="15.0" layoutY="619.0" mnemonicParsing="false" onMouseClicked="#HandleUpdateItem" prefHeight="38.0" prefWidth="114.0" stylesheets="@../../../CSS/style1.css" text="Update">
+                                             <textFill>
+                                                <LinearGradient endX="1.0" endY="1.0">
+                                                   <stops>
+                                                      <Stop>
+                                                         <color>
+                                                            <Color red="1.0" green="1.0" blue="1.0" />
+                                                         </color>
+                                                      </Stop>
+                                                      <Stop offset="1.0">
+                                                         <color>
+                                                            <Color red="1.0" green="1.0" blue="1.0" />
+                                                         </color>
+                                                      </Stop>
+                                                   </stops>
+                                                </LinearGradient>
+                                             </textFill>
+                                             <styleClass>
+                                                <String fx:value="updateBTN" />
+                                                <String fx:value="demo4" />
+                                             </styleClass></Button>
+                                                        <Button fx:id="deleteBTN" layoutX="150.0" layoutY="617.0" mnemonicParsing="false" onMouseClicked="#HandleMoveItemToTrash" prefHeight="42.0" prefWidth="166.0" stylesheets="@../../../CSS/style1.css" text="Move to trash" textFill="WHITE">
+                                             <styleClass>
+                                                <String fx:value="deleteBTN" />
+                                                <String fx:value="demo3" />
+                                             </styleClass></Button>
+                                                        <Button fx:id="clearBTN" layoutX="329.0" layoutY="616.0" mnemonicParsing="false" onMouseClicked="#HandleClearCreateItemInfo" prefHeight="42.0" prefWidth="106.0" style="-fx-background-color: #7b7b7b; -fx-background-radius: 20;" styleClass="clearBTN" text="Clear" />
                                                         <ComboBox fx:id="type_TXT" layoutX="31.0" layoutY="211.0" prefHeight="42.0" prefWidth="152.0" promptText="WORD" style="-fx-background-radius: 15;" styleClass="textInFieldText" />
                                                         <TextField fx:id="docName_TXT1" alignment="TOP_LEFT" layoutX="31.0" layoutY="387.0" prefHeight="141.0" prefWidth="374.0" promptText="Document summary content" styleClass="textInFieldText" />
                                                         <Text fill="#f4f4f4" layoutX="36.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Summary">
@@ -287,7 +322,11 @@
                                                                 <String fx:value="editBoardTitle" />
                                                             </styleClass>
                                                         </Text>
-                                                        <Button fx:id="downloadBTN" layoutX="232.0" layoutY="554.0" mnemonicParsing="false" onMouseClicked="#HandleDownloadItem" prefHeight="48.0" prefWidth="162.0" style="-fx-background-radius: 20;" styleClass="addBTN" text="Download" textAlignment="RIGHT" />
+                                                        <Button fx:id="downloadBTN" layoutX="233.0" layoutY="549.0" mnemonicParsing="false" onMouseClicked="#HandleDownloadItem" prefHeight="42.0" prefWidth="162.0" stylesheets="@../../../CSS/style1.css" text="Download" textAlignment="RIGHT">
+                                             <styleClass>
+                                                <String fx:value="addBTN" />
+                                                <String fx:value="demo1" />
+                                             </styleClass></Button>
                                                     </children>
                                        <effect>
                                           <InnerShadow choke="0.13" height="91.19" radius="45.0925" width="91.18" />
@@ -395,7 +434,7 @@
                                         </AnchorPane>
                                     </children>
                                     <effect>
-                                        <InnerShadow choke="0.43" height="0.0" radius="38.0875" width="154.35" />
+                                        <InnerShadow choke="0.39" height="2.32" radius="38.6675" width="154.35" />
                                     </effect>
                                 </AnchorPane>
                             </center>

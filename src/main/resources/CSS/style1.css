@@ -1,0 +1,28 @@
+.demo1 {
+    -fx-border-color: linear-gradient(to right, #3BB2B8, #42E695);
+    -fx-border-width: 4px;
+    -fx-border-radius: 20px;
+    -fx-background-color: #444444;
+    -fx-background-radius: 20px;
+}
+.demo2{
+    -fx-border-color: linear-gradient(to right, #17EAD9, #6078EA);
+    -fx-border-width: 4px;
+    -fx-border-radius: 20px;
+    -fx-background-color: #444444;
+    -fx-background-radius: 20px;
+}
+.demo3{
+    -fx-border-color: linear-gradient(to right, #F54EA2, #FF7676);
+    -fx-border-width: 4px;
+    -fx-border-radius: 20px;
+    -fx-background-color: #444444;
+    -fx-background-radius: 20px;
+}
+.demo4{
+    -fx-border-color: linear-gradient(to right, #F02FC2, #6094EA);
+    -fx-border-width: 4px;
+    -fx-border-radius: 20px;
+    -fx-background-color: #444444;
+    -fx-background-radius: 20px;
+}
