@@ -46,6 +46,7 @@ import static com.itextpdf.text.xml.xmp.XmpBasicProperties.CREATEDATE;
 public class DashBoardController implements Initializable {
 
 
+    public ComboBox type_filter;
     //ICON
     @FXML
     private FontAwesomeIconView AddDoc_Icon;
@@ -224,12 +225,26 @@ public class DashBoardController implements Initializable {
         ObservableList<String> list = FXCollections.observableArrayList("Word", "Excel", "PDF");
         type_TXT.setItems(list);
         type_TXT.setValue("Word");
+
+        // Thiết lập giá trị cho ComboBox
+        type_filter.setItems(FXCollections.observableArrayList("ALL", "WORD", "PDF", "EXCEL"));
+        type_filter.setValue("ALL"); // Mặc định là ALL (hiển thị tất cả)
+
+
+        // Lắng nghe sự kiện thay đổi của ComboBox
+        type_filter.setOnAction(event -> {
+            String selectedType = (String) type_filter.getValue();
+            refreshDocList(selectedType); // Tải lại danh sách với filter
+        });
+
         Fullname.setText(MainApp.getFullName());
         Email.setText(MainApp.getEmail());
         showDocList();
         showFolderList();
 
+
     }
+
 
     //sign out
     public void signOutLabelOnMouseClicked(MouseEvent mouseEvent) {
@@ -320,7 +335,7 @@ public class DashBoardController implements Initializable {
             if (result > 0) {
                 showSuccessAlert("Success", "Document added successfully!");
                 clearDoc();
-                refreshDocList();
+                refreshDocList("ALL");
             } else {
                 showErrorAlert("Failed", "Can not add the document. Please try again!");
             }
@@ -412,7 +427,7 @@ public class DashBoardController implements Initializable {
         try {
 
 
-            refreshDocList();
+            refreshDocList("ALL");
 
             showSuccessAlert("Update Document","Update document success!");
         }
@@ -453,14 +468,15 @@ public class DashBoardController implements Initializable {
 
     @FXML
     void RefreshTable(MouseEvent event) {
-        refreshDocList();
+        refreshDocList("ALL");
     }
 
     //DISPLAY TABLE DATA
 
-    public ObservableList<DetailDocInfo> docList() {
+    public ObservableList<DetailDocInfo> docList(String typeFilter) {
         ObservableList<DetailDocInfo> listData = FXCollections.observableArrayList();
 
+        // SQL cơ bản
         String sql = """
         SELECT
             D.DOC_ID,
@@ -472,40 +488,43 @@ public class DashBoardController implements Initializable {
             D.FOLDER_ID,
             F.FOLDER_NAME,
             U.FULLNAME,
-            T.TYPEDOC_NAME,
-            CASE\s
-                WHEN D.TYPEDOC_ID = T.TYPEDOC_ID THEN T.TYPEDOC_NAME
-                ELSE NULL
-            END AS DOCUMENT_TYPE_NAME
+            T.TYPEDOC_NAME
         FROM DOCUMENT D
         LEFT JOIN USER U ON D.USER_ID = U.USER_ID
         LEFT JOIN TYPEOFDOCUMENT T ON D.TYPEDOC_ID = T.TYPEDOC_ID
         LEFT JOIN FOLDER F ON D.FOLDER_ID = F.FOLDER_ID
-        WHERE D.isDeleted = 0;
-        
+        WHERE D.isDeleted = 0
     """;
 
+        // Thêm điều kiện filter (nếu có)
+        if (typeFilter != null && !typeFilter.equalsIgnoreCase("ALL")) {
+            sql += " AND T.TYPEDOC_NAME = ?";
+        }
+
         try (Connection conn = JDBCUtil.getConnection();
-             PreparedStatement prepare = conn.prepareStatement(sql);
-             ResultSet resultSet = prepare.executeQuery()) {
+             PreparedStatement prepare = conn.prepareStatement(sql)) {
 
-            while (resultSet.next()) {
-                DetailDocInfo detailDocInfo = new DetailDocInfo(
-                        resultSet.getInt("DOC_ID"),              // Lấy giá trị DOC_ID
-                        resultSet.getString("DOC_NAME"),         // Lấy giá trị DOC_NAME
-                        resultSet.getInt("TYPEDOC_ID"),          // Lấy giá trị TYPEDOC_ID
-                        resultSet.getTimestamp("CREATEDATE"),    // Lấy giá trị CREATEDATE (nếu có cả ngày và giờ)
-                        resultSet.getInt("USER_ID"),             // Lấy giá trị USER_ID
-                        resultSet.getString("FULLNAME"),         // Lấy giá trị FULLNAME từ bảng User
-                        resultSet.getString("TYPEDOC_NAME"),      // Lấy giá trị TYPEDOC_NAME từ bảng TypeofDocument
-                        resultSet.getString("DOC_PATH"),
-                        resultSet.getString("FOLDER_NAME")
-
-                );
-
-                listData.add(detailDocInfo);
+            // Set tham số filter nếu có
+            if (typeFilter != null && !typeFilter.equalsIgnoreCase("ALL")) {
+                prepare.setString(1, typeFilter);
             }
 
+            try (ResultSet resultSet = prepare.executeQuery()) {
+                while (resultSet.next()) {
+                    DetailDocInfo detailDocInfo = new DetailDocInfo(
+                            resultSet.getInt("DOC_ID"),
+                            resultSet.getString("DOC_NAME"),
+                            resultSet.getInt("TYPEDOC_ID"),
+                            resultSet.getTimestamp("CREATEDATE"),
+                            resultSet.getInt("USER_ID"),
+                            resultSet.getString("FULLNAME"),
+                            resultSet.getString("TYPEDOC_NAME"),
+                            resultSet.getString("DOC_PATH"),
+                            resultSet.getString("FOLDER_NAME")
+                    );
+                    listData.add(detailDocInfo);
+                }
+            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -514,19 +533,20 @@ public class DashBoardController implements Initializable {
     }
 
 
+
     private ObservableList<DetailDocInfo> listDoc;
     public void showDocList() {
-        listDoc = docList();
 
-        docNo_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_ID"));
-        docName_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_NAME"));
-        type_Col.setCellValueFactory(new PropertyValueFactory<>("TYPEDOC_NAME"));
-        dateCreate_Col.setCellValueFactory(new PropertyValueFactory<>("CREATEDATE"));
-        author_Col.setCellValueFactory(new PropertyValueFactory<>("FULLNAME"));
-        docPath_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_PATH"));
-        DocStoreInFolder_Col.setCellValueFactory(new PropertyValueFactory<>("FOLDER_NAME"));
-
-        docList_TableView.setItems(listDoc);
+//        docNo_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_ID"));
+//        docName_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_NAME"));
+//        type_Col.setCellValueFactory(new PropertyValueFactory<>("TYPEDOC_NAME"));
+//        dateCreate_Col.setCellValueFactory(new PropertyValueFactory<>("CREATEDATE"));
+//        author_Col.setCellValueFactory(new PropertyValueFactory<>("FULLNAME"));
+//        docPath_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_PATH"));
+//        DocStoreInFolder_Col.setCellValueFactory(new PropertyValueFactory<>("FOLDER_NAME"));
+//
+//        docList_TableView.setItems(listDoc);
+        refreshDocList("ALL"); // Hiển thị tất cả tài liệu
     }
 
     public void selectDocList() {
@@ -552,10 +572,11 @@ public class DashBoardController implements Initializable {
         docPath_TXT.setDisable(true);
     }
 
-    private void refreshDocList() {
-        listDoc = docList(); // Tải lại danh sách từ cơ sở dữ liệu
-        docList_TableView.setItems(listDoc); // Gán lại danh sách cho TableView
+    private void refreshDocList(String typeFilter) {
+        listDoc = docList(typeFilter); // Gọi hàm docList() với filter
+        docList_TableView.setItems(listDoc); // Cập nhật TableView
     }
+
 
 
     private String getTypeName(int typeId, List<TypeOfDocument> types) {
@@ -716,7 +737,7 @@ public class DashBoardController implements Initializable {
             if (result > 0) {
                 showSuccessAlert("Success", "Folder added successfully!");
                 clearDoc();
-                refreshDocList();
+                refreshDocList("ALL");
             } else {
                 showErrorAlert("Failed", "Can not create the folder. Please try again!");
             }
@@ -882,7 +903,7 @@ public class DashBoardController implements Initializable {
                     }
 
                     // Làm mới danh sách tài liệu
-                    refreshDocList();
+                    refreshDocList("ALL");
                     clearDoc();
                     // Hiển thị thông báo thành công
                     showNotification(itemType + " moved to trash successfully.");
