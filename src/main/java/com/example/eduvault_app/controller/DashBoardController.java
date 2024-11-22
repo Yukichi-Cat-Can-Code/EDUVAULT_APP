@@ -402,6 +402,12 @@ public class DashBoardController implements Initializable {
 
         // Lấy thông tin từ item được chọn
         int docId = selectedDoc.getDOC_ID();
+        String docName = selectedDoc.getDOC_NAME();
+        String folderName = selectedDoc.getFOLDER_NAME();
+        String typeDoc = selectedDoc.getTYPEDOC_NAME();
+        String docPath = selectedDoc.getDOC_PATH();
+        String summary = selectedDoc.getSUMMARY();
+
 
 
         try {
@@ -515,6 +521,7 @@ public class DashBoardController implements Initializable {
         dateCreate_Col.setCellValueFactory(new PropertyValueFactory<>("CREATEDATE"));
         author_Col.setCellValueFactory(new PropertyValueFactory<>("FULLNAME"));
         docPath_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_PATH"));
+
         docList_TableView.setItems(listDoc);
     }
 
@@ -522,17 +529,19 @@ public class DashBoardController implements Initializable {
         DetailDocInfo detailDocInfo = docList_TableView.getSelectionModel().getSelectedItem();
         int num = docList_TableView.getSelectionModel().getSelectedIndex();
 
+        FolderDAO folderDAO = new FolderDAO();
+        Folder folder = folderDAO.get(detailDocInfo.getDOC_ID());
+
         if((num -1) < -1) {
             return;
         }
 
         // Hiển thị ITEM_NAME
-        docName_Col.setText(detailDocInfo.getDOC_NAME());
-
-        type_Col.setText(detailDocInfo.getTYPEDOC_NAME());
-
-        String getDate = String.valueOf(detailDocInfo.getCREATEDATE());
-        dateCreate_Col.setText(getDate);
+        docName_TXT.setText(detailDocInfo.getDOC_NAME());
+        type_TXT.setValue(detailDocInfo.getTYPEDOC_NAME());
+        docPath_TXT.setText(detailDocInfo.getDOC_PATH());
+        Summary_TXT.setText(detailDocInfo.getSUMMARY());
+        FolderName_TXT.setText(folder.getFOLDER_NAME());
     }
 
     private void refreshDocList() {

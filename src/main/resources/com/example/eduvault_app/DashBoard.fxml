@@ -211,14 +211,14 @@
                                     </Label>
                                     <AnchorPane layoutX="11.0" layoutY="56.0" prefHeight="670.0" prefWidth="846.0" styleClass="bg-white">
                                        <children>
-                                          <TableView fx:id="docList_TableView" layoutX="12.0" layoutY="70.0" prefHeight="587.0" prefWidth="824.0">
+                                          <TableView fx:id="docList_TableView" layoutX="12.0" layoutY="70.0" onMouseClicked="#selectDocList" prefHeight="587.0" prefWidth="798.0">
                                              <columns>
                                                 <TableColumn fx:id="docNo_Col" prefWidth="45.0" text="No." />
                                                 <TableColumn fx:id="docName_Col" prefWidth="116.80001831054688" text="Document Name" />
                                                 <TableColumn fx:id="type_Col" prefWidth="48.800018310546875" text="Type" />
                                                 <TableColumn fx:id="author_Col" minWidth="0.0" prefWidth="99.99995422363281" text="Author" />
                                                 <TableColumn fx:id="dateCreate_Col" prefWidth="136.800048828125" text="Date Created" />
-                                                <TableColumn fx:id="docPath_Col" prefWidth="896.800048828125" text="Document Path" />
+                                                <TableColumn fx:id="docPath_Col" prefWidth="400.0" text="Document Path" />
                                              </columns>
                                           </TableView>
                                           <TextField layoutX="17.0" layoutY="15.0" prefHeight="30.0" prefWidth="331.0" promptText="Search for document" styleClass="SearchBox_TXT">

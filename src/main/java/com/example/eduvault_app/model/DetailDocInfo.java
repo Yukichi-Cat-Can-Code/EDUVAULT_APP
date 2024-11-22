@@ -146,6 +146,22 @@ public class DetailDocInfo {
         this.USER_ID = USER_ID;
     }
 
+    public int getFOLDER_PARENT_ID() {
+        return FOLDER_PARENT_ID;
+    }
+
+    public void setFOLDER_PARENT_ID(int FOLDER_PARENT_ID) {
+        this.FOLDER_PARENT_ID = FOLDER_PARENT_ID;
+    }
+
+    public String getSUMMARY() {
+        return SUMMARY;
+    }
+
+    public void setSUMMARY(String SUMMARY) {
+        this.SUMMARY = SUMMARY;
+    }
+
     @Override
     public String toString() {
         return "DetailDocInfo{" +
