@@ -47,7 +47,7 @@ public class DetailDocInfo {
         this.TYPEDOC_NAME = TYPEDOC_NAME;
     }
 
-    public DetailDocInfo(int DOC_ID, String DOC_NAME, int TYPEDOC_ID, Timestamp CREATEDATE, int USER_ID, String FULLNAME, String TYPEDOC_NAME, String DOC_PATH) {
+    public DetailDocInfo(int DOC_ID, String DOC_NAME, int TYPEDOC_ID, Timestamp CREATEDATE, int USER_ID, String FULLNAME, String TYPEDOC_NAME, String DOC_PATH, String FOLDER_NAME) {
         this.DOC_ID = DOC_ID;
         this.DOC_NAME = DOC_NAME;
         this.TYPEDOC_ID = TYPEDOC_ID;
@@ -56,6 +56,7 @@ public class DetailDocInfo {
         this.FULLNAME = FULLNAME;
         this.TYPEDOC_NAME = TYPEDOC_NAME;
         this.DOC_PATH = DOC_PATH;
+        this.FOLDER_NAME = FOLDER_NAME;
     }
 
     public int getDOC_ID() {

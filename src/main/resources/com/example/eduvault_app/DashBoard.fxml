@@ -22,7 +22,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane fx:id="dashBoardTemp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1538.0" stylesheets="@../../../CSS/DashBoardFXMLStyle.css" xmlns="http://javafx.com/javafx/20.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.DashBoardController">
+<AnchorPane fx:id="dashBoardTemp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="1538.0" stylesheets="@../../../CSS/DashBoardFXMLStyle.css" xmlns="http://javafx.com/javafx/23.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.example.eduvault_app.controller.DashBoardController">
    <children>
       <BorderPane layoutY="-1.0" prefHeight="804.0" prefWidth="1537.0">
          <left>
@@ -88,7 +88,7 @@
                            <font>
                               <Font name="System Bold" size="12.0" />
                            </font></Label>
-                        <Label fx:id="TrashForm" alignment="CENTER_RIGHT" layoutX="35.0" layoutY="188.0" onMouseClicked="#showTrashForm" prefHeight="22.0" prefWidth="82.0" styleClass="NormalContent_LBL" text="Trash">
+                        <Label fx:id="TrashForm" alignment="CENTER_RIGHT" layoutX="30.0" layoutY="188.0" onMouseClicked="#showTrashForm" prefHeight="22.0" prefWidth="82.0" styleClass="NormalContent_LBL" text="Trash">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Label>
@@ -97,7 +97,7 @@
                               <Font name="Calibri Bold" size="19.0" />
                            </font>
                         </Label>
-                        <Label fx:id="FolderForm" alignment="CENTER" layoutX="46.0" layoutY="340.0" prefHeight="22.0" prefWidth="98.0" styleClass="NormalContent_LBL" text="Folder" textAlignment="CENTER">
+                        <Label fx:id="FolderForm" alignment="CENTER" layoutX="46.0" layoutY="340.0" prefHeight="22.0" prefWidth="107.0" styleClass="NormalContent_LBL" text="Folder" textAlignment="CENTER">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Label>
@@ -106,19 +106,19 @@
                               <Font name="Calibri Bold" size="19.0" />
                            </font>
                         </Label>
-                        <FontAwesomeIconView fill="#c4c4c4fd" glyphName="FOLDER_OPEN_ALT" layoutX="42.0" layoutY="157.0" selectionFill="#e4e0e0" size="22" styleClass="FolderIcon" text="">
+                        <FontAwesomeIconView fill="#c4c4c4fd" glyphName="FOLDER_OPEN_ALT" layoutX="35.0" layoutY="157.0" selectionFill="#e4e0e0" size="22" styleClass="FolderIcon" text="">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></FontAwesomeIconView>
-                        <FontAwesomeIconView fill="#efecec" glyphName="TRASH_ALT" layoutX="43.0" layoutY="205.0" size="22" text="">
+                        <FontAwesomeIconView fill="#efecec" glyphName="TRASH_ALT" layoutX="35.0" layoutY="210.0" size="22" text="">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></FontAwesomeIconView>
-                        <FontAwesomeIconView fill="#efecec" glyphName="FOLDER_ALT" layoutX="43.0" layoutY="358.0" size="22">
+                        <FontAwesomeIconView fill="#efecec" glyphName="FOLDER_ALT" layoutX="40.0" layoutY="361.0" size="22">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></FontAwesomeIconView>
-                        <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="126.0" layoutY="357.0" size="14">
+                        <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="132.0" layoutY="360.0" size="14">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></FontAwesomeIconView>
@@ -187,7 +187,7 @@
                                     <Font name="System Bold" size="32.0" />
                                  </font>
                               </Label>
-                              <Label fx:id="Email" layoutX="937.0" layoutY="37.0" styleClass="EmailHeader" text="tranb2203588@student.ctu.edu" textFill="WHITE">
+                              <Label fx:id="Email" contentDisplay="RIGHT" layoutX="937.0" layoutY="37.0" styleClass="EmailHeader" text="tranb2203588@student.ctu.edu" textFill="WHITE">
                                  <font>
                                     <Font size="20.0" />
                                  </font>
@@ -211,14 +211,15 @@
                                     </Label>
                                     <AnchorPane layoutX="11.0" layoutY="56.0" prefHeight="670.0" prefWidth="846.0" styleClass="bg-white">
                                        <children>
-                                          <TableView fx:id="docList_TableView" layoutX="12.0" layoutY="70.0" onMouseClicked="#selectDocList" prefHeight="587.0" prefWidth="798.0">
+                                          <TableView fx:id="docList_TableView" layoutX="12.0" layoutY="70.0" onMouseClicked="#selectDocList" prefHeight="587.0" prefWidth="824.0">
                                              <columns>
                                                 <TableColumn fx:id="docNo_Col" prefWidth="45.0" text="No." />
                                                 <TableColumn fx:id="docName_Col" prefWidth="116.80001831054688" text="Document Name" />
                                                 <TableColumn fx:id="type_Col" prefWidth="48.800018310546875" text="Type" />
                                                 <TableColumn fx:id="author_Col" minWidth="0.0" prefWidth="99.99995422363281" text="Author" />
                                                 <TableColumn fx:id="dateCreate_Col" prefWidth="136.800048828125" text="Date Created" />
-                                                <TableColumn fx:id="docPath_Col" prefWidth="400.0" text="Document Path" />
+                                                <TableColumn fx:id="DocStoreInFolder_Col" prefWidth="136.800048828125" text="Store in Folder" />
+                                                <TableColumn fx:id="docPath_Col" prefWidth="240.0" text="Document Path" />
                                              </columns>
                                           </TableView>
                                           <TextField layoutX="17.0" layoutY="15.0" prefHeight="30.0" prefWidth="331.0" promptText="Search for document" styleClass="SearchBox_TXT">
@@ -295,7 +296,7 @@
                                                 <String fx:value="editBoardTitle" />
                                              </styleClass>
                                           </Text>
-                                          <FontAwesomeIconView fx:id="deleteBTN" fill="#e1e1e1" glyphName="TRASH" layoutX="301.0" layoutY="62.0" onMouseClicked="#HandleMoveItemToTrash" size="30">
+                                          <FontAwesomeIconView fx:id="deleteBTN" fill="#e1e1e1" glyphName="TRASH" layoutX="301.0" layoutY="62.0" onMouseClicked="#handleDeleteItem" size="30">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>
