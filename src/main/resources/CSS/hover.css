@@ -16,4 +16,19 @@
     -fx-background-color: #1C1C1C;
     -fx-background-radius: 20px;
 }
+.sbar{
+    -fx-background-color: #1c1c1c;
+    -fx-background-radius: 15px;
+}
+.sbar:hover{
+    -fx-background-color: #444444;
+    -fx-border-color: linear-gradient(to right, #7BF2E9, #B65EBA);
+    -fx-border-radius: 15px;
+}
+
+.dark:hover{
+    -fx-background-color:  #000000;
+    -fx-background-radius: 15px;
+    -fx-background-size: 400px;
+}
 
