@@ -98,14 +98,15 @@ public class DocumentDAO implements DAOInterface<Document> {
     }
 
 
-    public int updateDoc(int FOLDER_ID, String DOC_NAME, String SUMMARY,LocalDateTime CREATEDATE,String DOC_PATH, int DOC_ID) {
+    public int updateDoc(int FOLDER_ID, String DOC_NAME, String SUMMARY, LocalDateTime CREATEDATE, String DOC_PATH, int DOC_ID) {
         int result = 0;
 
         String sql = "UPDATE DOCUMENT SET FOLDER_ID = ?, DOC_NAME = ?, SUMMARY = ?, CREATEDATE = ?, DOC_PATH = ? WHERE DOC_ID = ?";
+
         try (Connection conn = JDBCUtil.getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
 
-            // Step 2: Set parameters
+            // Set parameters
             ps.setInt(1, FOLDER_ID);
             ps.setString(2, DOC_NAME);
             ps.setString(3, SUMMARY);
@@ -113,16 +114,22 @@ public class DocumentDAO implements DAOInterface<Document> {
             ps.setString(5, DOC_PATH);
             ps.setInt(6, DOC_ID);
 
-            // Step 3: Execute SQL
-            result =  ps.executeUpdate();
+            // Execute SQL
+            result = ps.executeUpdate();
 
-            //close connection
-            JDBCUtil.closeConnection(conn);
-            return result;
+            if (result == 0) {
+                Logger.getLogger(DocumentDAO.class.getName()).log(Level.WARNING, "No rows were updated for DOC_ID=" + DOC_ID);
+            }
+
         } catch (SQLException ex) {
-            Logger.getLogger(DocumentDAO.class.getName()).log(Level.SEVERE, null, ex);
-            return 0;
+            Logger.getLogger(DocumentDAO.class.getName()).log(Level.SEVERE, "Error updating document: DOC_ID=" + DOC_ID, ex);
+            Logger.getLogger(DocumentDAO.class.getName()).log(Level.INFO,
+                    String.format("Updating document: FOLDER_ID=%d, DOC_NAME=%s, SUMMARY=%s, CREATEDATE=%s, DOC_PATH=%s, DOC_ID=%d",
+                            FOLDER_ID, DOC_NAME, SUMMARY, CREATEDATE, DOC_PATH, DOC_ID));
+
         }
+
+        return result;
     }
 
 

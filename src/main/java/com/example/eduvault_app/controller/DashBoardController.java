@@ -226,25 +226,23 @@ public class DashBoardController implements Initializable {
         type_TXT.setItems(list);
         type_TXT.setValue("Word");
 
-        // Thiết lập giá trị cho ComboBox
-        type_filter.setItems(FXCollections.observableArrayList("ALL", "WORD", "PDF", "EXCEL"));
-        type_filter.setValue("ALL"); // Mặc định là ALL (hiển thị tất cả)
-
-
-        // Lắng nghe sự kiện thay đổi của ComboBox
-        type_filter.setOnAction(event -> {
-            String selectedType = (String) type_filter.getValue();
-            refreshDocList(selectedType); // Tải lại danh sách với filter
-        });
+//        // Thiết lập giá trị cho ComboBox
+//        type_filter.setItems(FXCollections.observableArrayList("ALL", "WORD", "PDF", "EXCEL"));
+//        type_filter.setValue("ALL"); // Mặc định là ALL (hiển thị tất cả)
+//
+//
+//        // Lắng nghe sự kiện thay đổi của ComboBox
+//        type_filter.setOnAction(event -> {
+//            String selectedType = (String) type_filter.getValue();
+//            refreshDocList(selectedType); // Tải lại danh sách với filter
+//        });
 
         Fullname.setText(MainApp.getFullName());
         Email.setText(MainApp.getEmail());
         showDocList();
         showFolderList();
 
-
     }
-
 
     //sign out
     public void signOutLabelOnMouseClicked(MouseEvent mouseEvent) {
@@ -335,7 +333,7 @@ public class DashBoardController implements Initializable {
             if (result > 0) {
                 showSuccessAlert("Success", "Document added successfully!");
                 clearDoc();
-                refreshDocList("ALL");
+                refreshDocList();
             } else {
                 showErrorAlert("Failed", "Can not add the document. Please try again!");
             }
@@ -405,54 +403,54 @@ public class DashBoardController implements Initializable {
         DetailDocInfo selectedDoc = docList_TableView.getSelectionModel().getSelectedItem();
 
         if (selectedDoc == null) {
-            // Hiển thị thông báo nếu không có dòng nào được chọn
-            showErrorAlert("Error","No item selected!");
+            showErrorAlert("Error", "No item selected!");
             return;
         }
 
-        // Lấy thông tin từ item được chọn
-        int docId = selectedDoc.getDOC_ID();
-        String docName = selectedDoc.getDOC_NAME();
-        String folderName = selectedDoc.getFOLDER_NAME();
-
-        FolderDAO folderDAO = new FolderDAO();
-        int folderId = folderDAO.getFolderId(folderName);
-
-        String docPath = selectedDoc.getDOC_PATH();
-        String summary = selectedDoc.getSUMMARY();
-        LocalDateTime dateTime = LocalDateTime.now();
-        dateTime = dateTime.withNano(0);
-
-        int updateResult = 0;
-
-
         try {
+            int docId = selectedDoc.getDOC_ID();
+            String docName = selectedDoc.getDOC_NAME().trim();
+            String folderName = selectedDoc.getFOLDER_NAME().trim();
+            String docType = selectedDoc.getTYPEDOC_NAME().trim();
 
+            if (docName.isEmpty() || folderName.isEmpty() || docType.isEmpty()) {
+                showErrorAlert("Failed", "Please fill all the required fields before updating!");
+                return;
+            }
 
-            refreshDocList("ALL");
+            FolderDAO folderDAO = new FolderDAO();
+            int folderId = folderDAO.getFolderId(folderName);
 
-            showSuccessAlert("Update Document","Update document success!");
-        if(docName.isEmpty())
-        {
-            showErrorAlert("Failed", "Can not update the document. Please fill all the fields before updating!");
-            return ;
-        }
-        try {
-            DocumentDAO documentDAO = new DocumentDAO();
-            updateResult = documentDAO.updateDoc(folderId,docName,summary,dateTime,docPath,docId);
+            DocumentDAO docDao = new DocumentDAO();
+            Document doc = docDao.get(docId);
 
-            // Kiểm tra kết quả
+            String Formatfolder = (folderName.isEmpty()) ? "" : folderName + "/";
+            String fileExtension = switch (docType) {
+                case "Word" -> ".docx";
+                case "Excel" -> ".xlsx";
+                case "PDF" -> ".pdf";
+                default -> ".allFiles";
+            };
+
+            String docPath = "System/" + Formatfolder + docName + fileExtension;
+
+            String summary = doc.getSUMMARY().trim();
+            LocalDateTime dateTime = LocalDateTime.now().withNano(0);
+
+            int updateResult = docDao.updateDoc(folderId, docName, summary, dateTime, docPath, docId);
+
             if (updateResult > 0) {
                 showSuccessAlert("Update Document", "Document updated successfully!");
                 clearDoc();
                 refreshDocList();
             } else {
+                System.out.println("Update result is 0. No changes were made.");
                 showErrorAlert("Failed", "Can not update the document. Please try again!");
             }
         } catch (Exception e) {
-            showErrorAlert("System error", "ERROR OCCUR: " + e.getMessage());
-            System.out.println(e.getMessage());
+            System.err.println("Error updating document: " + e.getMessage());
             e.printStackTrace();
+            showErrorAlert("System error", "ERROR OCCUR: " + e.getMessage());
         }
     }
 
@@ -487,15 +485,14 @@ public class DashBoardController implements Initializable {
 
     @FXML
     void RefreshTable(MouseEvent event) {
-        refreshDocList("ALL");
+        refreshDocList();
     }
 
     //DISPLAY TABLE DATA
 
-    public ObservableList<DetailDocInfo> docList(String typeFilter) {
+    public ObservableList<DetailDocInfo> docList() {
         ObservableList<DetailDocInfo> listData = FXCollections.observableArrayList();
 
-        // SQL cơ bản
         String sql = """
         SELECT
             D.DOC_ID,
@@ -507,43 +504,40 @@ public class DashBoardController implements Initializable {
             D.FOLDER_ID,
             F.FOLDER_NAME,
             U.FULLNAME,
-            T.TYPEDOC_NAME
+            T.TYPEDOC_NAME,
+            CASE\s
+                WHEN D.TYPEDOC_ID = T.TYPEDOC_ID THEN T.TYPEDOC_NAME
+                ELSE NULL
+            END AS DOCUMENT_TYPE_NAME
         FROM DOCUMENT D
         LEFT JOIN USER U ON D.USER_ID = U.USER_ID
         LEFT JOIN TYPEOFDOCUMENT T ON D.TYPEDOC_ID = T.TYPEDOC_ID
         LEFT JOIN FOLDER F ON D.FOLDER_ID = F.FOLDER_ID
-        WHERE D.isDeleted = 0
+        WHERE D.isDeleted = 0;
+        
     """;
 
-        // Thêm điều kiện filter (nếu có)
-        if (typeFilter != null && !typeFilter.equalsIgnoreCase("ALL")) {
-            sql += " AND T.TYPEDOC_NAME = ?";
-        }
-
         try (Connection conn = JDBCUtil.getConnection();
-             PreparedStatement prepare = conn.prepareStatement(sql)) {
+             PreparedStatement prepare = conn.prepareStatement(sql);
+             ResultSet resultSet = prepare.executeQuery()) {
 
-            // Set tham số filter nếu có
-            if (typeFilter != null && !typeFilter.equalsIgnoreCase("ALL")) {
-                prepare.setString(1, typeFilter);
+            while (resultSet.next()) {
+                DetailDocInfo detailDocInfo = new DetailDocInfo(
+                        resultSet.getInt("DOC_ID"),              // Lấy giá trị DOC_ID
+                        resultSet.getString("DOC_NAME"),         // Lấy giá trị DOC_NAME
+                        resultSet.getInt("TYPEDOC_ID"),          // Lấy giá trị TYPEDOC_ID
+                        resultSet.getTimestamp("CREATEDATE"),    // Lấy giá trị CREATEDATE (nếu có cả ngày và giờ)
+                        resultSet.getInt("USER_ID"),             // Lấy giá trị USER_ID
+                        resultSet.getString("FULLNAME"),         // Lấy giá trị FULLNAME từ bảng User
+                        resultSet.getString("TYPEDOC_NAME"),      // Lấy giá trị TYPEDOC_NAME từ bảng TypeofDocument
+                        resultSet.getString("DOC_PATH"),
+                        resultSet.getString("FOLDER_NAME")
+
+                );
+
+                listData.add(detailDocInfo);
             }
 
-            try (ResultSet resultSet = prepare.executeQuery()) {
-                while (resultSet.next()) {
-                    DetailDocInfo detailDocInfo = new DetailDocInfo(
-                            resultSet.getInt("DOC_ID"),
-                            resultSet.getString("DOC_NAME"),
-                            resultSet.getInt("TYPEDOC_ID"),
-                            resultSet.getTimestamp("CREATEDATE"),
-                            resultSet.getInt("USER_ID"),
-                            resultSet.getString("FULLNAME"),
-                            resultSet.getString("TYPEDOC_NAME"),
-                            resultSet.getString("DOC_PATH"),
-                            resultSet.getString("FOLDER_NAME")
-                    );
-                    listData.add(detailDocInfo);
-                }
-            }
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -552,20 +546,19 @@ public class DashBoardController implements Initializable {
     }
 
 
-
     private ObservableList<DetailDocInfo> listDoc;
     public void showDocList() {
+        listDoc = docList();
 
-//        docNo_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_ID"));
-//        docName_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_NAME"));
-//        type_Col.setCellValueFactory(new PropertyValueFactory<>("TYPEDOC_NAME"));
-//        dateCreate_Col.setCellValueFactory(new PropertyValueFactory<>("CREATEDATE"));
-//        author_Col.setCellValueFactory(new PropertyValueFactory<>("FULLNAME"));
-//        docPath_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_PATH"));
-//        DocStoreInFolder_Col.setCellValueFactory(new PropertyValueFactory<>("FOLDER_NAME"));
-//
-//        docList_TableView.setItems(listDoc);
-        refreshDocList("ALL"); // Hiển thị tất cả tài liệu
+        docNo_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_ID"));
+        docName_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_NAME"));
+        type_Col.setCellValueFactory(new PropertyValueFactory<>("TYPEDOC_NAME"));
+        dateCreate_Col.setCellValueFactory(new PropertyValueFactory<>("CREATEDATE"));
+        author_Col.setCellValueFactory(new PropertyValueFactory<>("FULLNAME"));
+        docPath_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_PATH"));
+        DocStoreInFolder_Col.setCellValueFactory(new PropertyValueFactory<>("FOLDER_NAME"));
+
+        docList_TableView.setItems(listDoc);
     }
 
     public void selectDocList() {
@@ -592,11 +585,11 @@ public class DashBoardController implements Initializable {
 
     }
 
-    private void refreshDocList(String typeFilter) {
-        listDoc = docList(typeFilter); // Gọi hàm docList() với filter
-        docList_TableView.setItems(listDoc); // Cập nhật TableView
+    //Reload Table Data
+    private void refreshDocList() {
+        listDoc = docList(); // Tải lại danh sách từ cơ sở dữ liệu
+        docList_TableView.setItems(listDoc); // Gán lại danh sách cho TableView
     }
-
 
 
     private String getTypeName(int typeId, List<TypeOfDocument> types) {
@@ -757,7 +750,7 @@ public class DashBoardController implements Initializable {
             if (result > 0) {
                 showSuccessAlert("Success", "Folder added successfully!");
                 clearDoc();
-                refreshDocList("ALL");
+                refreshDocList();
             } else {
                 showErrorAlert("Failed", "Can not create the folder. Please try again!");
             }
@@ -920,7 +913,7 @@ public class DashBoardController implements Initializable {
                     }
 
                     // Làm mới danh sách tài liệu
-                    refreshDocList("ALL");
+                    refreshDocList();
                     clearDoc();
                     // Hiển thị thông báo thành công
                     showNotification(itemType + " moved to trash successfully.");
