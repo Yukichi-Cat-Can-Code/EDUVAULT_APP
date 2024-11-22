@@ -115,7 +115,7 @@
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></FontAwesomeIconView>
-                        <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="80.0" layoutY="298.0" size="14">
+                        <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="131.0" layoutY="300.0" size="14">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></FontAwesomeIconView>

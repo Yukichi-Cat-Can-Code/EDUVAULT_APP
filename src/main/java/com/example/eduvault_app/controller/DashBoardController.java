@@ -176,8 +176,8 @@ public class DashBoardController implements Initializable {
     private Label TrashForm;
 
     //TEXTFIELD
-    @FXML
-    private TextField author_TXT;
+//    @FXML
+//    private TextField author_TXT;
 
     @FXML
     private TextField docName_TXT;
@@ -202,6 +202,10 @@ public class DashBoardController implements Initializable {
 
     @FXML
     private TextField parentFolder_TXT;
+
+    @FXML
+    private TextField Summary_TXT;
+
     private String username;
 
     private MouseEvent mouseEvent;
@@ -213,27 +217,8 @@ public class DashBoardController implements Initializable {
         type_TXT.setItems(list);
         type_TXT.setValue("Word");
         showDocList();
+        showFolderList();
 
-//        username.setText(MainApp.getCurrentUser());
-//        System.out.println("current" + MainApp.getCurrentUser());
-//        JDBCUtil jdbcUtil = new JDBCUtil();
-//        Connection connectDB = jdbcUtil.getConnection();
-//
-//        String query = "SELECT * FROM user WHERE username = ?";
-//        try (PreparedStatement stmt = connectDB.prepareStatement(query)) {
-//            stmt.setString(1, username.getText());
-//            ResultSet rs = stmt.executeQuery();
-//            if (rs.next()) {
-//                String name = rs.getString("FULLNAME");
-//                Fullname.setText(name);
-//                Email.setText(rs.getString("EMAIL"));
-//            } else {
-//                Fullname.setText("User not found.");
-//            }
-//        }  catch (SQLException e) {
-//        e.printStackTrace();
-//        e.getCause();
-//        }
     }
 
     //sign out
@@ -265,8 +250,9 @@ public class DashBoardController implements Initializable {
 
             String docName = docName_TXT.getText().trim();
             String type = type_TXT.getValue();  //Combobox
-            String author = author_TXT.getText().trim();
+//            String author = author_TXT.getText().trim();
             String folder = FolderName_TXT.getText().trim();
+            String Summary = Summary_TXT.getText().trim();
 
             String fileExtension;
 
@@ -296,7 +282,7 @@ public class DashBoardController implements Initializable {
             dateTime = dateTime.withNano(0);
 
 
-            if (docName.isEmpty() || type.isEmpty() || author.isEmpty()) {
+            if (docName.isEmpty() || type.isEmpty()) {
                 showErrorAlert("ADD ERROR", "Please fill all the fields before adding!");
                 return;
             }
@@ -311,7 +297,7 @@ public class DashBoardController implements Initializable {
                     1, //UserId
                     typeId, //typeId
                     docName,
-                    null, // Tóm tắt
+                    Summary, // Tóm tắt
                     dateTime,
                     docPath, // Đường dẫn tài liệu
                     (short) 0 // isDeleted = 0
@@ -339,7 +325,7 @@ public class DashBoardController implements Initializable {
     // CLEAR TEXTFIELD
     @FXML
     void HandleClearCreateItemInfo(MouseEvent event) {
-        author_TXT.clear();
+//        author_TXT.clear();
         docName_TXT.clear();
         docPath_TXT.clear();
         FolderName_TXT.clear();
@@ -347,7 +333,7 @@ public class DashBoardController implements Initializable {
     }
     //CLEAR DATA FUNCTION
     public void clearDoc(){
-        author_TXT.clear();
+//        author_TXT.clear();
         docName_TXT.clear();
         docPath_TXT.clear();
         FolderName_TXT.clear();
@@ -409,6 +395,7 @@ public class DashBoardController implements Initializable {
 
         // Lấy thông tin từ item được chọn
         int docId = selectedDoc.getDOC_ID();
+
 
         try {
 
@@ -661,7 +648,7 @@ public class DashBoardController implements Initializable {
     void HandleAddNewFolder(MouseEvent event) {
         try {
             String folderName = nameFolder_TXT.getText().trim();
-            String author = author_TXT.getText().trim();
+            String author = authorFolder_TXT.getText().trim();
             String parentFolder = parentFolder_TXT.getText().trim();
 
             String FolderInherit = "";
@@ -746,38 +733,47 @@ public class DashBoardController implements Initializable {
     //DISPLAY FOLDER DATA
 
     public ObservableList<DetailFolderInfo> folderList() {
-        ObservableList<DetailFolderInfo> folderList = FXCollections.observableArrayList();
+        ObservableList<DetailFolderInfo> listData = FXCollections.observableArrayList();
         String sql = """
-         SELECT
+         
+                SELECT
              F.FOLDER_ID,
              F.FOLDER_NAME,
              F.PARENT_ID,
              F.USER_ID,
-             U.FULLNAME,
-             F.FOLDER_CREATEAT
+             U.FULLNAME AS USER_FULLNAME,
+             F.FOLDER_CREATEAT,
+             F2.FOLDER_NAME AS PARENT_FOLDER_NAME,
+             CASE
+                 WHEN F.USER_ID = U.USER_ID THEN U.FULLNAME
+                 WHEN F.PARENT_ID = F2.FOLDER_ID THEN F2.FOLDER_NAME
+                 ELSE NULL
+             END AS FOLDER_USER_NAME
          FROM FOLDER F
          LEFT JOIN USER U ON F.USER_ID = U.USER_ID
-         WHERE F.isDeleted = 0
+         LEFT JOIN FOLDER F2 ON F.PARENT_ID = F2.FOLDER_ID
+         WHERE F.isDeleted = 0;
          """;
         try (Connection conn = JDBCUtil.getConnection();
              PreparedStatement prepare = conn.prepareStatement(sql);
              ResultSet resultSet = prepare.executeQuery()) {
 
             while (resultSet.next()) {
-                DetailFolderInfo detailFolderInfo = new DetailFolderInfo();
-                detailFolderInfo.setFOLDER_ID(resultSet.getInt("FOLDER_ID"));
-                detailFolderInfo.setFOLDER_NAME(resultSet.getString("FOLDER_NAME"));
-                detailFolderInfo.setPARENT_ID(resultSet.getInt("PARENT_ID"));
-                detailFolderInfo.setUSER_ID(resultSet.getInt("USER_ID"));
-                detailFolderInfo.setFOLDER_CREATEAT(resultSet.getTimestamp("FOLDER_CREATEAT").toLocalDateTime());
-                folderList.add(detailFolderInfo);
+                DetailFolderInfo detailFolderInfo = new DetailFolderInfo(
+                                resultSet.getInt("FOLDER_ID"),
+                                resultSet.getString("FOLDER_NAME"),
+                                resultSet.getInt("PARENT_ID"),
+                                resultSet.getInt("USER_ID"),
+                                resultSet.getString("USER_FULLNAME"),
+                                resultSet.getTimestamp("FOLDER_CREATEAT").toLocalDateTime()
+                );
+                listData.add(detailFolderInfo);
             }
 
         } catch (Exception e) {
             e.printStackTrace();
         }
-
-        return folderList;
+        return listData;
     }
 
     private ObservableList<DetailFolderInfo> listFolder;
@@ -789,7 +785,7 @@ public class DashBoardController implements Initializable {
         authorFolder_Col.setCellValueFactory(new PropertyValueFactory<>("FULLNAME"));
         dateFolderCreate_Col.setCellValueFactory(new PropertyValueFactory<>("FOLDER_CREATEAT"));
 
-        docList_TableView.setItems(listDoc);
+        folderList_TableView.setItems(listFolder);
     }
 
     public void selectFolderList() {

@@ -12,7 +12,7 @@ public class DetailFolderInfo {
     private int isDeleted;
 
     private String PARENT_NAME;
-    private String FULL_NAME;
+    private String FULLNAME;
     private String SUMMARY;
     private String FolderName;
 
@@ -30,6 +30,17 @@ public class DetailFolderInfo {
         this.FOLDER_NAME = FOLDER_NAME;
         this.FOLDER_ID = FOLDER_ID;
     }
+
+    public DetailFolderInfo(int FOLDER_ID, String FOLDER_NAME, int PARENT_ID, int USER_ID,String FULLNAME, LocalDateTime FOLDER_CREATEAT) {
+
+        this.FULLNAME = FULLNAME;
+        this.FOLDER_ID = FOLDER_ID;
+        this.FOLDER_NAME = FOLDER_NAME;
+        this.PARENT_ID = PARENT_ID;
+        this.USER_ID = USER_ID;
+        this.FOLDER_CREATEAT = FOLDER_CREATEAT;
+    }
+
 
     public int getFOLDER_ID() {
         return FOLDER_ID;
@@ -104,11 +115,11 @@ public class DetailFolderInfo {
     }
 
     public String getFULL_NAME() {
-        return FULL_NAME;
+        return FULLNAME;
     }
 
-    public void setFULL_NAME(String FULL_NAME) {
-        this.FULL_NAME = FULL_NAME;
+    public void setFULL_NAME(String FULLNAME) {
+        this.FULLNAME = FULLNAME;
     }
 
     public String getPARENT_NAME() {
@@ -132,7 +143,7 @@ public class DetailFolderInfo {
                 ", FOLDER_CREATEAT=" + FOLDER_CREATEAT +
                 ", isDeleted=" + isDeleted +
                 ", PARENT_NAME='" + PARENT_NAME + '\'' +
-                ", FULL_NAME='" + FULL_NAME + '\'' +
+                ", FULL_NAME='" + FULLNAME + '\'' +
                 ", SUMMARY='" + SUMMARY + '\'' +
                 ", FolderName='" + FolderName + '\'' +
                 '}';
