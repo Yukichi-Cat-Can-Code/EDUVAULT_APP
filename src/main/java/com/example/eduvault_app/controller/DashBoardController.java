@@ -46,6 +46,7 @@ import static com.itextpdf.text.xml.xmp.XmpBasicProperties.CREATEDATE;
 public class DashBoardController implements Initializable {
 
 
+    public ComboBox type_filter;
     //ICON
     @FXML
     private FontAwesomeIconView AddDoc_Icon;
@@ -224,6 +225,18 @@ public class DashBoardController implements Initializable {
         ObservableList<String> list = FXCollections.observableArrayList("Word", "Excel", "PDF");
         type_TXT.setItems(list);
         type_TXT.setValue("Word");
+
+//        // Thiết lập giá trị cho ComboBox
+//        type_filter.setItems(FXCollections.observableArrayList("ALL", "WORD", "PDF", "EXCEL"));
+//        type_filter.setValue("ALL"); // Mặc định là ALL (hiển thị tất cả)
+//
+//
+//        // Lắng nghe sự kiện thay đổi của ComboBox
+//        type_filter.setOnAction(event -> {
+//            String selectedType = (String) type_filter.getValue();
+//            refreshDocList(selectedType); // Tải lại danh sách với filter
+//        });
+
         Fullname.setText(MainApp.getFullName());
         Email.setText(MainApp.getEmail());
         showDocList();
@@ -393,47 +406,56 @@ public class DashBoardController implements Initializable {
         DetailDocInfo selectedDoc = docList_TableView.getSelectionModel().getSelectedItem();
 
         if (selectedDoc == null) {
-            // Hiển thị thông báo nếu không có dòng nào được chọn
-            showErrorAlert("Error","No item selected!");
+            showErrorAlert("Error", "No item selected!");
             return;
         }
 
-        // Lấy thông tin từ item được chọn
-        int docId = selectedDoc.getDOC_ID();
-        String docName = selectedDoc.getDOC_NAME();
-        String folderName = selectedDoc.getFOLDER_NAME();
-
-        FolderDAO folderDAO = new FolderDAO();
-        int folderId = folderDAO.getFolderId(folderName);
-
-        String docPath = selectedDoc.getDOC_PATH();
-        String summary = selectedDoc.getSUMMARY();
-        LocalDateTime dateTime = LocalDateTime.now();
-        dateTime = dateTime.withNano(0);
-
-        int updateResult = 0;
-
-        if(docName.isEmpty())
-        {
-            showErrorAlert("Failed", "Can not update the document. Please fill all the fields before updating!");
-            return ;
-        }
         try {
-            DocumentDAO documentDAO = new DocumentDAO();
-            updateResult = documentDAO.updateDoc(folderId,docName,summary,dateTime,docPath,docId);
+            int docId = selectedDoc.getDOC_ID();
+            String docName = docName_TXT.getText().trim();
+            String folderName = FolderName_TXT.getText().trim();
+            String docType = type_TXT.getValue().trim();
 
-            // Kiểm tra kết quả
+            if (docName.isEmpty() || docType.isEmpty()) {
+                showErrorAlert("Failed", "Please fill all the required fields before updating!");
+                return;
+            }
+
+            FolderDAO folderDAO = new FolderDAO();
+            int folderId = folderDAO.getFolderId(folderName);
+            if (folderId == 0) {
+                folderId = 1;
+            }
+
+            String Formatfolder = (folderName.isEmpty()) ? "" : folderName + "/";
+            String fileExtension = switch (docType) {
+                case "Word" -> ".docx";
+                case "Excel" -> ".xlsx";
+                case "PDF" -> ".pdf";
+                default -> ".allFiles";
+            };
+
+            String docPath = "System/" + Formatfolder + docName + fileExtension;
+
+            String summary = Summary_TXT.getText().trim();
+            LocalDateTime dateTime = LocalDateTime.now().withNano(0);
+
+            DocumentDAO docDao = new DocumentDAO();
+
+            int updateResult = docDao.updateDoc(folderId, docName, summary, dateTime, docPath, docId);
+
             if (updateResult > 0) {
                 showSuccessAlert("Update Document", "Document updated successfully!");
                 clearDoc();
                 refreshDocList();
             } else {
+                System.out.println("Update result is 0. No changes were made.");
                 showErrorAlert("Failed", "Can not update the document. Please try again!");
             }
         } catch (Exception e) {
-            showErrorAlert("System error", "ERROR OCCUR: " + e.getMessage());
-            System.out.println(e.getMessage());
+            System.err.println("Error updating document: " + e.getMessage());
             e.printStackTrace();
+            showErrorAlert("System error", "ERROR OCCUR: " + e.getMessage());
         }
     }
 
@@ -497,7 +519,6 @@ public class DashBoardController implements Initializable {
         LEFT JOIN TYPEOFDOCUMENT T ON D.TYPEDOC_ID = T.TYPEDOC_ID
         LEFT JOIN FOLDER F ON D.FOLDER_ID = F.FOLDER_ID
         WHERE D.isDeleted = 0;
-        
     """;
 
         try (Connection conn = JDBCUtil.getConnection();
