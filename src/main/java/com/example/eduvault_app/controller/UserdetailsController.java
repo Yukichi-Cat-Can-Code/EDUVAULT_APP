@@ -42,14 +42,13 @@ public class UserdetailsController implements Initializable {
     private Label Fullname;
     @FXML
     private Label Email2;
-
-    private MouseEvent mouseEvent;
+    @FXML
+    private Label signOutLabel;
 
     public void signOutLabelOnMouseClicked(MouseEvent mouseEvent) {
         MainApp.setCurrentUser("");
         MainApp.setCurrentUserJoinedDate("");
         username.getScene().getWindow().hide();
-        System.out.println("signOutLabelOnMouseClicked");
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/login.fxml"));
             Parent root = loader.load();
@@ -146,7 +145,6 @@ public class UserdetailsController implements Initializable {
     }
 
     public void showDocumentForm(MouseEvent mouseEvent) {
-
         username.getScene().getWindow().hide();
         try {
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/DashBoard.fxml"));

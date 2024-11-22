@@ -151,6 +151,9 @@ public class DashBoardController implements Initializable {
     private TableColumn<DetailDocInfo, Integer> docNo_Col;
 
     @FXML
+    private TableColumn<DetailDocInfo, String> DocStoreInFolder_Col;
+
+    @FXML
     private TableView<DetailFolderInfo> folderList_TableView;
 
     @FXML
@@ -345,6 +348,7 @@ public class DashBoardController implements Initializable {
         docPath_TXT.clear();
         FolderName_TXT.clear();
         type_TXT.setValue(type_TXT.getItems().get(0));
+        Summary_TXT.clear();
     }
 
     //FILTERING
@@ -383,11 +387,6 @@ public class DashBoardController implements Initializable {
         }
     }
 
-    //MOVE DOC TO TRASH
-    @FXML
-    void HandleMoveItemToTrash(MouseEvent event) {
-
-    }
 
     //UPDATE DOC INFO
     @FXML
@@ -470,6 +469,8 @@ public class DashBoardController implements Initializable {
             D.CREATEDATE,
             D.USER_ID,
             D.DOC_PATH,
+            D.FOLDER_ID,
+            F.FOLDER_NAME,
             U.FULLNAME,
             T.TYPEDOC_NAME,
             CASE\s
@@ -479,6 +480,7 @@ public class DashBoardController implements Initializable {
         FROM DOCUMENT D
         LEFT JOIN USER U ON D.USER_ID = U.USER_ID
         LEFT JOIN TYPEOFDOCUMENT T ON D.TYPEDOC_ID = T.TYPEDOC_ID
+        LEFT JOIN FOLDER F ON D.FOLDER_ID = F.FOLDER_ID
         WHERE D.isDeleted = 0;
         
     """;
@@ -496,7 +498,8 @@ public class DashBoardController implements Initializable {
                         resultSet.getInt("USER_ID"),             // Lấy giá trị USER_ID
                         resultSet.getString("FULLNAME"),         // Lấy giá trị FULLNAME từ bảng User
                         resultSet.getString("TYPEDOC_NAME"),      // Lấy giá trị TYPEDOC_NAME từ bảng TypeofDocument
-                        resultSet.getString("DOC_PATH")
+                        resultSet.getString("DOC_PATH"),
+                        resultSet.getString("FOLDER_NAME")
 
                 );
 
@@ -521,6 +524,7 @@ public class DashBoardController implements Initializable {
         dateCreate_Col.setCellValueFactory(new PropertyValueFactory<>("CREATEDATE"));
         author_Col.setCellValueFactory(new PropertyValueFactory<>("FULLNAME"));
         docPath_Col.setCellValueFactory(new PropertyValueFactory<>("DOC_PATH"));
+        DocStoreInFolder_Col.setCellValueFactory(new PropertyValueFactory<>("FOLDER_NAME"));
 
         docList_TableView.setItems(listDoc);
     }
@@ -529,8 +533,9 @@ public class DashBoardController implements Initializable {
         DetailDocInfo detailDocInfo = docList_TableView.getSelectionModel().getSelectedItem();
         int num = docList_TableView.getSelectionModel().getSelectedIndex();
 
-        FolderDAO folderDAO = new FolderDAO();
-        Folder folder = folderDAO.get(detailDocInfo.getDOC_ID());
+        DocumentDAO docDao = new DocumentDAO();
+        Document doc = docDao.get(detailDocInfo.getDOC_ID());
+
 
         if((num -1) < -1) {
             return;
@@ -540,8 +545,11 @@ public class DashBoardController implements Initializable {
         docName_TXT.setText(detailDocInfo.getDOC_NAME());
         type_TXT.setValue(detailDocInfo.getTYPEDOC_NAME());
         docPath_TXT.setText(detailDocInfo.getDOC_PATH());
-        Summary_TXT.setText(detailDocInfo.getSUMMARY());
-        FolderName_TXT.setText(folder.getFOLDER_NAME());
+        Summary_TXT.setText(doc.getSUMMARY());
+        FolderName_TXT.setText(detailDocInfo.getFOLDER_NAME());
+
+        type_TXT.setDisable(true);
+        docPath_TXT.setDisable(true);
     }
 
     private void refreshDocList() {
@@ -626,6 +634,8 @@ public class DashBoardController implements Initializable {
 
     public void showTrashForm(MouseEvent mouseEvent) {
         try {
+            Stage currentStage = (Stage) ((Node) mouseEvent.getSource()).getScene().getWindow();
+            currentStage.close();
             FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/trash.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
@@ -838,7 +848,7 @@ public class DashBoardController implements Initializable {
         folderList_TableView.setItems(listFolder);
     }
 
-    // Method to handle the Delete Item button click
+    //MOVE DOC TO TRASH
     @FXML
     private void handleDeleteItem() {
         // Lấy item được chọn từ bảng
@@ -873,7 +883,7 @@ public class DashBoardController implements Initializable {
 
                     // Làm mới danh sách tài liệu
                     refreshDocList();
-
+                    clearDoc();
                     // Hiển thị thông báo thành công
                     showNotification(itemType + " moved to trash successfully.");
                 } catch (SQLException e) {

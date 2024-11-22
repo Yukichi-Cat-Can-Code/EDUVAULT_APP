@@ -158,7 +158,7 @@ public class EditUserController implements Initializable {
 
     public void showDocumentForm(MouseEvent mouseEvent) {
         try {
-            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/DashBoard.fxml"));
+            FXMLLoader loader = new FXMLLoader(getClass().getResource("/com/example/eduvault_app/TienDash.fxml"));
             Parent root = loader.load();
             Stage stage = new Stage();
             Scene scene = new Scene(root);
