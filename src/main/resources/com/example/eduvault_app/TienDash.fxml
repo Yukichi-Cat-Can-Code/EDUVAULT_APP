@@ -31,7 +31,7 @@
             <left>
                 <AnchorPane prefHeight="804.0" prefWidth="74.0" style="-fx-background-color: #010101;" styleClass="LeftPane" BorderPane.alignment="CENTER">
                     <effect>
-                        <DropShadow height="33.895" radius="24.92125" spread="0.45" width="67.79" />
+                        <DropShadow height="59.32" radius="31.277500000000003" spread="0.45" width="67.79" />
                     </effect>
                     <children>
                         <ImageView fitHeight="46.0" fitWidth="38.0" layoutX="19.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
@@ -84,7 +84,7 @@
                                         <String fx:value="General" />
                                     </styleClass>
                                 </Label>
-                                <Label fx:id="DashBoardForm_LBL" alignment="CENTER_RIGHT" layoutX="40.0" layoutY="137.0" onMouseClicked="#showDocumentForm" prefHeight="22.0" prefWidth="142.0" styleClass="NormalContent_LBL" text="All Document">
+                                <Label fx:id="DashBoardForm_LBL" alignment="CENTER_RIGHT" layoutX="48.0" layoutY="137.0" onMouseClicked="#showDocumentForm" prefHeight="22.0" prefWidth="142.0" styleClass="NormalContent_LBL" text="All Document">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
@@ -117,15 +117,15 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
-                                <FontAwesomeIconView fill="#efecec" glyphName="FOLDER_ALT" layoutX="43.0" layoutY="358.0" size="22">
+                                <FontAwesomeIconView fill="#efecec" glyphName="FOLDER_ALT" layoutX="42.0" layoutY="360.0" size="22">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
-                                <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="126.0" layoutY="357.0" size="14">
+                                <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="128.0" layoutY="359.0" size="14">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
-                                <Label alignment="CENTER" layoutX="25.0" layoutY="603.0" minHeight="20.0" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: #015D57; -fx-background-radius: 12;" styleClass="Tags" text="Excel">
+                                <Label alignment="CENTER" layoutX="25.0" layoutY="603.0" minHeight="20.0" prefHeight="34.0" prefWidth="107.0" style="-fx-background-color: #015D57; -fx-background-radius: 10;" styleClass="Tags" text="Excel">
                                     <opaqueInsets>
                                         <Insets />
                                     </opaqueInsets>
@@ -133,15 +133,18 @@
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
                                 </Label>
-                                <Label alignment="CENTER" layoutX="25.0" layoutY="492.0" minHeight="20.0" prefHeight="34.0" prefWidth="108.0" style="-fx-background-color: #304390; -fx-background-radius: 12;" styleClass="Tags" text="Word">
+                                <Label alignment="CENTER" layoutX="25.0" layoutY="492.0" minHeight="20.0" prefHeight="34.0" prefWidth="108.0" style="-fx-background-color: #304390; -fx-background-radius: 10;" styleClass="Tags" text="Word">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></Label>
-                                <Label alignment="CENTER" layoutX="25.0" layoutY="548.0" minHeight="20.0" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: F5831F; -fx-background-radius: 12;" styleClass="Tags" text="PDF">
+                                <Label alignment="CENTER" layoutX="25.0" layoutY="548.0" minHeight="20.0" prefHeight="34.0" prefWidth="106.0" style="-fx-background-color: F5831F; -fx-background-radius: 10;" styleClass="Tags" text="PDF">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></Label>
-                            </children></AnchorPane>
+                            </children>
+                     <effect>
+                        <DropShadow />
+                     </effect></AnchorPane>
                     </left>
                     <center>
                         <BorderPane prefHeight="804.0" prefWidth="0.0" BorderPane.alignment="CENTER">
@@ -313,7 +316,7 @@
                                                 <String fx:value="deleteBTN" />
                                                 <String fx:value="demo3" />
                                              </styleClass></Button>
-                                                        <Button fx:id="clearBTN" layoutX="329.0" layoutY="616.0" mnemonicParsing="false" onMouseClicked="#HandleClearCreateItemInfo" prefHeight="42.0" prefWidth="106.0" style="-fx-background-color: #7b7b7b; -fx-background-radius: 20;" styleClass="clearBTN" text="Clear" />
+                                                        <Button fx:id="clearBTN" layoutX="329.0" layoutY="616.0" mnemonicParsing="false" onMouseClicked="#HandleClearCreateItemInfo" prefHeight="42.0" prefWidth="106.0" style="-fx-background-color: #7b7b7b; -fx-background-radius: 20;" styleClass="clearBTN" text="Clear" textFill="WHITE" />
                                                         <ComboBox fx:id="type_TXT" layoutX="31.0" layoutY="211.0" prefHeight="42.0" prefWidth="152.0" promptText="WORD" style="-fx-background-radius: 15;" styleClass="textInFieldText" />
                                                         <TextField fx:id="docName_TXT1" alignment="TOP_LEFT" layoutX="31.0" layoutY="387.0" prefHeight="141.0" prefWidth="374.0" promptText="Document summary content" styleClass="textInFieldText" />
                                                         <Text fill="#f4f4f4" layoutX="36.0" layoutY="376.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Summary">
@@ -329,13 +332,10 @@
                                              </styleClass></Button>
                                                     </children>
                                        <effect>
-                                          <InnerShadow choke="0.13" height="91.19" radius="45.0925" width="91.18" />
+                                          <DropShadow />
                                        </effect>
                                                 </AnchorPane>
                                             </children>
-                                 <effect>
-                                    <DropShadow height="30.36" radius="12.34" spread="0.16" />
-                                 </effect>
                                         </AnchorPane>
                                         <AnchorPane fx:id="FolderPane" layoutX="-25.0" layoutY="5.0" prefHeight="746.0" prefWidth="1260.0" stylesheets="@../../../CSS/DashBoardFXMLStyle.css" visible="false">
                                             <children>
@@ -425,11 +425,7 @@
                                                 <FontAwesomeIconView layoutX="14.0" layoutY="103.0" text="" />
                                             </children>
                                  <effect>
-                                    <DropShadow>
-                                       <color>
-                                          <Color red="1.0" green="1.0" blue="1.0" />
-                                       </color>
-                                    </DropShadow>
+                                    <DropShadow />
                                  </effect>
                                         </AnchorPane>
                                     </children>

@@ -288,14 +288,14 @@
                                                 <Cursor fx:constant="HAND" />
                                              </cursor></Button>
                                           <ComboBox fx:id="type_TXT" layoutX="11.0" layoutY="230.0" prefHeight="42.0" prefWidth="152.0" promptText="WORD" styleClass="textInFieldText" />
-                                          <TextField fx:id="docName_TXT1" alignment="TOP_LEFT" layoutX="18.0" layoutY="413.0" prefHeight="157.0" prefWidth="312.0" promptText="Document summary content" styleClass="textInFieldText" />
+                                          <TextField fx:id="Summary_TXT" alignment="TOP_LEFT" layoutX="18.0" layoutY="413.0" prefHeight="157.0" prefWidth="312.0" promptText="Document summary content" styleClass="textInFieldText" />
                                           <Text fill="#f4f4f4" layoutX="28.0" layoutY="404.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Summary">
                                              <styleClass>
                                                 <String fx:value="NormalContent_LBL" />
                                                 <String fx:value="editBoardTitle" />
                                              </styleClass>
                                           </Text>
-                                          <FontAwesomeIconView fx:id="deleteBTN" fill="#e1e1e1" glyphName="TRASH" layoutX="301.0" layoutY="62.0" onMouseClicked="#handleDeleteItem" size="30">
+                                          <FontAwesomeIconView fx:id="deleteBTN" fill="#e1e1e1" glyphName="TRASH" layoutX="301.0" layoutY="62.0" onMouseClicked="#HandleMoveItemToTrash" size="30">
                                              <cursor>
                                                 <Cursor fx:constant="HAND" />
                                              </cursor>

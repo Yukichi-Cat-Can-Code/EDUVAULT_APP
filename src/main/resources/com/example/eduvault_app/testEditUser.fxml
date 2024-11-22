@@ -98,7 +98,7 @@
                                         <Font name="Calibri Bold" size="19.0" />
                                     </font>
                                 </Label>
-                                <FontAwesomeIconView fill="#fffffffc" glyphName="FOLDER_OPEN_ALT" layoutX="46.0" layoutY="157.0" size="22" styleClass="FolderIcon">
+                                <FontAwesomeIconView fill="#fffffffc" glyphName="FOLDER_OPEN_ALT" layoutX="33.0" layoutY="158.0" size="22" styleClass="FolderIcon">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
@@ -106,11 +106,11 @@
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
-                                <FontAwesomeIconView fill="WHITE" glyphName="FOLDER_ALT" layoutX="43.0" layoutY="358.0" size="22">
+                                <FontAwesomeIconView fill="WHITE" glyphName="FOLDER_ALT" layoutX="36.0" layoutY="361.0" size="22">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
-                                <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="126.0" layoutY="357.0" size="14">
+                                <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="128.0" layoutY="360.0" size="14">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor></FontAwesomeIconView>
@@ -181,6 +181,11 @@
                                             </font>
                                         </Label>
                                         <FontAwesomeIconView fill="#82e06e" glyphName="CIRCLE" layoutX="988.0" layoutY="25.0" size="12" text="" />
+                              <FontAwesomeIconView fill="#efecec" glyphName="PLUS" layoutX="20.0" layoutY="45.0" size="25" text="">
+                                 <cursor>
+                                    <Cursor fx:constant="HAND" />
+                                 </cursor>
+                              </FontAwesomeIconView>
                                     </children>
                                 </AnchorPane>
                             </top>
