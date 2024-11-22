@@ -194,6 +194,32 @@ public class FolderDAO implements DAOInterface<Folder> {
 
     }
 
+    public int getFolderId(String folderName){
+        if(folderName.isEmpty()){
+            return 0;
+        }
+
+        int folderId = 0;
+
+        String sql = "SELECT FOLDER_ID FROM FOLDER WHERE FOLDER_NAME = ?";
+
+        try(Connection conn = JDBCUtil.getConnection();
+            PreparedStatement ps = conn.prepareStatement((sql))){
+            ps.setString(1, folderName);
+
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                folderId = rs.getInt("FOLDER_ID");
+            }
+
+            JDBCUtil.closeConnection(conn);
+            return folderId;
+        } catch (SQLException ex){
+            Logger.getLogger(FolderDAO.class.getName()).log(Level.SEVERE, null, ex);
+            return 0;
+        }
+    }
+
 //    public String getFolderPath(int id) {
 //        String sql = "SELECT FOLDER_PATH FROM FOLDER WHERE FOLDER_ID = ?";
 //        try (Connection conn = JDBCUtil.getConnection();

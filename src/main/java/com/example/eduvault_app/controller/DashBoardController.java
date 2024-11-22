@@ -350,19 +350,16 @@ public class DashBoardController implements Initializable {
     // CLEAR TEXTFIELD
     @FXML
     void HandleClearCreateItemInfo(MouseEvent event) {
-//        author_TXT.clear();
-        docName_TXT.clear();
-        docPath_TXT.clear();
-        FolderName_TXT.clear();
-        type_TXT.setValue(type_TXT.getItems().get(0));
+        clearDoc();
     }
     //CLEAR DATA FUNCTION
     public void clearDoc(){
-//        author_TXT.clear();
         docName_TXT.clear();
         docPath_TXT.clear();
         FolderName_TXT.clear();
         type_TXT.setValue(type_TXT.getItems().get(0));
+        type_TXT.setDisable(false);
+        docPath_TXT.setDisable(false);
         Summary_TXT.clear();
     }
 
@@ -402,7 +399,6 @@ public class DashBoardController implements Initializable {
         }
     }
 
-
     //UPDATE DOC INFO
     @FXML
     void HandleUpdateItem(MouseEvent event) {
@@ -418,10 +414,16 @@ public class DashBoardController implements Initializable {
         int docId = selectedDoc.getDOC_ID();
         String docName = selectedDoc.getDOC_NAME();
         String folderName = selectedDoc.getFOLDER_NAME();
-        String typeDoc = selectedDoc.getTYPEDOC_NAME();
+
+        FolderDAO folderDAO = new FolderDAO();
+        int folderId = folderDAO.getFolderId(folderName);
+
         String docPath = selectedDoc.getDOC_PATH();
         String summary = selectedDoc.getSUMMARY();
+        LocalDateTime dateTime = LocalDateTime.now();
+        dateTime = dateTime.withNano(0);
 
+        int updateResult = 0;
 
 
         try {
@@ -430,9 +432,26 @@ public class DashBoardController implements Initializable {
             refreshDocList("ALL");
 
             showSuccessAlert("Update Document","Update document success!");
+        if(docName.isEmpty())
+        {
+            showErrorAlert("Failed", "Can not update the document. Please fill all the fields before updating!");
+            return ;
         }
-        catch (Exception e) {
-            showErrorAlert("Error: ",e.getMessage());
+        try {
+            DocumentDAO documentDAO = new DocumentDAO();
+            updateResult = documentDAO.updateDoc(folderId,docName,summary,dateTime,docPath,docId);
+
+            // Kiểm tra kết quả
+            if (updateResult > 0) {
+                showSuccessAlert("Update Document", "Document updated successfully!");
+                clearDoc();
+                refreshDocList();
+            } else {
+                showErrorAlert("Failed", "Can not update the document. Please try again!");
+            }
+        } catch (Exception e) {
+            showErrorAlert("System error", "ERROR OCCUR: " + e.getMessage());
+            System.out.println(e.getMessage());
             e.printStackTrace();
         }
     }
@@ -558,6 +577,7 @@ public class DashBoardController implements Initializable {
 
 
         if((num -1) < -1) {
+            clearDoc();
             return;
         }
 
@@ -567,9 +587,9 @@ public class DashBoardController implements Initializable {
         docPath_TXT.setText(detailDocInfo.getDOC_PATH());
         Summary_TXT.setText(doc.getSUMMARY());
         FolderName_TXT.setText(detailDocInfo.getFOLDER_NAME());
-
         type_TXT.setDisable(true);
         docPath_TXT.setDisable(true);
+
     }
 
     private void refreshDocList(String typeFilter) {
@@ -752,10 +772,7 @@ public class DashBoardController implements Initializable {
     //XOA THONG TIN FOLDER
     @FXML
     void HandleClearCreateFolderInfo(MouseEvent event) {
-        folderPath_TXT.clear();
-        nameFolder_TXT.clear();
-        authorFolder_TXT.clear();
-        parentFolder_TXT.clear();
+       clearFolder();
     }
 
     public void clearFolder (){
